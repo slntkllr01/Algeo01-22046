@@ -13,7 +13,7 @@ public class MainTemp {
         System.out.println("baris: " + baris);
         System.out.println("kolom: " + kolom);
 
-        Matrix3 = Matrix.addMatrix(Matrix1, Matrix2);
+        Matrix3 = Matrix.AddMatrix(Matrix1, Matrix2);
         Matrix.DisplayMatrix(Matrix3);
     }
 }
