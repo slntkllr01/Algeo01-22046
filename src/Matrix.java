@@ -1,14 +1,22 @@
 import java.util.Scanner;
 
 public class Matrix {
-    public double[][] matrix;
+    public double[][] matrix = new double[100][100];
     public int nRows;
     public int nCols;
 
-    public static Scanner scan;
-
+    Matrix(int nRows, int nCols){
+        int i,j;
+        this.nRows = nRows;
+        this.nCols = nCols;
+        for(i=0;i<nRows;i++){
+            for(j=0;j<nCols;j++){
+                this.matrix[i][j] = 0;
+            }
+        }
+    }
     // constructor? belom
-    // public static void CreateMatrix(int row, int col, double[][] matrix) {
+    // public void CreateMatrix(int row, int col, double[][] matrix) {
     //     // double[][] matrix = new double[row][col];
 
     //     for(int i = 0;i < row;i++) {
@@ -19,55 +27,53 @@ public class Matrix {
     // }
 
     /* SELECTOR */
-    public static int getRow(double[][] matrix) {
+    public int getRow(double[][] matrix) {
         return matrix.length;
     }
     
     
-    public static int getCol(double[][] matrix) {
+    public int getCol(double[][] matrix) {
         return matrix[0].length;
     }
 
-    public static int getLastIdxRow(double[][] matrix) {
+    public int getLastIdxRow(double[][] matrix) {
         return (getRow(matrix) - 1);
     }
 
-    public static int getLastIdxCol(double[][] matrix) {
+    public int getLastIdxCol(double[][] matrix) {
         return (getCol(matrix) - 1);
     }
 
     /* METHOD */
-    public static double[][] ReadMatrixKeyboard() {
-        scan = new Scanner(System.in);
-        System.out.print("Jumlah baris (row): "); int row = scan.nextInt();
-        System.out.print("Jumlah kolom (col): "); int col = scan.nextInt();
-
-        double[][] matrix = new double[row][col];
+    public void ReadMatrixKeyboard() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Jumlah baris (row): "); this.nRows = scan.nextInt();
+        System.out.print("Jumlah kolom (col): "); this.nCols = scan.nextInt();
 
         System.out.println("Elemen matriks: ");
-        for(int i = 0;i < row;i++) {
-            for(int j = 0;j < col;j++) {
-                matrix[i][j] = scan.nextDouble();
+        for(int i = 0;i < nRows;i++) {
+            for(int j = 0;j < nCols;j++) {
+                this.matrix[i][j] = scan.nextDouble();
             }
         }
+        scan.close();
 
-        return matrix;
     }
 
-    public static void DisplayMatrix(double[][] matrix) {
-        for(int i = 0;i < matrix.length;i++) {
-            for(int j = 0;j < matrix[i].length;j++) {
-                if(j < matrix[i].length-1) {
-                    System.out.print(matrix[i][j] + " ");
+    public void DisplayMatrix(Matrix matrix) {
+        for(int i = 0;i < nRows;i++) {
+            for(int j = 0;j < nCols;j++) {
+                if(j < nCols-1) {
+                    System.out.print(this.matrix[i][j] + " ");
                 }
                 else {
-                    System.out.println(matrix[i][j]);
+                    System.out.println(this.matrix[i][j]);
                 }
             }
         }
     }
 
-    // public static void copyMatrix(double[][] matrixIn, double[][] matrixOut) {
+    // public void copyMatrix(double[][] matrixIn, double[][] matrixOut) {
     //     for(int i = 0;i < getRow(matrixIn);i++) {
     //         for(int j = 0;j < getCol(matrixIn);j++) {
     //             matrixOut[i][j] = matrixIn[i][j];
@@ -75,7 +81,7 @@ public class Matrix {
     //     }
     // }
 
-    public static double[][] copyMatrix(double[][] matrixIn) {
+    public double[][] copyMatrix(double[][] matrixIn) {
         /* Mengirim matrixOut hasil copy matrixIn*/
         int row = getRow(matrixIn);
         int col = getCol(matrixIn);
@@ -89,7 +95,7 @@ public class Matrix {
         return matrixOut;
     }
 
-    public static double[][] AddMatrix(double[][] matrix1, double[][] matrix2) {
+    public double[][] AddMatrix(double[][] matrix1, double[][] matrix2) {
         /* Prekondisi : m1 berukuran sama dengan m2 */
         /* Mengirim hasil penjumlahan matriks: m1 + m2 */
         int row = getRow(matrix1);
@@ -104,7 +110,7 @@ public class Matrix {
         return matrix;
     }
 
-    public static double[][] SubtractMatrix(double[][] matrix1, double[][] matrix2) {
+    public double[][] SubtractMatrix(double[][] matrix1, double[][] matrix2) {
         /* Prekondisi : m1 berukuran sama dengan m2 */
         /* Mengirim hasil penjumlahan matriks: m1 + m2 */
         int row = getRow(matrix1);
@@ -119,7 +125,7 @@ public class Matrix {
         return matrix;
     }
 
-    public static double[][] MultiplyMatrix(double[][] matrix1, double[][] matrix2) {
+    public double[][] MultiplyMatrix(double[][] matrix1, double[][] matrix2) {
         /* Prekondisi : Ukuran kolom efektif m1 = ukuran baris efektif m2 */
         /* Mengirim hasil perkalian matriks: salinan m1 * m2 */
         int row = getRow(matrix1);
@@ -136,7 +142,7 @@ public class Matrix {
         return matrix;
     }
 
-    public static double[][] MultiplyByConst(double[][] matrix, int x) {
+    public double[][] MultiplyByConst(double[][] matrix, int x) {
         /* Mengirim hasil perkalian setiap elemen m dengan x */
         int row = getRow(matrix);
         int col = getCol(matrix);
@@ -151,7 +157,7 @@ public class Matrix {
     }
 
     
-    public static boolean isMatrixEqual(double[][] matrix1, double[][] matrix2) {
+    public boolean isMatrixEqual(double[][] matrix1, double[][] matrix2) {
         /* Mengirimkan true jika m1 = m2 */
         if (getRow(matrix1) != getRow(matrix2) || getCol(matrix1) != getCol(matrix2)) {
             return false;
@@ -170,22 +176,22 @@ public class Matrix {
         return true;
     }
     
-    public static boolean isMatrixSizeEqual(double[][] matrix1, double[][] matrix2) {
+    public boolean isMatrixSizeEqual(double[][] matrix1, double[][] matrix2) {
         /* True jika ukuran efektif matriks m1 sama dengan ukuran efektif m2 */
         return(getRow(matrix1) == getRow(matrix2) && getCol(matrix1) == getCol(matrix2));
     }   
     
-    public static int CountElmt(double[][] matrix) {
+    public int CountElmt(double[][] matrix) {
         /* Mengirimkan banyaknya elemen m */
         return (getRow(matrix)*getCol(matrix));
     }
     
-    public static boolean isSquare(double[][] matrix) {
+    public boolean isSquare(double[][] matrix) {
         /* True jika m adalah matriks dg ukuran baris dan kolom sama */
         return (getRow(matrix) == getCol(matrix));
     }
 
-    public static boolean isSymmetric(double[][] matrix) {
+    public boolean isSymmetric(double[][] matrix) {
         /* Mengirimkan true jika m adalah matriks simetri : isSquare(m) dan m(i,j)=m(j,i) */ 
         if(!(isSquare(matrix))) {
             return false;
@@ -205,7 +211,7 @@ public class Matrix {
         return true;
     }
 
-    public static boolean isIdentity(double[][] matrix) {
+    public boolean isIdentity(double[][] matrix) {
         /* Mengirimkan true jika m adalah matriks satuan: isSquare(m) dan elemen diagonal bernilai 1, sisanya 0 */
         if(!(isSquare(matrix))) {
             return false;
@@ -228,7 +234,7 @@ public class Matrix {
         return true;
     }
 
-    public static double[][] negation(double[][] matrix) {
+    public double[][] negation(double[][] matrix) {
         /* Mengirim hasil perkalian setiap elemen m dengan x */
         int row = getRow(matrix);
         int col = getCol(matrix);
@@ -238,7 +244,7 @@ public class Matrix {
         return matrixR;
     }
 
-    public static double[][] transpose(double[][] matrix) {
+    public double[][] transpose(double[][] matrix) {
         /* Mengirim hasil perkalian setiap elemen m dengan x */
         int row = getRow(matrix);
         int col = getCol(matrix);
