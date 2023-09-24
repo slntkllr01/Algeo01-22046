@@ -252,4 +252,27 @@ public class Matrix {
         }
         return matrixR;
     }
+
+    public static double[][] kofaktor(double[][] matrix, int rowIn, int colIn) {
+        /* Mengirim hasil matrix kofaktor */
+        int row = getRow(matrix);
+        int col = getCol(matrix);
+        double[][] matrixR = new double[row-1][col-1];
+        int i = 0, j = 0;
+        for(int baris=0; baris<row; baris++) {
+            for(int kolom=0; kolom<col; kolom++) {
+                if(baris != rowIn && kolom != colIn) {
+                    matrixR[i][j++] = matrix[baris][kolom];
+                    if(j == col-1) {
+                        i++; j = 0;
+                    }
+                }
+            }
+        }
+
+        // Math.pow(-1, i + j)
+        return matrixR;
+    }
+
+    // public static double[][] determinant(double[][] matrix, int rowIn, int colIn)
 }
