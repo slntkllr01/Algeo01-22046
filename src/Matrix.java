@@ -137,7 +137,7 @@ public class Matrix {
         return matrix;
     }
 
-    public static double[][] MultiplyByConst(double[][] matrix, int x) {
+    public static double[][] MultiplyByConst(double[][] matrix, double x) {
         /* Mengirim hasil perkalian setiap elemen m dengan x */
         int row = getRow(matrix);
         int col = getCol(matrix);
@@ -254,7 +254,7 @@ public class Matrix {
     }
 
     public static double[][] minorMatrix(double[][] matrix, int rowIn, int colIn) {
-        /* Mengirim hasil matrix kofaktor */
+        /* Mengirim hasil matrix minor (submatrix) */
         int row = getRow(matrix);
         int col = getCol(matrix);
         double[][] matrixR = new double[row-1][col-1];
@@ -272,7 +272,8 @@ public class Matrix {
         return matrixR;
     }
 
-    public static double determinant(double[][] matrix) {
+    public static double detCofactor(double[][] matrix) {
+        /* mengirim hasil determinan dengan expansi kofaktor */
         if(getRow(matrix) == 1) {
             return matrix[0][0];
         }
@@ -282,25 +283,44 @@ public class Matrix {
 
         double result = 0;
         for(int i=0; i<getCol(matrix); i++) {
-            result += Math.pow(-1, i)*matrix[0][i]*determinant(minorMatrix(matrix, 0, i));
+            result += Math.pow(-1, i)*matrix[0][i]*detCofactor(minorMatrix(matrix, 0, i));
         }
         return result;
     }
 
     public static double[][] cofactor(double[][] matrix) {
+        /* kofaktor aja */
         int row = getRow(matrix);
         int col = getCol(matrix);
         double[][] matrixR = new double[row][col];
         
         for(int i=0; i<row; i++) {
             for(int j=0; j<col; j++) {
-                matrixR[i][j] = (determinant(minorMatrix(matrix, i, j)) != 0 ? Math.pow(-1, i+j) : 0) *determinant(minorMatrix(matrix, i, j));
+                matrixR[i][j] = (detCofactor(minorMatrix(matrix, i, j)) != 0 ? Math.pow(-1, i+j) : 0) *detCofactor(minorMatrix(matrix, i, j));
             }
         }
         return matrixR;
     }
 
     public static double[][] adjoint(double[][] matrix) {
+        /* adjoin dari kofaktor */
         return (transpose(cofactor(matrix)));
+    }
+
+    public static double[][] inverseAdjoint(double[][] matrix) {
+        /* inverse dengan adjoin */
+        return (MultiplyByConst(adjoint(matrix),(1/detCofactor(matrix))));
+    }
+
+    public static double[][] slice_b(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks b doank */
+        int row = getRow(matrix);
+        int col = getCol(matrix);
+        double[][] matrixR = new double[row][1]; // matrix 1 kolom
+
+        for(int i=0; i<row; i++) {
+            matrixR[i][0] = matrix[i][col-1];
+        }
+        return matrixR;
     }
 }
