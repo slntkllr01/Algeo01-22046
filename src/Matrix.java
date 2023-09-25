@@ -348,4 +348,5 @@ public class Matrix {
         result = MultiplyMatrix(inverseAdjoint(a),b);
         return result;
     }
+    
 }
