@@ -2,7 +2,7 @@
 // nyoba akses method dari Matrix.java
 public class MainTemp {
     public static void main(String[] args) {
-        double[][] Matrix1, Matrix2, Matrix3;
+        double[][] Matrix1, Matrix2, Matrix3, result;
         Matrix1 = Matrix.ReadMatrixKeyboard();
         Matrix.DisplayMatrix(Matrix1);
         System.out.println();
@@ -40,5 +40,23 @@ public class MainTemp {
         Matrix2 = Matrix.slice_b(Matrix1);
         Matrix.DisplayMatrix(Matrix2);System.out.println();
 
+        // tes SPL 
+        result = Matrix.SPLinverse(Matrix1);
+        for(int i=0; i<result.length; i++) { 
+            System.out.printf("X%d = %.3f\n", i+1, result[i][0]);
+        }
+
+// TESTCASE SPL
+/*  
+2 -1 3 4 9
+1 0 -2 7 11
+3 -3 1 5 8
+2 1 4 4 10
+
+hasil = -1.000
+        0.000
+        1.000
+        2.000
+    */
     }
 }
