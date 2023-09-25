@@ -299,4 +299,8 @@ public class Matrix {
         }
         return matrixR;
     }
+
+    public static double[][] adjoint(double[][] matrix) {
+        return (transpose(cofactor(matrix)));
+    }
 }

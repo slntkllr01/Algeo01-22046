@@ -19,9 +19,16 @@ public class MainTemp {
         
         // Matrix3 = Matrix.MultiplyMatrix(Matrix1, Matrix2);
         // Matrix.DisplayMatrix(Matrix3);
+
+        // tes kofaktor
         Matrix3 = Matrix.cofactor(Matrix1);
         Matrix.DisplayMatrix(Matrix3);System.out.println();
 
+        // tes adjoin
+        Matrix3 = Matrix.adjoint(Matrix1);
+        Matrix.DisplayMatrix(Matrix3);System.out.println();
+
+        // tes determinan
         double det = Matrix.determinant(Matrix1);
         System.out.println(det);
 
