@@ -323,6 +323,7 @@ public class Matrix {
         }
         return matrixR;
     }
+    
     public static double[][] switchRow(double[][] m1, int r1, int r2){
         double[][] m2 = new double[getRow(m1)][getCol(m1)];
         m2 = copyMatrix(m1);
