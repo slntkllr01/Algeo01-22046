@@ -324,29 +324,28 @@ public class Matrix {
         return matrixR;
     }
 
+    public static double[][] slice_a(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
+        int row = getRow(matrix);
+        int col = getCol(matrix)-1;
+        double [][] matrixR = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                matrixR[i][j] = matrix[i][j];
+            }
+        }
+        return matrixR;
+    }
+
     // SPL GW SEMENTARA DISINI H3H3 //
     public static double[][] SPLinverse(double[][] matrix) {
         double [][] b = slice_b(matrix);
+        double [][] a = slice_a(matrix);
         
-        int row = getRow(matrix);
-        int col = getCol(matrix)-1;
-        double [][] mat = new double[row][col];
-        for(int i=0; i<row; i++) {
-            for(int j=0; j<col; j++) {
-                mat[i][j] = matrix[i][j];
-            }
-        }
-        DisplayMatrix(mat);System.out.println();
+        DisplayMatrix(a);System.out.println();
         
-        double [][] result = new double[row][col];
-        result = MultiplyMatrix(inverseAdjoint(mat),b);
+        double [][] result = new double[getRow(matrix)][0];
+        result = MultiplyMatrix(inverseAdjoint(a),b);
         return result;
-        // for(int i=0; i<getRow(result); i++) { 
-            
-        //     System.out.println("X"+(i+1)+" = "+Math.round(result[i][0]));
-        //     System.out.print("X%d = %.3f",i+1,Math.round(result[i][0]));
-            
-        // }
-        // DisplayMatrix(result);
     }
 }
