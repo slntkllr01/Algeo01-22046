@@ -253,7 +253,7 @@ public class Matrix {
         return matrixR;
     }
 
-    public static double[][] kofaktor(double[][] matrix, int rowIn, int colIn) {
+    public static double[][] minorMatrix(double[][] matrix, int rowIn, int colIn) {
         /* Mengirim hasil matrix kofaktor */
         int row = getRow(matrix);
         int col = getCol(matrix);
@@ -269,10 +269,34 @@ public class Matrix {
                 }
             }
         }
-
-        // Math.pow(-1, i + j)
         return matrixR;
     }
 
-    // public static double[][] determinant(double[][] matrix, int rowIn, int colIn)
+    public static double determinant(double[][] matrix) {
+        if(getRow(matrix) == 1) {
+            return matrix[0][0];
+        }
+        if(getRow(matrix) == 2) {
+            return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+        }
+
+        double result = 0;
+        for(int i=0; i<getCol(matrix); i++) {
+            result += Math.pow(-1, i)*matrix[0][i]*determinant(minorMatrix(matrix, 0, i));
+        }
+        return result;
+    }
+
+    public static double[][] cofactor(double[][] matrix) {
+        int row = getRow(matrix);
+        int col = getCol(matrix);
+        double[][] matrixR = new double[row][col];
+        
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                matrixR[i][j] = (determinant(minorMatrix(matrix, i, j)) != 0 ? Math.pow(-1, i+j) : 0) *determinant(minorMatrix(matrix, i, j));
+            }
+        }
+        return matrixR;
+    }
 }

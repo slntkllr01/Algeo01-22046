@@ -19,11 +19,11 @@ public class MainTemp {
         
         // Matrix3 = Matrix.MultiplyMatrix(Matrix1, Matrix2);
         // Matrix.DisplayMatrix(Matrix3);
-        Matrix3 = Matrix.kofaktor(Matrix1,1,1);
-        Matrix.DisplayMatrix(Matrix3);
+        Matrix3 = Matrix.cofactor(Matrix1);
+        Matrix.DisplayMatrix(Matrix3);System.out.println();
 
-        System.out.println("countelmt: " + Matrix.CountElmt(Matrix3));
-        System.out.println(Matrix.isSquare(Matrix3));
+        double det = Matrix.determinant(Matrix1);
+        System.out.println(det);
 
 
     }
