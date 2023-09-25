@@ -20,18 +20,25 @@ public class MainTemp {
         // Matrix3 = Matrix.MultiplyMatrix(Matrix1, Matrix2);
         // Matrix.DisplayMatrix(Matrix3);
 
-        // tes kofaktor
-        Matrix3 = Matrix.cofactor(Matrix1);
-        Matrix.DisplayMatrix(Matrix3);System.out.println();
+        // // tes kofaktor
+        // Matrix3 = Matrix.cofactor(Matrix1);
+        // Matrix.DisplayMatrix(Matrix3);System.out.println();
 
-        // tes adjoin
-        Matrix3 = Matrix.adjoint(Matrix1);
-        Matrix.DisplayMatrix(Matrix3);System.out.println();
-
-        // tes determinan
-        double det = Matrix.determinant(Matrix1);
-        System.out.println(det);
-
+        // // tes adjoin
+        // Matrix3 = Matrix.adjoint(Matrix1);
+        // Matrix.DisplayMatrix(Matrix3);System.out.println();
+        
+        // // tes determinan
+        // double det = Matrix.detCofactor(Matrix1);
+        // System.out.println("det: " +det);
+        
+        // // tes inverseAdjoint
+        // System.out.println("\ninverse: ");
+        // Matrix2 = Matrix.inverseAdjoint(Matrix1);
+        // Matrix.DisplayMatrix(Matrix2);System.out.println();
+        
+        Matrix2 = Matrix.slice_b(Matrix1);
+        Matrix.DisplayMatrix(Matrix2);System.out.println();
 
     }
 }
