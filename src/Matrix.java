@@ -323,4 +323,30 @@ public class Matrix {
         }
         return matrixR;
     }
+
+    // SPL GW SEMENTARA DISINI H3H3 //
+    public static double[][] SPLinverse(double[][] matrix) {
+        double [][] b = slice_b(matrix);
+        
+        int row = getRow(matrix);
+        int col = getCol(matrix)-1;
+        double [][] mat = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                mat[i][j] = matrix[i][j];
+            }
+        }
+        DisplayMatrix(mat);System.out.println();
+        
+        double [][] result = new double[row][col];
+        result = MultiplyMatrix(inverseAdjoint(mat),b);
+        return result;
+        // for(int i=0; i<getRow(result); i++) { 
+            
+        //     System.out.println("X"+(i+1)+" = "+Math.round(result[i][0]));
+        //     System.out.print("X%d = %.3f",i+1,Math.round(result[i][0]));
+            
+        // }
+        // DisplayMatrix(result);
+    }
 }
