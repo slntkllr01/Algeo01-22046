@@ -1,4 +1,18 @@
 public class SPL {
+
+    // SPL dengan metode invers
+    public static double[][] SPLinverse(double[][] matrix) {
+        double [][] b = Matrix.slice_b(matrix);
+        double [][] a = Matrix.slice_a(matrix);
+        
+        Matrix.DisplayMatrix(a);System.out.println();
+        
+        double [][] result = new double[Matrix.getRow(matrix)][0];
+        result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(a), b);
+        return result;
+    }
+
+    // SPL dengan metode cramer
     public static double[] solveCramer(double[][] matrix) {
         int n = matrix.length;
         double det = Matrix.detCofactor(Matrix.slice_a(matrix));
@@ -14,6 +28,5 @@ public class SPL {
             }
         }
         return x;
-
     }
 }

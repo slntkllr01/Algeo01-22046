@@ -376,7 +376,6 @@ public class Matrix {
         return m1;
     }
         
-
     public static double[][] slice_a(double[][] matrix) {
         /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
         int row = getRow(matrix);
@@ -389,17 +388,4 @@ public class Matrix {
         }
         return matrixR;
     }
-
-    // SPL GW SEMENTARA DISINI H3H3 //
-    public static double[][] SPLinverse(double[][] matrix) {
-        double [][] b = slice_b(matrix);
-        double [][] a = slice_a(matrix);
-        
-        DisplayMatrix(a);System.out.println();
-        
-        double [][] result = new double[getRow(matrix)][0];
-        result = MultiplyMatrix(inverseAdjoint(a),b);
-        return result;
-    }
-    
 }
