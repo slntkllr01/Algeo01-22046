@@ -4,8 +4,8 @@ public class MainTemp {
     public static void main(String[] args) {
         double[][] Matrix1, Matrix2, Matrix3;
         Matrix1 = Matrix.ReadMatrixKeyboard();
-        Matrix2 = Matrix.Gauss(Matrix1);
-        Matrix.DisplayMatrix(Matrix1);
+        Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
+        Matrix.DisplayMatrix(Matrix2);
         System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();
         // Matrix.DisplayMatrix(Matrix2);
