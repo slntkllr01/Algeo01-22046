@@ -12,14 +12,14 @@ public class OpMatrix {
         return m1;
         }
 
-        public static double[][] oBe (double[][] m1, int n, int j){ /* n adalah baris */
-            for(int i=1+n;i<Matrix.getRow(m1);i++){
-                double obe = m1[i][j]; /* angka yang akan menjadikan 0 */
-                if (m1[n][j] == 0){ /* jika elemen pada baris dan kolom tersebut 0 */
+        public static double[][] oBe (double[][] m1, int i, int j){ /* n adalah baris */
+            for(int n=1+i;n<Matrix.getRow(m1);n++){
+                double obe = m1[n][j]; /* angka yang akan menjadikan 0 */
+                if (m1[i][j] == 0){ /* jika elemen pada baris dan kolom tersebut 0 */
                     continue; /* lanjut ke baris berikutnya */
                 } else {
                     for (int k = 0;k<Matrix.getCol(m1);k++){ /* k sebagai iterator kolom saat melakukan obe */
-                        m1[i][k] -= (obe)/(m1[n][j]) * m1[n][k]; /* operasi obe pada baris tersebut dengan baris pivot */
+                        m1[n][k] -= (obe)/(m1[i][j]) * m1[i][k]; /* operasi obe pada baris tersebut dengan baris pivot */
                     }
                 }
             }
@@ -33,14 +33,33 @@ public class OpMatrix {
                     if(Matrix.isColZero(m1, j)){
                         continue;
                     } else {
+                        boolean switched = false;
                         for (int i = 1;i<Matrix.getRow(m1);i++){
-                            if (m1[i][j] != 0){
+                            if (m1[i][j] == 1){
                                 switchRow(m1, i, 0);
+                                switched = true;
+                                break;
                             }
-                            
+                        }
+                        if (switched == false){
+                            for (int i = 1;i<Matrix.getRow(m1);i++){
+                                if (m1[i][j] != 0){
+                                switchRow(m1, i, 0);
+                                break;
+                                }   
+                            }
+                        }
+                        
+                    }
+                } else {
+                    for (int i = 1;i<Matrix.getRow(m1);i++){
+                        if (m1[i][j] == 1){
+                            switchRow(m1, i, 0);
+                            break;
                         }
                     }
                 } 
+                break;
             }
             
             /* menjadikan elemen tidak 0 pertama pada suatu barus menjadi 1 */
@@ -73,11 +92,29 @@ public class OpMatrix {
         }      
     }
 
-    public double[][] GaussJordan(double[][] m1){
+
+
+    public static double[][] GaussJordan(double[][] m1){
         m1 = Gaussian.Gauss(m1);
-        for (int j=0;j<Matrix.getCol(m1);j++){
-            for (int i=0+j;i<Matrix.getRow(m1);i++){
-                
+        for (int i=1;i<Matrix.getRow(m1);i++){
+            for (int j=0+i;j<Matrix.getCol(m1);j++){
+                if (m1[i][j] == 0){
+                    continue;
+                }
+                else{
+                    double pivot = m1[i][j];
+                    for (int n = 0; n<Matrix.getRow(m1);n++){
+                        double obe = m1[n][j];
+                        for (int k = 0; k<Matrix.getCol(m1);k++){
+                            if (n != i){
+                            m1[n][k] -= (obe)/(pivot) * m1[i][k];
+                            }
+                        }
+                    }
+                    break;
+                    
+                }
+            
             }
         }
         return m1;

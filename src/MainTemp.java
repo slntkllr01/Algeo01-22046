@@ -7,6 +7,10 @@ public class MainTemp {
         Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
         Matrix.DisplayMatrix(Matrix2);
         System.out.println();
+        Matrix3 = OpMatrix.GaussJordan(Matrix1);
+        Matrix.DisplayMatrix(Matrix3);
+        
+        System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();
         // Matrix.DisplayMatrix(Matrix2);
         
