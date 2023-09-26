@@ -2,11 +2,14 @@
 // nyoba akses method dari Matrix.java
 public class MainTemp {
     public static void main(String[] args) {
-        double[][] Matrix1, Matrix2, Matrix3;
-        Matrix1 = Matrix.ReadMatrixKeyboard();
-        Matrix2 = Matrix.Gauss(Matrix1);
-        Matrix.DisplayMatrix(Matrix1);
-        System.out.println();
+
+        Interpolation.Interpolasi();
+
+        // double[][] Matrix1, Matrix2, Matrix3;
+        // Matrix1 = Matrix.ReadMatrixKeyboard();
+        // Matrix2 = Matrix.Gauss(Matrix1);
+        // Matrix.DisplayMatrix(Matrix1);
+        // System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();
         // Matrix.DisplayMatrix(Matrix2);
         
@@ -30,19 +33,21 @@ public class MainTemp {
         // Matrix.DisplayMatrix(Matrix3);System.out.println();
         
         // tes determinan
-        double det = Matrix.detCofactor(Matrix1);
-        System.out.println("det: " +det);
+        // double det = Matrix.detCofactor(Matrix1);
+        // System.out.println("det: " +det);
         
-        // // tes inverseAdjoint
-        // System.out.println("\ninverse: ");
-        // Matrix2 = Matrix.inverseAdjoint(Matrix1);
-        // Matrix.DisplayMatrix(Matrix2);System.out.println();
+        // // // tes inverseAdjoint
+        // // System.out.println("\ninverse: ");
+        // // Matrix2 = Matrix.inverseAdjoint(Matrix1);
+        // // Matrix.DisplayMatrix(Matrix2);System.out.println();
         
-        // tes Cramer
-        double[] result = SPL.solveCramer(Matrix1);
-        for (double value : result) {
-            System.out.println(value);
-        }
+        // // tes Cramer
+        // double[] result = SPL.solveCramer(Matrix1);
+        // for (double value : result) {
+        //     System.out.println(value);
+        // }
+
+        
         
 
     //     // Matrix2 = Matrix.slice_b(Matrix1);
