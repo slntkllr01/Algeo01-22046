@@ -27,22 +27,22 @@ public class OpMatrix {
         }
 
         public static double[][] Gauss(double[][] m1){
-            /* switch sampai menemukan element yang tidak 0 pada baris pertama */
+            /* switch jika element pertama pada baris pertama adalah 0 atau tidak 1 */
             for (int j=0;j<Matrix.getCol(m1);j++){
-                if (m1[0][j] == 0){
-                    if(Matrix.isColZero(m1, j)){
-                        continue;
+                if (m1[0][j] == 0){ /* kalo 0 */
+                    if(Matrix.isColZero(m1, j)){ /* kalo 1 kolom 0 semua */
+                        continue; /* kita pindah kolom */
                     } else {
                         boolean switched = false;
-                        for (int i = 1;i<Matrix.getRow(m1);i++){
+                        for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita mencari 1 pada kolom tersebut */
                             if (m1[i][j] == 1){
-                                switchRow(m1, i, 0);
+                                switchRow(m1, i, 0); /* jika ada kita switch */
                                 switched = true;
                                 break;
                             }
                         }
-                        if (switched == false){
-                            for (int i = 1;i<Matrix.getRow(m1);i++){
+                        if (switched == false){ /* jika ternyata tidak ada yang 1 */
+                            for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita switch dengan yang tidak 0 */
                                 if (m1[i][j] != 0){
                                 switchRow(m1, i, 0);
                                 break;
@@ -51,9 +51,9 @@ public class OpMatrix {
                         }
                         
                     }
-                } else {
+                } else { /* kalo tidak 0 dan tidak 1 */
                     for (int i = 1;i<Matrix.getRow(m1);i++){
-                        if (m1[i][j] == 1){
+                        if (m1[i][j] == 1){ /* kita cari yang 1 pada kolom tersebut dan kita switch */
                             switchRow(m1, i, 0);
                             break;
                         }
@@ -90,35 +90,37 @@ public class OpMatrix {
             }
             return m1;
         }      
-    }
 
-
-
-    public static double[][] GaussJordan(double[][] m1){
-        m1 = Gaussian.Gauss(m1);
-        for (int i=1;i<Matrix.getRow(m1);i++){
-            for (int j=0+i;j<Matrix.getCol(m1);j++){
-                if (m1[i][j] == 0){
-                    continue;
-                }
-                else{
-                    double pivot = m1[i][j];
-                    for (int n = 0; n<Matrix.getRow(m1);n++){
-                        double obe = m1[n][j];
-                        for (int k = 0; k<Matrix.getCol(m1);k++){
-                            if (n != i){
-                            m1[n][k] -= (obe)/(pivot) * m1[i][k];
+        public static double[][] GaussJordan(double[][] m1){
+            m1 = Gaussian.Gauss(m1); /* memanggil fungsi gauss untuk mendapat matrix eselon baris */
+            for (int i=1;i<Matrix.getRow(m1);i++){
+                for (int j=0+i;j<Matrix.getCol(m1);j++){
+                    if (m1[i][j] == 0){ /* cari kolom yang tidak 0 pada baris ke dua dan seterusnya */
+                        continue;
+                    }
+                    else{
+                        double pivot = m1[i][j];
+                        for (int n = 0; n<Matrix.getRow(m1);n++){
+                            double obe = m1[n][j]; /* variabel untuk menyimpan elemen yang akan di 0 kan,  */
+                            for (int k = 0; k<Matrix.getCol(m1);k++){
+                                if (n != i){ /* bisa dibuat lebih efektif lagi */
+                                m1[n][k] -= (obe)/(pivot) * m1[i][k]; /* melakukan obe */
+                                }
                             }
                         }
+                        break;
+                        
                     }
-                    break;
-                    
+                
                 }
-            
             }
+            return m1;
         }
-        return m1;
     }
+
+
+
+    
 
     
 }
