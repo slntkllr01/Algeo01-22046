@@ -1,11 +1,9 @@
 public class SPL {
 
-    // SPL dengan metode invers
+    // SPL dengan metode matriks balikan
     public static double[][] SPLinverse(double[][] matrix) {
         double [][] b = Matrix.slice_b(matrix);
         double [][] a = Matrix.slice_a(matrix);
-        
-        Matrix.DisplayMatrix(a);System.out.println();
         
         double [][] result = new double[Matrix.getRow(matrix)][0];
         result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(a), b);
