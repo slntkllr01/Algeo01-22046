@@ -30,8 +30,8 @@ public class MainTemp {
         // Matrix.DisplayMatrix(Matrix3);System.out.println();
         
         // tes determinan
-        double det = Matrix.detCofactor(Matrix1);
-        System.out.println("det: " +det);
+        // double det = Matrix.detCofactor(Matrix1);
+        // System.out.println("det: " +det);
         
         // // tes inverseAdjoint
         // System.out.println("\ninverse: ");
@@ -39,10 +39,10 @@ public class MainTemp {
         // Matrix.DisplayMatrix(Matrix2);System.out.println();
         
         // tes Cramer
-        double[] result = SPL.solveCramer(Matrix1);
-        for (double value : result) {
-            System.out.println(value);
-        }
+        // double[] result = SPL.solveCramer(Matrix1);
+        // for (double value : result) {
+            // System.out.println(value);
+        // }
         
 
     //     // Matrix2 = Matrix.slice_b(Matrix1);

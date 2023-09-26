@@ -323,7 +323,34 @@ public class Matrix {
         }
         return matrixR;
     }
-    
+    public static boolean isColZero(double[][] m1, int j){
+        boolean zero = true;
+        for (int i = 0;i<getRow(m1);i++){
+            if(m1[i][j] != 0){
+                zero = false;
+                break;
+            }
+        }
+        return zero;
+    }
+    public static boolean isRowZero(double[][] m1, int i){
+        boolean zero = true;
+        for (int j = 0;j<getCol(m1);j++){
+            if(m1[i][j] != 0){
+                zero = false;
+                break;
+            }
+        }
+        return zero;
+    }
+    public static void moveUpAddZero(double[][] m1, int i){
+        for (int j = 0;j<getCol(m1);j++){
+            m1[i][j] = m1[i+1][j];
+            m1[getLastIdxRow(m1)][j] = 0;
+        }
+
+        
+    }
     // public static double[][] switchRow(double[][] m1, int r1, int r2){
     //     double[][] m2 = new double[getRow(m1)][getCol(m1)];
     //     m2 = copyMatrix(m1);

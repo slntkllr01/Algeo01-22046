@@ -28,15 +28,21 @@ public class OpMatrix {
             return m1;
         }
         public static double[][] Gauss(double[][] m1){
-            for (int i=0;i<Matrix.getRow(m1)-1;i++){
-                if (m1[0][0] != 0){
-                    break;
-                } else {
-                    switchRow(m1, i+1, i);
-
+            for (int j=0;j<Matrix.getCol(m1);j++){
+                if (m1[0][j] == 0){
+                    if(Matrix.isColZero(m1, j)){
+                        continue;
+                    } else {
+                        for (int i = 1;i<Matrix.getRow(m1);i++){
+                            if (m1[i][j] != 0){
+                                switchRow(m1, i, 0);
+                            }
+                            
+                        }
                 }
-                    
+                } 
             }
+                
             for(int i=0;i<Matrix.getRow(m1);i++){
                 for (int j=0;j<Matrix.getCol(m1);j++){
                     if (m1[i][j] == 0){
@@ -51,7 +57,12 @@ public class OpMatrix {
                     }  
                 }
             }
-            
+            for (int i=0;i<Matrix.getRow(m1)-1;i++){
+                if(Matrix.isRowZero(m1, i)){
+                    Matrix.moveUpAddZero(m1, i);
+                }
+                
+            }
             return m1;
         }      
     }
