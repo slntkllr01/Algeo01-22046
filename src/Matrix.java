@@ -8,17 +8,6 @@ public class Matrix {
 
     public static Scanner scan;
 
-    // constructor? belom
-    // public static void CreateMatrix(int row, int col, double[][] matrix) {
-    //     // double[][] matrix = new double[row][col];
-
-    //     for(int i = 0;i < row;i++) {
-    //         for(int j = 0;j < col;j++) {
-    //             matrix[i][j] = 0;
-    //         }
-    //     }
-    // }
-
     /* SELECTOR */
     public static int getRow(double[][] matrix) {
         return matrix.length;
@@ -68,14 +57,7 @@ public class Matrix {
         }
     }
 
-    // public static void copyMatrix(double[][] matrixIn, double[][] matrixOut) {
-    //     for(int i = 0;i < getRow(matrixIn);i++) {
-    //         for(int j = 0;j < getCol(matrixIn);j++) {
-    //             matrixOut[i][j] = matrixIn[i][j];
-    //         }
-    //     }
-    // }
-
+   
     public static double[][] copyMatrix(double[][] matrixIn) {
         /* Mengirim matrixOut hasil copy matrixIn*/
         int row = getRow(matrixIn);
@@ -336,28 +318,14 @@ public class Matrix {
         }
         return matrixR;
     }
-    
-    public static double[][] switchRow(double[][] m1, int r1, int r2){
-        double[][] m2 = new double[getRow(m1)][getCol(m1)];
-        m2 = copyMatrix(m1);
-        for (int j=0;j < getCol(m1);j++){
-            m1[r1][j] = m2[r2][j];
-            m1[r2][j] = m2[r1][j];  
-        }
-        return m1;
 
-    }
-    public static double[][] oBE (double[][] m1, int j){
-        for(int i=1+j;i<getRow(m1);i++){
-            double obe = m1[i][j];
-            for (int k = 0;k<getCol(m1);k++){
-                if (m1[j][j] == 0){
-                    continue;
-                }else {
-                    m1[i][k] -= (obe)/(m1[j][j]) * m1[j][k];
-                }
+    public static boolean isColZero(double[][] m1, int j){
+        boolean zero = true;
+        for (int i = 0;i<getRow(m1);i++){
+            if(m1[i][j] != 0){
+                zero = false;
+                break;
             }
-                
         }
         return zero;
     }
@@ -378,57 +346,5 @@ public class Matrix {
         }
 
         
-    }
-    // public static double[][] switchRow(double[][] m1, int r1, int r2){
-    //     double[][] m2 = new double[getRow(m1)][getCol(m1)];
-    //     m2 = copyMatrix(m1);
-    //     for (int j=0;j < getCol(m1);j++){
-    //         m1[r1][j] = m2[r2][j];
-    //         m1[r2][j] = m2[r1][j];  
-    //     }
-    //     return m1;
-
-    // }
-    // public static double[][] oBE (double[][] m1, int j){
-    //     for(int i=1+j;i<getRow(m1);i++){
-    //         double obe = m1[i][j];
-    //         for (int k = 0;k<getCol(m1);k++){
-    //             if (m1[j][j] == 0){
-    //                 continue;
-    //             }else {
-    //                 m1[i][k] -= (obe)/(m1[j][j]) * m1[j][k];
-    //             }
-    //         }
-                
-    //     }
-    //     return m1;
-    // }
-    // public static double[][] Gauss(double[][] m1){
-    //     for (int i=0;i<getRow(m1);i++){
-    //         if (m1[i][0] != 0){
-    //             continue;
-    //         } else {
-    //             switchRow(m1, 0, i);
-    //             break;
-    //         }
-                
-    //     }
-    //     for(int i=0;i<getRow(m1);i++){
-    //         for (int j=0;j<getCol(m1);j++){
-    //             if (m1[i][j] == 0){
-    //                 continue;
-    //             } else {
-    //                 double div = m1[i][j];
-    //                 for (int k=0;k<getCol(m1);k++){
-    //                     m1[i][k] /= div;
-    //                 }
-    //                 m1 = oBE(m1, j);
-    //                 break;
-    //             }  
-    //         }
-    //     }
-        
-        return m1;
-    }
-
+    }   
 }
