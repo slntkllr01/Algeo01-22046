@@ -323,13 +323,41 @@ public class Matrix {
         }
         return matrixR;
     }
-    public static boolean isColZero(double[][] m1, int j){
-        boolean zero = true;
-        for (int i = 0;i<getRow(m1);i++){
-            if(m1[i][j] != 0){
-                zero = false;
-                break;
+
+    public static double[][] slice_a(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
+        int row = getRow(matrix);
+        int col = getCol(matrix)-1;
+        double [][] matrixR = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                matrixR[i][j] = matrix[i][j];
             }
+        }
+        return matrixR;
+    }
+    
+    public static double[][] switchRow(double[][] m1, int r1, int r2){
+        double[][] m2 = new double[getRow(m1)][getCol(m1)];
+        m2 = copyMatrix(m1);
+        for (int j=0;j < getCol(m1);j++){
+            m1[r1][j] = m2[r2][j];
+            m1[r2][j] = m2[r1][j];  
+        }
+        return m1;
+
+    }
+    public static double[][] oBE (double[][] m1, int j){
+        for(int i=1+j;i<getRow(m1);i++){
+            double obe = m1[i][j];
+            for (int k = 0;k<getCol(m1);k++){
+                if (m1[j][j] == 0){
+                    continue;
+                }else {
+                    m1[i][k] -= (obe)/(m1[j][j]) * m1[j][k];
+                }
+            }
+                
         }
         return zero;
     }
@@ -400,33 +428,7 @@ public class Matrix {
     //         }
     //     }
         
-    //     return m1;
-    // }
-        
-
-    public static double[][] slice_a(double[][] matrix) {
-        /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
-        int row = getRow(matrix);
-        int col = getCol(matrix)-1;
-        double [][] matrixR = new double[row][col];
-        for(int i=0; i<row; i++) {
-            for(int j=0; j<col; j++) {
-                matrixR[i][j] = matrix[i][j];
-            }
-        }
-        return matrixR;
+        return m1;
     }
 
-    // SPL GW SEMENTARA DISINI H3H3 //
-    public static double[][] SPLinverse(double[][] matrix) {
-        double [][] b = slice_b(matrix);
-        double [][] a = slice_a(matrix);
-        
-        DisplayMatrix(a);System.out.println();
-        
-        double [][] result = new double[getRow(matrix)][0];
-        result = MultiplyMatrix(inverseAdjoint(a),b);
-        return result;
-    }
-    
 }
