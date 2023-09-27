@@ -121,39 +121,39 @@ public class OpMatrix {
     public static double detGauss(double[][] m1){
             double det = 1;
             /* switch jika element pertama pada baris pertama adalah 0 */
-            for (int j=0;j<Matrix.getCol(m1);j++){
-                if (m1[0][j] == 0){ /* kalo 0 */
-                    if(Matrix.isColZero(m1, j)){ /* kalo 1 kolom 0 semua */
-                        return 0.0; /* det = 0 */
-                    } else {
-                        boolean switched = false;
-                        for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita mencari 1 pada kolom tersebut */
-                            if (m1[i][j] == 1){
-                                Gaussian.switchRow(m1, i, 0); /* jika ada kita switch */
-                                switched = true;
-                                break;
-                            }
-                        }
-                        if (switched == false){ /* jika ternyata tidak ada yang 1 */
-                            for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita switch dengan yang tidak 0 */
-                                if (m1[i][j] != 0){
-                                Gaussian.switchRow(m1, i, 0);
-                                break;
-                                }   
-                            }
-                        }
-                        
-                    }
-                } else { /* kalo tidak 0 dan tidak 1 */
-                    for (int i = 1;i<Matrix.getRow(m1);i++){
-                        if (m1[i][j] == 1){ /* kita cari yang 1 pada kolom tersebut dan kita switch */
-                            Gaussian.switchRow(m1, i, 0);
+            
+            if (m1[0][0] == 0){ /* kalo 0 */
+                if(Matrix.isColZero(m1, 0)){ /* kalo 1 kolom 0 semua */
+                    return 0.0; /* det = 0 */
+                } else {
+                    boolean switched = false;
+                    for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita mencari 1 pada kolom tersebut */
+                        if (m1[i][0] == 1){
+                            Gaussian.switchRow(m1, i, 0); /* jika ada kita switch */
+                            switched = true;
                             break;
                         }
                     }
-                } 
-                break;
-            }
+                    if (switched == false){ /* jika ternyata tidak ada yang 1 */
+                        for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita switch dengan yang tidak 0 */
+                            if (m1[i][0] != 0){
+                            Gaussian.switchRow(m1, i, 0);
+                            break;
+                            }   
+                        }
+                    }
+                    
+                }
+            } else { /* kalo tidak 0 dan tidak 1 */
+                for (int i = 1;i<Matrix.getRow(m1);i++){
+                    if (m1[i][0] == 1){ /* kita cari yang 1 pada kolom tersebut dan kita switch */
+                        Gaussian.switchRow(m1, i, 0);
+                        break;
+                    }
+                }
+            } 
+                
+            
             
             /* menjadikan elemen tidak 0 pertama pada suatu barus menjadi 1 */
             for(int i=0;i<Matrix.getRow(m1);i++){
