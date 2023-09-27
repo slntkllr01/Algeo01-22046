@@ -8,7 +8,7 @@ public class MainTemp {
         Matrix.DisplayMatrix(Matrix2);
         System.out.println();
         Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
-        Matrix.DisplayMatrix(Matrix3);
+        Matrix.DisplayMatrix(Matrix.sliceMatrix(Matrix3));
         
         System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();

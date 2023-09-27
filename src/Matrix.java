@@ -48,10 +48,10 @@ public class Matrix {
         for(int i = 0;i < matrix.length;i++) {
             for(int j = 0;j < matrix[i].length;j++) {
                 if(j < matrix[i].length-1) {
-                    System.out.print(matrix[i][j] + " ");
+                    System.out.printf("%.4f ",matrix[i][j]);
                 }
                 else {
-                    System.out.println(matrix[i][j]);
+                    System.out.printf("%.4f\n",matrix[i][j]);
                 }
             }
         }
@@ -317,6 +317,17 @@ public class Matrix {
             }
         }
         return matrixR;
+    }
+
+    public static double[][] sliceMatrix(double[][] m1){
+        double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
+        for (int i=0;i<getRow(m1);i++){
+            for (int j=(getCol(m1)/2);j<getCol(m1);j++){
+                m2[i][j-getCol(m1)/2] = m1[i][j];
+            }
+
+        }
+        return m2;
     }
 
     public static boolean isColZero(double[][] m1, int j){

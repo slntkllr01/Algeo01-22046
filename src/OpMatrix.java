@@ -117,10 +117,6 @@ public class OpMatrix {
             return m1;
         }
     }
-
-
-
     
-
     
 }
