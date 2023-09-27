@@ -1,14 +1,20 @@
 
 // nyoba akses method dari Matrix.java
+
+import java.io.File;
+
 public class MainTemp {
     public static void main(String[] args) {
         double[][] Matrix1, Matrix2, Matrix3;
         double det;
-        Matrix1 = Matrix.ReadMatrixKeyboard();
-        det = OpMatrix.detGauss(Matrix1);
-        System.out.println(det);
+        Matrix1 = new double[10][10];
+        File file = new File(".");
+        for(String fileNames : file.list()) System.out.println(fileNames);
+        Matrix1 = InputOutput.readMatrixFile(Matrix1);
+        // det = OpMatrix.detGauss(Matrix1);
+        // System.out.println(det);
         // Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
-        // Matrix.DisplayMatrix(Matrix2);
+        Matrix.DisplayMatrix(Matrix1);
         // System.out.println();
         // Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
         // Matrix.DisplayMatrix(Matrix.sliceMatrix(Matrix3));
