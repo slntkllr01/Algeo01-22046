@@ -19,7 +19,6 @@ public class Interpolation {
         scan = new Scanner(System.in);
         n = scan.nextInt();
         
-        
         int row = n+1, col = n+1;
         System.out.println("elmt : ");
         double[][] point = new double[row][2];
@@ -29,38 +28,33 @@ public class Interpolation {
             }
         }
         
+        // print titik
         System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
         // x = point[i][0], y = point[i][1]
         
+        // matriks point
         double[][] b = new double[row][1]; //0 atau 1
         for(int i=0; i<row; i++) {
             b[i][0] = point[i][1];
         }
+        // print b
         System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
         
+        // matriks
         double[][] mat = new double[row][col];
-        // n+1 ?
         for(int i=0; i<row; i++) {
             for(int j=0; j<col; j++) {
                 mat[i][j] = Math.pow(point[i][0], j);
             }
         }
-        
+        // print hasil kuadrat
         System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
-        
-        double[][] augmented = new double[row][col+1];
+
         
         // ######## GAS ######## //
         double [][] result = new double[row][0];
         result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
-        
-        
-        // double[][] result = SPL.SPLinverse(augmented);
-        // for(int i=result.length-1; i>=0; i--) { 
-            //     System.out.printf("a%d = %.3f\n", i+1, result[i][0]);
-            // }
-            
-            // f(x) = -0.0064x2 + 0.2266x + 0.6762
+        // f(x) = -0.0064x2 + 0.2266x + 0.6762
         System.out.print("f(x) = ");
         for(int i=result.length-1; i>=0; i--) { 
             if(i > 0) {
@@ -72,10 +66,10 @@ public class Interpolation {
         }
 
         // hasil taksiran nilai fungsi
-        int x;
-        System.out.println("Masukeun x cux: ");
+        double x;
+        System.out.print("\nMasukeun x cux: ");
         scan = new Scanner(System.in);
-        x = scan.nextInt();
+        x = scan.nextDouble();
 
         double hasilx = 0;
         for(int loop=result.length-1; loop>=0; loop--) { 
@@ -83,6 +77,6 @@ public class Interpolation {
             hasilx += result[loop][0]*Math.pow(x,loop);
         }
         
-        System.out.printf("f(%d) = %.4f", x, hasilx);
+        System.out.printf("f(%f) = %.4f", x, hasilx);
     }
 }

@@ -3,13 +3,13 @@
 public class MainTemp {
     public static void main(String[] args) {
 
-        Interpolation.Interpolasi();
+        // Interpolation.Interpolasi();
 
-        // double[][] Matrix1, Matrix2, Matrix3;
-        // Matrix1 = Matrix.ReadMatrixKeyboard();
+        double[][] Matrix1, Matrix2, Matrix3;
+        Matrix1 = Matrix.ReadMatrixKeyboard();
         // Matrix2 = Matrix.Gauss(Matrix1);
-        // Matrix.DisplayMatrix(Matrix1);
-        // System.out.println();
+        Matrix.DisplayMatrix(Matrix1);
+        System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();
         // Matrix.DisplayMatrix(Matrix2);
         
@@ -36,10 +36,10 @@ public class MainTemp {
         // double det = Matrix.detCofactor(Matrix1);
         // System.out.println("det: " +det);
         
-        // // // tes inverseAdjoint
-        // // System.out.println("\ninverse: ");
-        // // Matrix2 = Matrix.inverseAdjoint(Matrix1);
-        // // Matrix.DisplayMatrix(Matrix2);System.out.println();
+        // tes inverseAdjoint
+        System.out.println("\ninverse: ");
+        Matrix2 = Matrix.inverseAdjoint(Matrix1);
+        Matrix.DisplayMatrix(Matrix2);System.out.println();
         
         // // tes Cramer
         // double[] result = SPL.solveCramer(Matrix1);
