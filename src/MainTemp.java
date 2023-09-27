@@ -3,12 +3,15 @@
 public class MainTemp {
     public static void main(String[] args) {
         double[][] Matrix1, Matrix2, Matrix3;
+        double det;
         Matrix1 = Matrix.ReadMatrixKeyboard();
-        Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
-        Matrix.DisplayMatrix(Matrix2);
-        System.out.println();
-        Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
-        Matrix.DisplayMatrix(Matrix.sliceMatrix(Matrix3));
+        det = OpMatrix.detGauss(Matrix1);
+        System.out.println(det);
+        // Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
+        // Matrix.DisplayMatrix(Matrix2);
+        // System.out.println();
+        // Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
+        // Matrix.DisplayMatrix(Matrix.sliceMatrix(Matrix3));
         
         System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();
