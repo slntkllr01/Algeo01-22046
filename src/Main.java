@@ -7,7 +7,6 @@ public class Main {
     public static void main(String[] args) {
         // TEXT COLOR
         String RESET = "\u001B[0m";
-        String RED = "\u001B[31m";
         String GREEN = "\u001B[32m";
         String YELLOW = "\u001B[33m";
         String WHITE_BG = "\u001B[47m";
@@ -82,14 +81,7 @@ public class Main {
 
             System.out.print("Masukan pilihan menu: ");
             
-            ErSubMenu(choiceMenu, 1, 7);
-            // choiceMenu = sc.nextInt();  
-            // while (choiceMenu < 1 || choiceMenu > 7) {
-            //     System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-            //     System.out.print("Masukan pilihan menu: ");
-            //     choiceMenu = sc.nextInt();  
-            // }
-            // System.out.println();
+            choiceMenu = ErHandling(choiceMenu, 1, 7);
 
             if(choiceMenu == 7) {
                 System.out.println("Keluar dari program...");
@@ -111,14 +103,8 @@ public class Main {
                     System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
                     System.out.println(subMenuSPL);
                     System.out.print("Masukan pilihan submenu: ");
-                    int choiceSub;
-                    choiceSub = sc.nextInt();  
-                    while (choiceSub < 1 || choiceSub > 4) {
-                        System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                        System.out.print("Masukan pilihan submenu: ");
-                        choiceSub = sc.nextInt();  
-                    }
-                    System.out.println();
+                    int choiceSub = 0;
+                    choiceSub = ErHandling(choiceSub, 1, 4);
                     
                     switch (choiceSub) {
                         case 1:
@@ -131,14 +117,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            int choiceInput;
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            int choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+ 
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -156,13 +137,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -180,13 +157,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -204,13 +177,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -234,13 +203,8 @@ public class Main {
                     System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
                     System.out.println(subMenuDET);
                     System.out.print("Masukan pilihan submenu: ");
-                    choiceSub = sc.nextInt();  
-                    while (choiceSub < 1 || choiceSub > 2) {
-                        System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                        System.out.print("Masukan pilihan submenu: ");
-                        choiceSub = sc.nextInt();  
-                    }
-                    System.out.println();
+                    choiceSub = 0;
+                    choiceSub = ErHandling(choiceSub, 1, 2);
                     
                     switch (choiceSub) {
                         case 1:
@@ -253,14 +217,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            int choiceInput;
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            int choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -278,13 +237,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -308,13 +263,8 @@ public class Main {
                     System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
                     System.out.println(subMenuINV);
                     System.out.print("Masukan pilihan submenu: ");
-                    choiceSub = sc.nextInt();  
-                    while (choiceSub < 1 || choiceSub > 2) {
-                        System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                        System.out.print("Masukan pilihan submenu: ");
-                        choiceSub = sc.nextInt();  
-                    }
-                    System.out.println();
+                    choiceSub = 0;
+                    choiceSub = ErHandling(choiceSub, 1, 2);
                     
                     switch (choiceSub) {
                         case 1:
@@ -327,14 +277,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            int choiceInput;
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            int choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -352,13 +297,9 @@ public class Main {
                             System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                             System.out.println(input);
                             System.out.print("Masukan pilihan input: ");
-                            choiceInput = sc.nextInt();  
-                            while (choiceInput < 1 || choiceInput > 2) {
-                                System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                                System.out.print("Masukan pilihan input: ");
-                                choiceInput = sc.nextInt();  
-                            }
-                            System.out.println();
+                            choiceInput = 0;
+                            choiceInput = ErHandling(choiceInput, 1, 2);
+
                             if(choiceInput == 1) {
                                 System.out.println("temp keyboard");
                             }
@@ -382,14 +323,9 @@ public class Main {
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                     System.out.println(input);
                     System.out.print("Masukan pilihan input: ");
-                    int choiceInput;
-                    choiceInput = sc.nextInt();  
-                    while (choiceInput < 1 || choiceInput > 2) {
-                        System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                        System.out.print("Masukan pilihan input: ");
-                        choiceInput = sc.nextInt();  
-                    }
-                    System.out.println();
+                    int choiceInput = 0;
+                    choiceInput = ErHandling(choiceInput, 1, 2);
+
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
                         Interpolation.Interpolasi();
@@ -413,13 +349,9 @@ public class Main {
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                     System.out.println(input);
                     System.out.print("Masukan pilihan input: ");
-                    choiceInput = sc.nextInt();  
-                    while (choiceInput < 1 || choiceInput > 2) {
-                        System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                        System.out.print("Masukan pilihan input: ");
-                        choiceInput = sc.nextInt();  
-                    }
-                    System.out.println();
+                    choiceInput = 0;
+                    choiceInput = ErHandling(choiceInput, 1, 2);
+
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
                     }
@@ -442,13 +374,9 @@ public class Main {
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                     System.out.println(input);
                     System.out.print("Masukan pilihan input: ");
-                    choiceInput = sc.nextInt();  
-                    while (choiceInput < 1 || choiceInput > 2) {
-                        System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-                        System.out.print("Masukan pilihan input: ");
-                        choiceInput = sc.nextInt();  
-                    }
-                    System.out.println();
+                    choiceInput = 0;
+                    choiceInput = ErHandling(choiceInput, 1, 2);
+
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
                     }
@@ -462,14 +390,17 @@ public class Main {
         sc.close(); // close Scanner (input)
     }
 
-    public static void ErSubMenu(int choiceSub, int a, int b) {
+    public static int ErHandling(int choice, int a, int b) {
+        String RED = "\u001B[31m";
+        String RESET = "\u001B[0m";
         sc = new Scanner(System.in);
-        choiceSub = sc.nextInt();
-        while (choiceSub < a || choiceSub > b) {
-            System.out.println("Pilihan tidak tersedia, mohon ulangi.");
-            System.out.print("Masukan pilihan submenu: ");
-            choiceSub = sc.nextInt();  
+        choice = sc.nextInt();
+        while (choice < a || choice > b) {
+            System.out.println(RED + "Pilihan tidak tersedia, mohon ulangi." + RESET);
+            System.out.print("Masukan pilihan: ");
+            choice = sc.nextInt();  
         }
         System.out.println();
+        return choice;
     }
 }
