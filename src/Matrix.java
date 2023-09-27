@@ -344,7 +344,5 @@ public class Matrix {
             m1[i][j] = m1[i+1][j];
             m1[getLastIdxRow(m1)][j] = 0;
         }
-
-        
     }   
 }

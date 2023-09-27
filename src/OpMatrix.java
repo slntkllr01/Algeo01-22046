@@ -71,6 +71,9 @@ public class OpMatrix {
                         double div = m1[i][j]; /* pembuat 1 */
                         for (int k=0;k<Matrix.getCol(m1);k++){
                             m1[i][k] /= div; /* dibagi dengan pembuat 1 */
+                            if (m1[i][k] == -0.0) {
+                                m1[i][k] = 0.0;
+                            }
                         }
                         /* lakukan obe */
                         m1 = oBe(m1, i, j);
@@ -86,8 +89,8 @@ public class OpMatrix {
                 if(Matrix.isRowZero(m1, i)){
                     Matrix.moveUpAddZero(m1, i);
                 }
-                
             }
+
             return m1;
         }      
 
@@ -118,9 +121,55 @@ public class OpMatrix {
         }
     }
 
+        public static void CetakSolution(double[][] matriks) {
+            
+            // double[] solution = new double[Matrix.getCol(matriks) - 1];
 
+            // Mengecek apakah tidak punya solusi
+            if (isNoSolution(matriks)) {
+                System.out.println("Persamaan ini tidak memiliki solusi yang valid");
+            } else {
+                
+            }
+        }
 
+        
+
+        public static boolean isNoSolution(double[][] matrix) {
+            for (double[] row : matrix) {
+                boolean isValid = true;
+                for (int j = 0; j < row.length - 1; j++) {
+                    if (row[j] != 0.0) {
+                        isValid = false;
+                        break;
+                    }
+                }
+                if (isValid && row[row.length - 1] != 0.0) {
+                    return true;
+                }
+            }
+            return false;
+        }
     
+        public static double[] SolveGauss(double[][] matrix) {
+            int n = matrix.length;
+            double[] solution = new double[n];
+        
+            for (int i = n - 1; i >= 0; i--) {
+                double sum = 0.0;
+                for (int j = i + 1; j < n; j++) {
+                    sum += matrix[i][j] * solution[j];
+                }
+                solution[i] = (matrix[i][n] - sum) / matrix[i][i];
+            }
+        
+            return solution;
+        }
+        
+        public static double[] Parametric(double[][] matrix) {
+            double[] solution = new double[Matrix.getCol(matrix) - 1];
 
-    
+            return solution;
+        }
+        
 }
