@@ -11,8 +11,58 @@ public class Interpolation {
     3. 
     */ 
     public static Scanner scan;
+
+    public static double[][] contohMat() { //NANTI HAPUS
+        double[][] mat = new double[4][2];
+        mat[0][0] = 8.0;
+        mat[0][1] = 2.0794;
+        mat[1][0] = 9.0;
+        mat[1][1] = 2.1972;
+        mat[2][0] = 9.5;
+        mat[2][1] = 2.2513;
+        mat[3][0] = 8.3;
+        mat[3][1] = 0;
+        // 8.0 2.0794
+        // 9.0 2.1972
+        // 9.5 2.2513
+        // 8.3
+        return mat;
+    }
     
-    public static void Interpolasi() {
+    public static double[][] InterpolasiFile(double[][] point) {
+        int n = point.length-2;
+        int row = n+1, col = n+1;
+
+        // print titik
+        System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
+        // x = point[i][0], y = point[i][1]
+        
+        // matriks point
+        double[][] b = new double[row][1]; //0 atau 1
+        for(int i=0; i<row; i++) {
+            b[i][0] = point[i][1];
+        }
+        // print b
+        System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
+        
+        // matriks
+        double[][] mat = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                mat[i][j] = Math.pow(point[i][0], j);
+            }
+        }
+        // print hasil kuadrat
+        System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
+
+        
+        // ######## GAS ######## //
+        double [][] result = new double[row][0];
+        result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
+        return result;
+    }
+
+    public static double[][] InterpolasiKeyboard() {
         int n;
         // titik dulu ambil
         System.out.println("n : ");
@@ -54,6 +104,10 @@ public class Interpolation {
         // ######## GAS ######## //
         double [][] result = new double[row][0];
         result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
+        return result;
+    }
+
+    public static void outputInterpolasi(double[][] result) {
         // f(x) = -0.0064x2 + 0.2266x + 0.6762
         System.out.print("f(x) = ");
         for(int i=result.length-1; i>=0; i--) { 
@@ -64,19 +118,21 @@ public class Interpolation {
                 System.out.printf("%.4f",result[i][0]);
             }
         }
+        System.out.println();
+    }
 
+    public static void outputFungsi(double[][] result) {
         // hasil taksiran nilai fungsi
         double x;
-        System.out.print("\nMasukeun x cux: ");
+        System.out.print("\nMasukan X yang akan ditaksir: ");
         scan = new Scanner(System.in);
         x = scan.nextDouble();
 
         double hasilx = 0;
         for(int loop=result.length-1; loop>=0; loop--) { 
-            // System.out.println("elmt " + loop);
             hasilx += result[loop][0]*Math.pow(x,loop);
         }
         
-        System.out.printf("f(%f) = %.4f", x, hasilx);
+        System.out.printf("f(%.4f) = %.4f\n", x, hasilx);
     }
 }

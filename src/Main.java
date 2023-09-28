@@ -27,25 +27,29 @@ public class Main {
                 1. Metode eliminasi Gauss
                 2. Metode eliminasi Gauss-Jordan
                 3. Metode matriks balikan
-                4. Kaidah Cramer                 
+                4. Kaidah Cramer 
+                5. Kembali                
                 """;
 
         String subMenuDET = """
             
                 1. Metode eliminasi Gauss (Reduksi Baris)?
-                2. Metode ekspansi kofaktor               
+                2. Metode ekspansi kofaktor 
+                3. Kembali                
                 """;
 
         String subMenuINV = """
             
                 1. Metode eliminasi Gauss-Jordan
-                2. Metode adjoint               
+                2. Metode adjoint   
+                3. Kembali              
                 """;
         
         String input = """
             
                 1. Keyboard
-                2. File              
+                2. File 
+                3. Kembali               
                 """;
 
         String kelompok = """
@@ -84,230 +88,263 @@ public class Main {
             choiceMenu = ErHandling(choiceMenu, 1, 7);
 
             if(choiceMenu == 7) {
-                System.out.println("Keluar dari program...");
+                System.out.println(YELLOW + "Keluar dari program..." + RESET);
             }
 
-            // MENU
+            // MENU (1-7)
             switch (choiceMenu) {
                 case 1:
-                    System.out.println("""
-                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-                        
-                S I S T E M  P E R S A M A A N  L I N E A R
-
-                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                            """);
-                    // INPUT SUBMENU
-                    System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
-                    System.out.println(subMenuSPL);
-                    System.out.print("Masukan pilihan submenu: ");
                     int choiceSub = 0;
-                    choiceSub = ErHandling(choiceSub, 1, 4);
-                    
-                    switch (choiceSub) {
-                        case 1:
-                            System.out.println("""
-                                    ===============================
-                                        METODE ELIMINASI GAUSS
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            int choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
- 
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                        case 2:
-                            System.out.println("""
-                                    ===============================
-                                     METODE ELIMINASI GAUSS-JORDAN
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
+                    do {
+                        System.out.println("""
+                            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                            
+                    S I S T E M  P E R S A M A A N  L I N E A R
 
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                        case 3:
-                            System.out.println("""
-                                    ===============================
-                                        METODE MATRIKS BALIKAN
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
-
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                        case 4:
-                            System.out.println("""
-                                    ===============================
-                                            KAIDAH CRAMER
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
-
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                    }
-                    break;
-                case 2:
-                    System.out.println("""
-                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                """);
+                        // INPUT SUBMENU
+                        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
+                        System.out.println(subMenuSPL);
+                        System.out.print("Masukan pilihan submenu: ");
                         
-                           D E T E R M I N A N
+                        choiceSub = ErHandling(choiceSub, 1, 5);
+                        switch (choiceSub) {
+                            case 1:
+                                System.out.println("""
+                                        ===============================
+                                            METODE ELIMINASI GAUSS
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                int choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
+    
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                            case 2:
+                                System.out.println("""
+                                        ===============================
+                                        METODE ELIMINASI GAUSS-JORDAN
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
 
-                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                            """);
-                    // INPUT SUBMENU
-                    System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
-                    System.out.println(subMenuDET);
-                    System.out.print("Masukan pilihan submenu: ");
-                    choiceSub = 0;
-                    choiceSub = ErHandling(choiceSub, 1, 2);
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                            case 3:
+                                System.out.println("""
+                                        ===============================
+                                            METODE MATRIKS BALIKAN
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
+
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                            case 4:
+                                System.out.println("""
+                                        ===============================
+                                                KAIDAH CRAMER
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
+
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                            case 5:
+                                break;
+                        }
+                    }while(choiceSub == 0);
+                    break;
                     
-                    switch (choiceSub) {
-                        case 1:
-                            System.out.println("""
-                                    ===============================
-                                          METODE REDUKSI BARIS
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            int choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
+                case 2:
+                    do {
+                        System.out.println("""
+                            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                            
+                            D E T E R M I N A N
 
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                        case 2:
-                            System.out.println("""
-                                    ===============================
-                                        METODE EKSPANSI KOFAKTOR
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
+                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                """);
+                        // INPUT SUBMENU
+                        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
+                        System.out.println(subMenuDET);
+                        System.out.print("Masukan pilihan submenu: ");
+                        choiceSub = 0;
+                        choiceSub = ErHandling(choiceSub, 1, 3);
+                        
+                        switch (choiceSub) {
+                            case 1:
+                                System.out.println("""
+                                        ===============================
+                                            METODE REDUKSI BARIS
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                int choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
 
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                    }
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                            case 2:
+                                System.out.println("""
+                                        ===============================
+                                            METODE EKSPANSI KOFAKTOR
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
+
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                        }
+                    }while(choiceSub == 0);
                     break;
                 case 3:
-                    System.out.println("""
-                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                    do {
+                        System.out.println("""
+                            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                            
+                        M A T R I K S  B A L I K A N
+
+                        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                """);
+                        // INPUT SUBMENU
+                        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
+                        System.out.println(subMenuINV);
+                        System.out.print("Masukan pilihan submenu: ");
+                        choiceSub = 0;
+                        choiceSub = ErHandling(choiceSub, 1,3);
                         
-                      M A T R I K S  B A L I K A N
+                        switch (choiceSub) {
+                            case 1:
+                                System.out.println("""
+                                        ===============================
+                                        METODE ELIMINASI GAUSS-JORDAN
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                int choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
 
-                    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-                        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                            """);
-                    // INPUT SUBMENU
-                    System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
-                    System.out.println(subMenuINV);
-                    System.out.print("Masukan pilihan submenu: ");
-                    choiceSub = 0;
-                    choiceSub = ErHandling(choiceSub, 1, 2);
-                    
-                    switch (choiceSub) {
-                        case 1:
-                            System.out.println("""
-                                    ===============================
-                                     METODE ELIMINASI GAUSS-JORDAN
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            int choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                            case 2:
+                                System.out.println("""
+                                        ===============================
+                                                METODE ADJOINT
+                                        ===============================
+                                        """);
+                                // INPUT CARA MASUKAN
+                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+                                System.out.println(input);
+                                System.out.print("Masukan pilihan input: ");
+                                choiceInput = 0;
+                                choiceInput = ErHandling(choiceInput, 1, 3);
 
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                        case 2:
-                            System.out.println("""
-                                    ===============================
-                                            METODE ADJOINT
-                                    ===============================
-                                    """);
-                            // INPUT CARA MASUKAN
-                            System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                            System.out.println(input);
-                            System.out.print("Masukan pilihan input: ");
-                            choiceInput = 0;
-                            choiceInput = ErHandling(choiceInput, 1, 2);
-
-                            if(choiceInput == 1) {
-                                System.out.println("temp keyboard");
-                            }
-                            else {
-                                System.out.println("temp file");
-                            }
-                            break;
-                    }
+                                if(choiceInput == 1) {
+                                    System.out.println("temp keyboard");
+                                }
+                                else if(choiceInput == 2) {
+                                    System.out.println("temp file");
+                                }
+                                else {
+                                    choiceSub = 0;
+                                }
+                                break;
+                        }
+                    }while(choiceSub == 0);
                     break;
                 case 4:
                     System.out.println("""
@@ -324,14 +361,20 @@ public class Main {
                     System.out.println(input);
                     System.out.print("Masukan pilihan input: ");
                     int choiceInput = 0;
-                    choiceInput = ErHandling(choiceInput, 1, 2);
+                    choiceInput = ErHandling(choiceInput, 1, 3);
 
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
-                        Interpolation.Interpolasi();
+                        double[][] result = Interpolation.InterpolasiKeyboard();
+                        Interpolation.outputInterpolasi(result);
+                        Interpolation.outputFungsi(result);
                     }
-                    else {
+                    else if(choiceInput == 2) {
                         System.out.println("temp file");
+                        double[][] point = Interpolation.contohMat(); //contoh matrix point, nanti dari file
+                        double[][] result = Interpolation.InterpolasiFile(point);
+                        Interpolation.outputInterpolasi(result);
+                        Interpolation.outputFungsi(result);
                     }
                     break;
                 case 5:
@@ -350,12 +393,12 @@ public class Main {
                     System.out.println(input);
                     System.out.print("Masukan pilihan input: ");
                     choiceInput = 0;
-                    choiceInput = ErHandling(choiceInput, 1, 2);
+                    choiceInput = ErHandling(choiceInput, 1, 3);
 
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
                     }
-                    else {
+                    else if(choiceInput == 2) {
                         System.out.println("temp file");
                     }
                     break;
@@ -375,12 +418,12 @@ public class Main {
                     System.out.println(input);
                     System.out.print("Masukan pilihan input: ");
                     choiceInput = 0;
-                    choiceInput = ErHandling(choiceInput, 1, 2);
+                    choiceInput = ErHandling(choiceInput, 1, 3);
 
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
                     }
-                    else {
+                    else if(choiceInput == 2) {
                         System.out.println("temp file");
                     }
                     break; 
