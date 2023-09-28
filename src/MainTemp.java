@@ -7,14 +7,20 @@ public class MainTemp {
     public static void main(String[] args) {
         double[][] Matrix1, Matrix2, Matrix3;
         double det;
-        Matrix1 = new double[10][10];
-        File file = new File(".");
-        for(String fileNames : file.list()) System.out.println(fileNames);
-        Matrix1 = InputOutput.readPointFile(Matrix1);
+        // File file = new File(".");
+        // for(String fileNames : file.list()) System.out.println(fileNames);
+        Matrix1 = MultipleLinearRegression.regression();
         // det = OpMatrix.detGauss(Matrix1);
         // System.out.println(det);
         // Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
         Matrix.DisplayMatrix(Matrix1);
+        double[] man = SPL.solveCramer(Matrix1);
+        for (int i=0;i<man.length;i++){
+            System.out.println(man[i]);
+        }
+        
+        // Matrix.DisplayMatrix(Matrix1);
+
         // System.out.println();
         // Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
         // Matrix.DisplayMatrix(Matrix.sliceMatrix(Matrix3));
