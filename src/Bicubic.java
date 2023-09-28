@@ -38,8 +38,8 @@ public class Bicubic {
         // ##### mencari matrix untuk vektor a dari Y = Xa, maka a = X^-1 Y
         double[][] inversX = new double[16][16];
         inversX = Matrix.inverseAdjoint(matX);
-        // display matrix X
-        System.out.println("inverse: ");Matrix.DisplayMatrix(matX);
+        // display inverse matrix X
+        System.out.println("inverse: ");Matrix.DisplayMatrix(inversX);
 
         double[][] a = new double[16][1];
         a = Matrix.MultiplyMatrix(inversX, Y);
@@ -47,12 +47,12 @@ public class Bicubic {
         System.out.println("a: "); Matrix.DisplayMatrix(a);
 
         // gunakan vektor a untuk mencari nilai f(x,y), jadi fungsi interpolasi bicubic sesuai model
-        float fungsiInterpolasi = 0;
+        double fungsiInterpolasi = 0;
         Scanner scan = new Scanner(System.in);
         System.out.println("[f(x,y)] masukkan nilai x: ");
-        float x_fxy = scan.nextFloat();
+        double x_fxy = scan.nextDouble();
         System.out.println("[f(x,y)] masukkan nilai y: ");
-        float y_fxy = scan.nextFloat();
+        double y_fxy = scan.nextDouble();
         for(j=0; j<16; j++) {
             for(i=0; i<1; i++) {
                 fungsiInterpolasi += a[i][j]*Math.pow(x_fxy,i)*Math.pow(y_fxy,j);
