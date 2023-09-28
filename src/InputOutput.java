@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileWriter;
 public class InputOutput {
     public static double[][] readMatrixFile(double[][] m1){
         String line;
@@ -34,5 +36,14 @@ public class InputOutput {
         return m2;
     }
     
+    public static void outputFile(String x){
         
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+                writer.write(x);
+                writer.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
