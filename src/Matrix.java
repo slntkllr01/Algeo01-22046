@@ -347,4 +347,11 @@ public class Matrix {
 
         
     }   
+
+    public static double[][] mergeArrayCol(double[][] m1, double[][] m2) {
+        double[][] merge = new double[Matrix.getCol(m1)+Matrix.getCol(m2)][];
+        System.arraycopy(m1, 0, merge, 0, Matrix.getCol(m1));
+        System.arraycopy(m2, 0, merge, Matrix.getCol(m1), Matrix.getCol(m2));
+        return merge;
+    }
 }

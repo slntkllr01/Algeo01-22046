@@ -4,9 +4,13 @@ public class MainTemp {
     public static void main(String[] args) {
         double[][] Matrix1, Matrix2, Matrix3;
         Matrix1 = Matrix.ReadMatrixKeyboard();
+        Matrix2 = Matrix.ReadMatrixKeyboard();
+
+        Matrix3 = Matrix.mergeArrayCol(Matrix1, Matrix2);
+        Matrix.DisplayMatrix(Matrix3);
 
         // Bicubic.changeSize(Matrix1, 4, 4);
-        Bicubic.bicubicSI(Matrix1);
+        // Bicubic.bicubicSI(Matrix1);
         // System.out.println("nadil:");
         // Bicubic.bicunadil(Matrix1);System.out.println();
         // System.out.println("me: ");
