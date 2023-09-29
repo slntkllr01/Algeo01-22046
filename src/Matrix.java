@@ -348,10 +348,53 @@ public class Matrix {
         
     }   
 
-    public static double[][] mergeArrayCol(double[][] m1, double[][] m2) {
-        double[][] merge = new double[Matrix.getCol(m1)+Matrix.getCol(m2)][];
-        System.arraycopy(m1, 0, merge, 0, Matrix.getCol(m1));
-        System.arraycopy(m2, 0, merge, Matrix.getCol(m1), Matrix.getCol(m2));
+    public static double[][] mergeMatCol(double[][] m1, double[][] m2) {
+        int row1 = Matrix.getRow(m1);
+        int col1 = Matrix.getCol(m1);
+        int col2 = Matrix.getCol(m2);
+
+        double[][] merge = new double[row1][col1+col2];
+        for(int i=0; i<row1; i++) {
+            System.arraycopy(m1[i], 0, merge[i], 0, col1);
+            System.arraycopy(m2[i], 0, merge[i], col1, col2);
+        }
         return merge;
+    }
+
+    public static double[][] inverseGJ(double[][] A) {
+        int row = Matrix.getRow(A);
+        int col = Matrix.getCol(A);
+
+        // buat mat Identitas
+        double[][] Identitas = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                if(i == j) {
+                    Identitas[i][j] = 1;
+                }
+                else {
+                    Identitas[i][j] = 0;
+                }
+            }
+        }
+        
+        // gabung matrix A dengan Identitas -> [A | I]
+        double[][] augmentedMat = new double[row][col*2];
+        augmentedMat = mergeMatCol(A, Identitas);
+
+        // gaussjordan
+        double[][] inverseAugmented = new double[row][col*2];
+        inverseAugmented = OpMatrix.Gaussian.GaussJordan(augmentedMat);
+        
+        // result inverse
+        double[][] result = new double[row][col];
+        int k=0;
+        for(int i=0; i<row; i++) {
+            for(int j=col; j<Matrix.getCol(inverseAugmented); j++) {
+                result[i][k%(col)] = inverseAugmented[i][j];
+                k++;
+            }
+        }
+        return result;
     }
 }
