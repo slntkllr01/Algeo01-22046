@@ -10,9 +10,10 @@ public class MainTemp {
         // Bicubic.bicubicSI(Matrix1);
         // System.out.println("nadil:");
         // Bicubic.bicunadil(Matrix1);System.out.println();
-        System.out.println("me: ");
-        Bicubic.bicubicSI(Matrix1);
-        
+        // System.out.println("me: ");
+        Bicubic.bicubicSPL(Matrix1);
+
+        // Bicubic.bicunadil(Matrix1);
         // Interpolation.Interpolasi();
 
         // // Matrix2 = Matrix.Gauss(Matrix1);
