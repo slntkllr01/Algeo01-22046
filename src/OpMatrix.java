@@ -28,45 +28,36 @@ public class OpMatrix {
 
         public static double[][] Gauss(double[][] m1){
             /* switch jika element pertama pada baris pertama adalah 0 atau tidak 1 */
-            for (int j=0;j<Matrix.getCol(m1);j++){
-                if (m1[0][j] == 0){ /* kalo 0 */
-                    if(Matrix.isColZero(m1, j)){ /* kalo 1 kolom 0 semua */
-                        continue; /* kita pindah kolom */
-                    } else {
-                        boolean switched = false;
-                        for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita mencari 1 pada kolom tersebut */
-                            if (m1[i][j] == 1){
-                                switchRow(m1, i, 0); /* jika ada kita switch */
-                                switched = true;
-                                break;
-                            }
-                        }
-                        if (switched == false){ /* jika ternyata tidak ada yang 1 */
-                            for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita switch dengan yang tidak 0 */
-                                if (m1[i][j] != 0){
-                                switchRow(m1, i, 0);
-                                break;
-                                }   
-                            }
-                        }
-                        
-                    }
-                } else { /* kalo tidak 0 dan tidak 1 */
-                    for (int i = 1;i<Matrix.getRow(m1);i++){
-                        if (m1[i][j] == 1){ /* kita cari yang 1 pada kolom tersebut dan kita switch */
-                            switchRow(m1, i, 0);
-                            break;
-                        }
-                    }
-                } 
-                break;
-            }
             
             /* menjadikan elemen tidak 0 pertama pada suatu barus menjadi 1 */
             for(int i=0;i<Matrix.getRow(m1);i++){
-                for (int j=0;j<Matrix.getCol(m1);j++){
+                for (int j=i;j<Matrix.getCol(m1);j++){
                     if (m1[i][j] == 0){
-                        continue;
+                        if (Matrix.isColZero(m1, j)){
+                            continue;
+                        } else {
+                            boolean udhdiobe = false;
+                            for (int k=i;k<Matrix.getRow(m1);k++){
+                                if (m1[k][j] == 0){ /* kalo 0 */
+                                    continue; /* kita pindah baris */
+                                } else {
+                                    switchRow(m1, i, k);
+                                    double div = m1[i][j]; /* pembuat 1 */
+                                    for (int l=0;l<Matrix.getCol(m1);l++){
+                                        m1[i][l] /= div; /* dibagi dengan pembuat 1 */
+                                    }
+                                    /* lakukan obe */
+                                    m1 = oBe(m1, i, j);
+                                    udhdiobe = true;
+                                    /* setelah obe langsung lanjut ke baris berikutnya */
+                                    break;                                   
+                                } 
+                            }
+                            if(udhdiobe){
+                                break;
+                            }
+                            
+                        }
                     } else {
                         double div = m1[i][j]; /* pembuat 1 */
                         for (int k=0;k<Matrix.getCol(m1);k++){
@@ -118,9 +109,74 @@ public class OpMatrix {
         }
     }
 
+    public static double detGauss(double[][] m1){
+            double det = 1;
+            /* switch jika element pertama pada baris pertama adalah 0 */
+            
+            if (m1[0][0] == 0){ /* kalo 0 */
+                if(Matrix.isColZero(m1, 0)){ /* kalo 1 kolom 0 semua */
+                    return 0.0; /* det = 0 */
+                } else {
+                    boolean switched = false;
+                    for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita mencari 1 pada kolom tersebut */
+                        if (m1[i][0] == 1){
+                            Gaussian.switchRow(m1, i, 0); /* jika ada kita switch */
+                            switched = true;
+                            break;
+                        }
+                    }
+                    if (switched == false){ /* jika ternyata tidak ada yang 1 */
+                        for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita switch dengan yang tidak 0 */
+                            if (m1[i][0] != 0){
+                            Gaussian.switchRow(m1, i, 0);
+                            break;
+                            }   
+                        }
+                    }
+                    
+                }
+            } else { /* kalo tidak 0 dan tidak 1 */
+                for (int i = 1;i<Matrix.getRow(m1);i++){
+                    if (m1[i][0] == 1){ /* kita cari yang 1 pada kolom tersebut dan kita switch */
+                        Gaussian.switchRow(m1, i, 0);
+                        break;
+                    }
+                }
+            } 
+                
+            
+            
+            /* menjadikan elemen tidak 0 pertama pada suatu barus menjadi 1 */
+            for(int i=0;i<Matrix.getRow(m1);i++){
+                for (int j=0;j<Matrix.getCol(m1);j++){
+                    if (m1[i][j] == 0){
+                        continue;
+                    } else {
+                        /* lakukan obe */
+                        m1 = Gaussian.oBe(m1, i, j);
+                        /* setelah obe langsung lanjut ke baris berikutnya */
+                        break;
+                    }  
+                }
+            }
+            for (int i=0;i<Matrix.getRow(m1);i++){
+                det *= m1[i][i];
 
+            }
+            return det;
+        }      
+    public static double[][] inverseGauss(double[][] m1){
+        double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
+        for(int i=0;i<Matrix.getRow(m1);i++){
+            m2[i][i] = 1;
+        }
+        m1 = Matrix.mergeMatCol(m1, m2);
+        m1 = Gaussian.GaussJordan(m1);
+        Matrix.DisplayMatrix(m1);
+        System.out.println();
+        m1 = Matrix.sliceMatrixLeft(m1);
+        return m1;
 
-    
-
-    
+    }
 }
+
