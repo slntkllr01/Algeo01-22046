@@ -4,30 +4,35 @@ import java.util.Scanner;
 public class Bicubic {
     public static void bicubicSI(double [][] matrix) {
         int i,j;
-        // hapus
-        Matrix.DisplayMatrix(matrix);
+        // // hapus
+        // Matrix.DisplayMatrix(matrix);
+
+        double[][] mat4x4 = slice4x4(matrix);
 
         // Y = Xa
         // ###### matrix X (16x16)
         double[][] matX = generateMatX();
 
         // ###### matrix Y adalah matrix asal 4x4 diubah ke 16x1
-        double[][] Y = changeSize(matrix, 16, 1);
+        double[][] Y = changeSize(mat4x4, 16, 1);
 
         // ###### matrix untuk vektor a dari Y = Xa, maka a = X^-1 Y
         double[][] inversX = OpMatrix.inverseGauss(matX);
         double[][] a = Matrix.MultiplyMatrix(inversX, Y);
         a = changeSize(a, 4, 4);
-        // display a
-        System.out.println("a: "); Matrix.DisplayMatrix(a);
+        // // display a
+        // System.out.println("a: "); Matrix.DisplayMatrix(a);
 
         // gunakan vektor a untuk mencari nilai f(x,y), jadi fungsi interpolasi bicubic sesuai model
+        double[][] nilaiAB = sliceAB(matrix);
         double fungsiInterpolasi = 0;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("[f(x,y)] masukkan nilai x: ");
-        double x_fxy = scan.nextDouble();
-        System.out.println("[f(x,y)] masukkan nilai y: ");
-        double y_fxy = scan.nextDouble();
+        double x_fxy = nilaiAB[0][0];
+        double y_fxy = nilaiAB[0][1];
+        // Scanner scan = new Scanner(System.in);
+        // System.out.println("[f(x,y)] masukkan nilai x: ");
+        // double x_fxy = scan.nextDouble();
+        // System.out.println("[f(x,y)] masukkan nilai y: ");
+        // double y_fxy = scan.nextDouble();
 
         for(j=0; j<4; j++) {
             for(i=0; i<4; i++) {
@@ -109,8 +114,32 @@ public class Bicubic {
                 }
             }
         }
-        Matrix.DisplayMatrix(MatX);
+        // Matrix.DisplayMatrix(MatX);
         return MatX;
+    }
+
+    /* tools pemotong matrix input (masih mengandung nilai a dan b) */
+    public static double[][] slice4x4(double[][] matrix) {
+        int row = Matrix.getRow(matrix)-1;
+        int col = Matrix.getCol(matrix);
+        double [][] matrixR = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                matrixR[i][j] = matrix[i][j];
+            }
+        }
+        return matrixR;
+    }
+
+    public static double[][] sliceAB(double[][] matrix) {
+        int row = Matrix.getRow(matrix);
+        // int col = Matrix.getCol(matrix);
+        double[][] matrixR = new double[1][2]; // matrix 1 kolom
+
+        for(int j=0; j<2; j++) {
+            matrixR[0][j] = matrix[row-1][j];
+        }
+        return matrixR;
     }
 }
 

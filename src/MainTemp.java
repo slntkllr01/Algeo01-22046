@@ -8,12 +8,12 @@ public class MainTemp {
 
         // Bicubic.changeSize(Matrix1, 4, 4);
         // Bicubic.bicubicSI(Matrix1);
-        // System.out.println("nadil:");
-        // Bicubic.bicunadil(Matrix1);System.out.println();
-        // System.out.println("me: ");
-        // Bicubic.bicubicSI(Matrix1);
-
+        System.out.println("me: ");
         Bicubic.bicubicSI(Matrix1);
+
+        // Matrix.DisplayMatrix(Bicubic.slice4x4(Matrix1));System.out.println();
+        // Matrix.DisplayMatrix(Bicubic.sliceAB(Matrix1));
+
         // Interpolation.Interpolasi();
 
         // // Matrix2 = Matrix.Gauss(Matrix1);
