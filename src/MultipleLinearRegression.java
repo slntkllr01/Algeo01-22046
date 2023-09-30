@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+/* tinggal bikin persamaannya dari spl hasil gauss */
 public class MultipleLinearRegression {
     static Scanner scanner = new Scanner(System.in);
     public static double[][] ReadMatrix() {
@@ -16,9 +16,23 @@ public class MultipleLinearRegression {
 
         return matrix;
     }
+    public static double[][] ReadMatrix2(int n) {
+        System.out.println("Masukkan data yang akan ditaksir: ");
+        double[][] matrix = new double[1][n];
+        System.out.println("Masukkan data: ");
+        for(int i = 0;i < Matrix.getRow(matrix);i++) {
+            for(int j = 0;j < Matrix.getCol(matrix);j++) {
+                matrix[i][j] = scanner.nextDouble();
+            }
+        }
+
+        return matrix;
+    }
     public static double[][] regression(){
-        double[][] m1 = ReadMatrix();
-        double[][] m2 = new double[Matrix.getCol(m1)][Matrix.getCol(m1)+1];
+        double[][] m1 = ReadMatrix(); /* m1 adalah matrix yang menampung data masukkan */
+        double[][] m2 = new double[Matrix.getCol(m1)][Matrix.getCol(m1)+1]; /* m2 adalah matrix yang menampung Normal Estimation 
+        Equation for Multiple Linear Regression */
+        double[][] m3 = ReadMatrix2(Matrix.getCol(m1)-1); /* m3 adalah matrix yang menampung data yang akan ditaksir menggunakan multipleregression */
         int n = Matrix.getRow(m1);
         m2[0][0] = n;
         for (int i=0;i<Matrix.getRow(m1);i++){
