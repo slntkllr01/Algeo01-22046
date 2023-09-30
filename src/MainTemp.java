@@ -11,9 +11,9 @@ public class MainTemp {
         // System.out.println("nadil:");
         // Bicubic.bicunadil(Matrix1);System.out.println();
         // System.out.println("me: ");
-        Bicubic.bicubicSPL(Matrix1);
+        // Bicubic.bicubicSI(Matrix1);
 
-        // Bicubic.bicunadil(Matrix1);
+        Bicubic.generateMatX();
         // Interpolation.Interpolasi();
 
         // // Matrix2 = Matrix.Gauss(Matrix1);

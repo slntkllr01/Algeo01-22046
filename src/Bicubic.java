@@ -18,6 +18,23 @@ import java.util.Scanner;
 // -6	6	6	-6	-4	-2	4	2	-3	3	-3	3	-2	-1	-2	-1
 // 4	-4	-4	4	2	2	-2	-2	2	-2	2	-2	1	1	1	1
 
+// 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+// 0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+// -3,3,0,0,-2,-1,0,0,0,0,0,0,0,0,0,0
+// 2,-2,0,0,1,1,0,0,0,0,0,0,0,0,0,0
+// 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+// 0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+// 0,0,0,0,0,0,0,0,-3,3,0,0,-2,-1,0,0
+// 0,0,0,0,0,0,0,0,2,-2,0,0,1,1,0,0
+// -3,0,3,0,0,0,0,0,-2,0,-1,0,0,0,0,0
+// 0,0,0,0,-3,0,3,0,0,0,0,0,-2,0,-1,0
+// 9,-9,-9,9,6,3,-6,-3,6,-6,3,-3,4,2,2,1
+// -6,6,6,-6,-3,-3,3,3,-4,4,-2,2,-2,-2,-1,-1
+// 2,0,-2,0,0,0,0,0,1,0,1,0,0,0,0,0
+// 0,0,0,0,2,0,-2,0,0,0,0,0,1,0,1,0
+// -6,6,6,-6,-4,-2,4,2,-3,3,-3,3,-2,-1,-2,-1
+// 4,-4,-4,4,2,2,-2,-2,2,-2,2,-2,1,1,1,1
+
 public class Bicubic {
     public static void bicubicSI(double [][] matrix) {
         double[][] matXX =
@@ -37,36 +54,35 @@ public class Bicubic {
         {0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0},
         {0,0,0,0,0,1,2,3,0,2,4,6,0,3,6,9}};
+
+        double[][] matXInv = 
+        {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+        {-3,3,0,0,-2,-1,0,0,0,0,0,0,0,0,0,0},
+        {2,-2,0,0,1,1,0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+        {0,0,0,0,0,0,0,0,-3,3,0,0,-2,-1,0,0},
+        {0,0,0,0,0,0,0,0,2,-2,0,0,1,1,0,0},
+        {-3,0,3,0,0,0,0,0,-2,0,-1,0,0,0,0,0},
+        {0,0,0,0,-3,0,3,0,0,0,0,0,-2,0,-1,0},
+        {9,-9,-9,9,6,3,-6,-3,6,-6,3,-3,4,2,2,1},
+        {-6,6,6,-6,-3,-3,3,3,-4,4,-2,2,-2,-2,-1,-1},
+        {2,0,-2,0,0,0,0,0,1,0,1,0,0,0,0,0},
+        {0,0,0,0,2,0,-2,0,0,0,0,0,1,0,1,0},
+        {-6,6,6,-6,-4,-2,4,2,-3,3,-3,3,-2,-1,-2,-1},
+        {4,-4,-4,4,2,2,-2,-2,2,-2,2,-2,1,1,1,1}};
         
-        // display matrix asal (param)
-        Matrix.DisplayMatrix(matXX);
-        // display matrix asal (param)
+        int i,j;
+
+        // hapus
         Matrix.DisplayMatrix(matrix);
 
         // Y = Xa
-        // ###### untuk matrix X (16x16), mengisi elemen:
-        double[][] matX = new double[16][16];
-        int x,y,i,j;
-        
-        int row = 0; // baris untuk index matrix X
-        for(y=-1; y<=2; y++) {
-            for(x=-1; x<=2; x++) {
-                int col = 0; // kolom untuk index matrix X
-                // loop sesuai model di spek, j dulu baru i
-                for(j=0; j<=3; j++) {
-                    for(i=0; i<=3; i++) {
-                        matX[row][col] = Math.pow(x,i)*Math.pow(y,j);
-                        col++;
-                    }
-                }
-                row++;
-            }
-        }
-        // display matrix X
-        Matrix.DisplayMatrix(matX);
+        // ###### matrix X (16x16)
+        double[][] matX = generateMatX();
 
-        // Y = Xa
-        // ##### matrix Y adalah matrix asal 4x4 diubah ke 16x1
+        // ###### matrix Y adalah matrix asal 4x4 diubah ke 16x1
         double[][] Y = new double[16][1];
         Y = changeSize(matrix, 16, 1);
 
@@ -74,10 +90,10 @@ public class Bicubic {
         double[][] inversX = new double[16][16];
         inversX = Matrix.inverseGJ(matXX);
         // display inverse matrix X
-        System.out.println("inverse: ");Matrix.DisplayMatrix(inversX);
+        System.out.println("inverse: ");Matrix.DisplayMatrix(matXInv);
 
         double[][] a = new double[16][1];
-        a = Matrix.MultiplyMatrix(inversX, Y);
+        a = Matrix.MultiplyMatrix(matXInv, Y);
         a = changeSize(a, 4, 4);
         // display a
         System.out.println("a: "); Matrix.DisplayMatrix(a);
@@ -99,62 +115,24 @@ public class Bicubic {
     }
 
     public static void bicubicSPL(double [][] matrix) {
-        double[][] matXX =
-        {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-        {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0},
-        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-        {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0},
-        {0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,2,0,0,0,3,0,0,0},
-        {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3},
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0},
-        {0,0,0,0,0,1,2,3,0,2,4,6,0,3,6,9}};
-        
-        // display matrix asal (param)
-        Matrix.DisplayMatrix(matXX);
-        // display matrix asal (param)
+        int i,j;
+        // Hapus
         Matrix.DisplayMatrix(matrix);
-
-        // Y = Xa
-        // ###### untuk matrix X (16x16), mengisi elemen:
-        // double[][] matX = new double[16][16];
-        int x,y,i,j;
         
-        // int row = 0; // baris untuk index matrix X
-        // for(y=-1; y<=2; y++) {
-        //     for(x=-1; x<=2; x++) {
-        //         int col = 0; // kolom untuk index matrix X
-        //         // loop sesuai model di spek, j dulu baru i
-        //         for(j=0; j<=3; j++) {
-        //             for(i=0; i<=3; i++) {
-        //                 matX[row][col] = Math.pow(x,i)*Math.pow(y,j);
-        //                 col++;
-        //             }
-        //         }
-        //         row++;
-        //     }
-        // }
-        // // display matrix X
-        // Matrix.DisplayMatrix(matX);
-
         // Y = Xa
-        // ##### matrix Y adalah matrix asal 4x4 diubah ke 16x1
+        // ###### matrix X (16x16)
+        double[][] matX = generateMatX();
+
+        // ###### matrix Y adalah matrix asal 4x4 diubah ke 16x1
         double[][] Y = new double[16][1];
         Y = changeSize(matrix, 16, 1);
 
         // merge Y augmented
         double[][] augmentedXY = new double[16][17];
-        augmentedXY = Matrix.mergeMatCol(matXX, Y);
-        System.out.println("ni augmented: ");Matrix.DisplayMatrix(augmentedXY);
+        augmentedXY = Matrix.mergeMatCol(matX, Y);
+        System.out.println("ni augmented: ");Matrix.DisplayMatrix(augmentedXY); //hapus
 
-        // ##### matriks vektor a
+        // ###### matriks vektor a
         double[][] a = new double[16][1];
         a = SPL.SPLinverse(augmentedXY);
         a = changeSize(a, 4, 4);
@@ -195,21 +173,61 @@ public class Bicubic {
         return result;
     }
 
-    public static void bicunadil(double [][] mat) {
-        double[][] matrix = new double[16][16];
+    // #############################################################
+    public static double F(int x, int y, int i, int j) {
+        return ((Math.pow(x,i))*(Math.pow(y,j)));
+    }
+    public static double FX(int x, int y, int i, int j) {
+        if(i==0 && x==0){
+            return 0;
+        }
+        return i*((Math.pow(x,i-1))*(Math.pow(y,j)));
+    }
+    public static double FY (int x, int y, int i, int j) {
+        if(j==0 && y==0) {
+            return 0;
+        }
+        return j*((Math.pow(x,i))*(Math.pow(y,j-1)));
+    }
+    public static double FXY (int x, int y, int i, int j) {
+        if((i==0 && x == 0) || (j==0 && y==0)) {
+            return 0;
+        }
+        return i*j*((Math.pow(x,i-1))*(Math.pow(y,j-1)));
+    }
 
-        for (int y = -1; y <= 2; y++) {
-            for (int x = -1; x <= 2; x++) {
-                int row = (x + 1) + (y + 1) * 4;
+    public static double[][] generateMatX() {
+        double[][] MatX = new double[16][16];
 
-                for (int j = 0; j < 4; j++) {
-                    for (int i = 0; i < 4; i++) {
-                        int col = i + j * 4;
-                        matrix[row][col] = (Math.pow(x, i) * Math.pow(y, j));
+        int turunan,y,x,j,i;
+        int row = 0; // baris untuk index matrix X
+        for(turunan=0; turunan<4; turunan++) {
+            for(y=0; y<=1; y++) {
+                for(x=0; x<=1; x++) {
+                    int col = 0; // kolom untuk index matrix X
+                    // loop sesuai model di spek, j dulu baru i
+                    for(j=0; j<=3; j++) {
+                        for(i=0; i<=3; i++) {
+                            if(turunan == 0) {
+                                MatX[row][col] = F(x, y, i, j);
+                            }
+                            else if(turunan == 1) {
+                                MatX[row][col] = FX(x, y, i, j);
+                            }
+                            else if(turunan == 2) {
+                                MatX[row][col] = FY(x, y, i, j);
+                            }
+                            else if(turunan == 3) {
+                                MatX[row][col] = FXY(x, y, i, j);
+                            }
+                            col++;
+                        }
                     }
+                    row++;
                 }
             }
         }
-        Matrix.DisplayMatrix(matrix);  
+        Matrix.DisplayMatrix(MatX);
+        return MatX;
     }
 }
