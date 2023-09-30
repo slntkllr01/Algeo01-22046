@@ -1,5 +1,4 @@
 import java.lang.Math;
-import java.util.Scanner;
 
 public class Bicubic {
     public static void bicubicSI(double [][] matrix) {
