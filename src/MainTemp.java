@@ -13,7 +13,7 @@ public class MainTemp {
         // System.out.println("me: ");
         // Bicubic.bicubicSI(Matrix1);
 
-        Bicubic.generateMatX();
+        Bicubic.bicubicSI(Matrix1);
         // Interpolation.Interpolasi();
 
         // // Matrix2 = Matrix.Gauss(Matrix1);

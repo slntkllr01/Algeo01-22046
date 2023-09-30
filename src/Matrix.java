@@ -48,10 +48,10 @@ public class Matrix {
         for(int i = 0;i < matrix.length;i++) {
             for(int j = 0;j < matrix[i].length;j++) {
                 if(j < matrix[i].length-1) {
-                    System.out.print(matrix[i][j] + " ");
+                    System.out.printf("%.4f ",matrix[i][j]);
                 }
                 else {
-                    System.out.println(matrix[i][j]);
+                    System.out.printf("%.4f\n",matrix[i][j]);
                 }
             }
         }
@@ -319,6 +319,26 @@ public class Matrix {
         return matrixR;
     }
 
+    public static double[][] sliceMatrixLeft(double[][] m1){
+        double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
+        for (int i=0;i<getRow(m1);i++){
+            for (int j=(getCol(m1)/2);j<getCol(m1);j++){
+                m2[i][j-getCol(m1)/2] = m1[i][j];
+            }
+
+        }
+        return m2;
+    }
+    public static double[][] sliceMatrixRight(double[][] m1){
+        double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
+        for (int i=0;i<getRow(m1);i++){
+            for (int j=0;j<(getCol(m1)/2);j++){
+                m2[i][j] = m1[i][j];
+            }
+
+        }
+        return m2;
+    }    
     public static boolean isColZero(double[][] m1, int j){
         boolean zero = true;
         for (int i = 0;i<getRow(m1);i++){
@@ -346,8 +366,7 @@ public class Matrix {
         }
 
         
-    }   
-
+    }
     public static double[][] mergeMatCol(double[][] m1, double[][] m2) {
         int row1 = Matrix.getRow(m1);
         int col1 = Matrix.getCol(m1);
@@ -360,41 +379,5 @@ public class Matrix {
         }
         return merge;
     }
-
-    public static double[][] inverseGJ(double[][] A) {
-        int row = Matrix.getRow(A);
-        int col = Matrix.getCol(A);
-
-        // buat mat Identitas
-        double[][] Identitas = new double[row][col];
-        for(int i=0; i<row; i++) {
-            for(int j=0; j<col; j++) {
-                if(i == j) {
-                    Identitas[i][j] = 1;
-                }
-                else {
-                    Identitas[i][j] = 0;
-                }
-            }
-        }
-        
-        // gabung matrix A dengan Identitas -> [A | I]
-        double[][] augmentedMat = new double[row][col*2];
-        augmentedMat = mergeMatCol(A, Identitas);
-
-        // gaussjordan
-        double[][] inverseAugmented = new double[row][col*2];
-        inverseAugmented = OpMatrix.Gaussian.GaussJordan(augmentedMat);
-        
-        // result inverse
-        double[][] result = new double[row][col];
-        int k=0;
-        for(int i=0; i<row; i++) {
-            for(int j=col; j<Matrix.getCol(inverseAugmented); j++) {
-                result[i][k%(col)] = inverseAugmented[i][j];
-                k++;
-            }
-        }
-        return result;
-    }
+   
 }

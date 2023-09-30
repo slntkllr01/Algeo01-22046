@@ -172,8 +172,8 @@ public class OpMatrix {
         }
         m1 = Matrix.mergeMatCol(m1, m2);
         m1 = Gaussian.GaussJordan(m1);
-        Matrix.DisplayMatrix(m1);
-        System.out.println();
+        // Matrix.DisplayMatrix(m1);
+        // System.out.println();
         m1 = Matrix.sliceMatrixLeft(m1);
         return m1;
 

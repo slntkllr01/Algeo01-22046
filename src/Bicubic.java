@@ -1,80 +1,9 @@
 import java.lang.Math;
 import java.util.Scanner;
 
-// 1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-// 0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0
-// -3	3	0	0	-2	-1	0	0	0	0	0	0	0	0	0	0
-// 2	-2	0	0	1	1	0	0	0	0	0	0	0	0	0	0
-// 0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0
-// 0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0
-// 0	0	0	0	0	0	0	0	-3	3	0	0	-2	-1	0	0
-// 0	0	0	0	0	0	0	0	2	-2	0	0	1	1	0	0
-// -3	0	3	0	0	0	0	0	-2	0	-1	0	0	0	0	0
-// 0	0	0	0	-3	0	3	0	0	0	0	0	-2	0	-1	0
-// 9	-9	-9	9	6	3	-6	-3	6	-6	3	-3	4	2	2	1
-// -6	6	6	-6	-3	-3	3	3	-4	4	-2	2	-2	-2	-1	-1
-// 2	0	-2	0	0	0	0	0	1	0	1	0	0	0	0	0
-// 0	0	0	0	2	0	-2	0	0	0	0	0	1	0	1	0
-// -6	6	6	-6	-4	-2	4	2	-3	3	-3	3	-2	-1	-2	-1
-// 4	-4	-4	4	2	2	-2	-2	2	-2	2	-2	1	1	1	1
-
-// 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-// 0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
-// -3,3,0,0,-2,-1,0,0,0,0,0,0,0,0,0,0
-// 2,-2,0,0,1,1,0,0,0,0,0,0,0,0,0,0
-// 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
-// 0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
-// 0,0,0,0,0,0,0,0,-3,3,0,0,-2,-1,0,0
-// 0,0,0,0,0,0,0,0,2,-2,0,0,1,1,0,0
-// -3,0,3,0,0,0,0,0,-2,0,-1,0,0,0,0,0
-// 0,0,0,0,-3,0,3,0,0,0,0,0,-2,0,-1,0
-// 9,-9,-9,9,6,3,-6,-3,6,-6,3,-3,4,2,2,1
-// -6,6,6,-6,-3,-3,3,3,-4,4,-2,2,-2,-2,-1,-1
-// 2,0,-2,0,0,0,0,0,1,0,1,0,0,0,0,0
-// 0,0,0,0,2,0,-2,0,0,0,0,0,1,0,1,0
-// -6,6,6,-6,-4,-2,4,2,-3,3,-3,3,-2,-1,-2,-1
-// 4,-4,-4,4,2,2,-2,-2,2,-2,2,-2,1,1,1,1
-
 public class Bicubic {
     public static void bicubicSI(double [][] matrix) {
-        double[][] matXX =
-        {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-        {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0},
-        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-        {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0},
-        {0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,2,0,0,0,3,0,0,0},
-        {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3},
-        {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0},
-        {0,0,0,0,0,1,2,3,0,2,4,6,0,3,6,9}};
-
-        double[][] matXInv = 
-        {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
-        {-3,3,0,0,-2,-1,0,0,0,0,0,0,0,0,0,0},
-        {2,-2,0,0,1,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
-        {0,0,0,0,0,0,0,0,-3,3,0,0,-2,-1,0,0},
-        {0,0,0,0,0,0,0,0,2,-2,0,0,1,1,0,0},
-        {-3,0,3,0,0,0,0,0,-2,0,-1,0,0,0,0,0},
-        {0,0,0,0,-3,0,3,0,0,0,0,0,-2,0,-1,0},
-        {9,-9,-9,9,6,3,-6,-3,6,-6,3,-3,4,2,2,1},
-        {-6,6,6,-6,-3,-3,3,3,-4,4,-2,2,-2,-2,-1,-1},
-        {2,0,-2,0,0,0,0,0,1,0,1,0,0,0,0,0},
-        {0,0,0,0,2,0,-2,0,0,0,0,0,1,0,1,0},
-        {-6,6,6,-6,-4,-2,4,2,-3,3,-3,3,-2,-1,-2,-1},
-        {4,-4,-4,4,2,2,-2,-2,2,-2,2,-2,1,1,1,1}};
-        
         int i,j;
-
         // hapus
         Matrix.DisplayMatrix(matrix);
 
@@ -83,17 +12,11 @@ public class Bicubic {
         double[][] matX = generateMatX();
 
         // ###### matrix Y adalah matrix asal 4x4 diubah ke 16x1
-        double[][] Y = new double[16][1];
-        Y = changeSize(matrix, 16, 1);
+        double[][] Y = changeSize(matrix, 16, 1);
 
-        // ##### mencari matrix untuk vektor a dari Y = Xa, maka a = X^-1 Y
-        double[][] inversX = new double[16][16];
-        inversX = Matrix.inverseGJ(matXX);
-        // display inverse matrix X
-        System.out.println("inverse: ");Matrix.DisplayMatrix(matXInv);
-
-        double[][] a = new double[16][1];
-        a = Matrix.MultiplyMatrix(matXInv, Y);
+        // ###### matrix untuk vektor a dari Y = Xa, maka a = X^-1 Y
+        double[][] inversX = OpMatrix.inverseGauss(matX);
+        double[][] a = Matrix.MultiplyMatrix(inversX, Y);
         a = changeSize(a, 4, 4);
         // display a
         System.out.println("a: "); Matrix.DisplayMatrix(a);
@@ -111,52 +34,11 @@ public class Bicubic {
                 fungsiInterpolasi += a[i][j]*((Math.pow(x_fxy,i))*(Math.pow(y_fxy,j)));
             }
         }
-        System.out.println("hasil f(x,y) = " +fungsiInterpolasi);
-    }
-
-    public static void bicubicSPL(double [][] matrix) {
-        int i,j;
-        // Hapus
-        Matrix.DisplayMatrix(matrix);
-        
-        // Y = Xa
-        // ###### matrix X (16x16)
-        double[][] matX = generateMatX();
-
-        // ###### matrix Y adalah matrix asal 4x4 diubah ke 16x1
-        double[][] Y = new double[16][1];
-        Y = changeSize(matrix, 16, 1);
-
-        // merge Y augmented
-        double[][] augmentedXY = new double[16][17];
-        augmentedXY = Matrix.mergeMatCol(matX, Y);
-        System.out.println("ni augmented: ");Matrix.DisplayMatrix(augmentedXY); //hapus
-
-        // ###### matriks vektor a
-        double[][] a = new double[16][1];
-        a = SPL.SPLinverse(augmentedXY);
-        a = changeSize(a, 4, 4);
-        // display a
-        System.out.println("a: "); Matrix.DisplayMatrix(a);
-
-        // gunakan vektor a untuk mencari nilai f(x,y), jadi fungsi interpolasi bicubic sesuai model
-        double fungsiInterpolasi = 0;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("[f(x,y)] masukkan nilai x: ");
-        double x_fxy = scan.nextDouble();
-        System.out.println("[f(x,y)] masukkan nilai y: ");
-        double y_fxy = scan.nextDouble();
-
-        for(j=0; j<4; j++) {
-            for(i=0; i<4; i++) {
-                fungsiInterpolasi += a[i][j]*((Math.pow(x_fxy,i))*(Math.pow(y_fxy,j)));
-            }
-        }
-        System.out.println("hasil f(x,y) = " +fungsiInterpolasi);
+        System.out.println("hasil f(x,y) = "+fungsiInterpolasi);
     }
 
     public static double[][] changeSize(double[][] matrix, int row, int col) {
-        // int rowOrigin = Matrix.getRow(matrix);
+        /* pengubah ukuran matrix */
         int colOrigin = Matrix.getCol(matrix);
         double[][] result = new double[row][col];
 
@@ -173,7 +55,7 @@ public class Bicubic {
         return result;
     }
 
-    // #############################################################
+    /* matrix X generator */
     public static double F(int x, int y, int i, int j) {
         return ((Math.pow(x,i))*(Math.pow(y,j)));
     }
@@ -231,3 +113,40 @@ public class Bicubic {
         return MatX;
     }
 }
+
+// hapus yo ntar
+// double[][] matXX =
+//         {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+//         {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
+//         {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0},
+//         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+//         {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+//         {0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0},
+//         {0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0},
+//         {0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3},
+//         {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+//         {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0},
+//         {0,0,0,0,1,0,0,0,2,0,0,0,3,0,0,0},
+//         {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3},
+//         {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
+//         {0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0},
+//         {0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0},
+//         {0,0,0,0,0,1,2,3,0,2,4,6,0,3,6,9}};
+
+//         double[][] matXInv = 
+//         {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+//         {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
+//         {-3,3,0,0,-2,-1,0,0,0,0,0,0,0,0,0,0},
+//         {2,-2,0,0,1,1,0,0,0,0,0,0,0,0,0,0},
+//         {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
+//         {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
+//         {0,0,0,0,0,0,0,0,-3,3,0,0,-2,-1,0,0},
+//         {0,0,0,0,0,0,0,0,2,-2,0,0,1,1,0,0},
+//         {-3,0,3,0,0,0,0,0,-2,0,-1,0,0,0,0,0},
+//         {0,0,0,0,-3,0,3,0,0,0,0,0,-2,0,-1,0},
+//         {9,-9,-9,9,6,3,-6,-3,6,-6,3,-3,4,2,2,1},
+//         {-6,6,6,-6,-3,-3,3,3,-4,4,-2,2,-2,-2,-1,-1},
+//         {2,0,-2,0,0,0,0,0,1,0,1,0,0,0,0,0},
+//         {0,0,0,0,2,0,-2,0,0,0,0,0,1,0,1,0},
+//         {-6,6,6,-6,-4,-2,4,2,-3,3,-3,3,-2,-1,-2,-1},
+//         {4,-4,-4,4,2,2,-2,-2,2,-2,2,-2,1,1,1,1}};
