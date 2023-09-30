@@ -319,7 +319,7 @@ public class Matrix {
         return matrixR;
     }
 
-    public static double[][] sliceMatrix(double[][] m1){
+    public static double[][] sliceMatrixLeft(double[][] m1){
         double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
         for (int i=0;i<getRow(m1);i++){
             for (int j=(getCol(m1)/2);j<getCol(m1);j++){
@@ -329,7 +329,16 @@ public class Matrix {
         }
         return m2;
     }
+    public static double[][] sliceMatrixRight(double[][] m1){
+        double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
+        for (int i=0;i<getRow(m1);i++){
+            for (int j=0;j<(getCol(m1)/2);j++){
+                m2[i][j] = m1[i][j];
+            }
 
+        }
+        return m2;
+    }    
     public static boolean isColZero(double[][] m1, int j){
         boolean zero = true;
         for (int i = 0;i<getRow(m1);i++){
@@ -357,5 +366,18 @@ public class Matrix {
         }
 
         
-    }   
+    }
+    public static double[][] mergeMatCol(double[][] m1, double[][] m2) {
+        int row1 = Matrix.getRow(m1);
+        int col1 = Matrix.getCol(m1);
+        int col2 = Matrix.getCol(m2);
+
+        double[][] merge = new double[row1][col1+col2];
+        for(int i=0; i<row1; i++) {
+            System.arraycopy(m1[i], 0, merge[i], 0, col1);
+            System.arraycopy(m2[i], 0, merge[i], col1, col2);
+        }
+        return merge;
+    }
+   
 }

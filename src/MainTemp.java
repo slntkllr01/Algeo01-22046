@@ -9,15 +9,18 @@ public class MainTemp {
         double det;
         // File file = new File(".");
         // for(String fileNames : file.list()) System.out.println(fileNames);
-        Matrix1 = MultipleLinearRegression.regression();
+        Matrix1 = Matrix.ReadMatrixKeyboard();
+        // Matrix1 = OpMatrix.inverseGaussian.inverseGauss(Matrix1);
+        Matrix1 = OpMatrix.inverseGaussian.inverseGauss(Matrix1);
         // det = OpMatrix.detGauss(Matrix1);
         // System.out.println(det);
-        // Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
+        // Matrix1 = OpMatrix.Gaussian.GaussJordan(Matrix1);
+        // Matrix1 = Matrix.sliceMatrixLeft(Matrix1);
         Matrix.DisplayMatrix(Matrix1);
-        double[] man = SPL.solveCramer(Matrix1);
-        for (int i=0;i<man.length;i++){
-            System.out.println(man[i]);
-        }
+        // double[] man = SPL.solveCramer(Matrix1);
+        // for (int i=0;i<man.length;i++){
+        //     System.out.println(man[i]);
+        // }
         
         // Matrix.DisplayMatrix(Matrix1);
 
