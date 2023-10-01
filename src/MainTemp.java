@@ -25,13 +25,13 @@ public class MainTemp {
         // Interpolation.outputFungsi(Matrix1);
 
         /* STUDI KASUS BICUBIC */
-        // double[][] mat1 = 
-        // {{21,98,125,153},
-        // {51,101,161,59},
-        // {0,42,72,210},
-        // {16,12,81,96},
-        // {0,0,0,0}};
-        // System.out.println("1: ");Bicubic.bicubicSI(mat1);System.out.println();
+        double[][] mat1 = 
+        {{21,98,125,153},
+        {51,101,161,59},
+        {0,42,72,210},
+        {16,12,81,96},
+        {0,0,0,0}};
+        System.out.println("1: ");Bicubic.bicubicSI(mat1);System.out.println();
 
         // double[][] mat2 = 
         // {{21,98,125,153},
