@@ -4,12 +4,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileWriter;
 public class InputOutput {
-    public static double[][] readMatrixFile(double[][] m1){
+    public static double[][] readMatrixFile(double[][] m1, String filenames){ /* untuk spl, determinan, interpolasi, regresi, dan bicubic */
         String line;
         String[] substrings;
         int i = 0,j = 0;
         try{
-            BufferedReader reader = new BufferedReader(new FileReader("inputMatrix.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(filenames));
             line = reader.readLine();
             while(line != null){
                 substrings = line.split(" ");
@@ -36,12 +36,12 @@ public class InputOutput {
         return m2;
     }
 
-    public static double[][] readPointFile(double[][] m1){
+    public static double[][] readPointFile(double[][] m1, String filenames){ /* untuk interpolasi, pake yang atas sama aja*/ 
         String line;
         String[] substrings;
         int i = 0,j = 0;
         try{
-            BufferedReader reader = new BufferedReader(new FileReader("inputPoint.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader(filenames));
             line = reader.readLine();
             while(line != null){
                 substrings = line.split(" ");
@@ -68,10 +68,10 @@ public class InputOutput {
         return m2;
     }
     
-    public static void outputFile(String x){
+    public static void outputFile(String x, String filenames){
         
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filenames));
                 writer.write(x);
                 writer.close();
         } catch (IOException e){

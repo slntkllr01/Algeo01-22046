@@ -9,9 +9,10 @@ public class MainTemp {
         double det;
         // File file = new File(".");
         // for(String fileNames : file.list()) System.out.println(fileNames);
-        Matrix1 = Matrix.ReadMatrixKeyboard();
+        // Matrix1 = Matrix.ReadMatrixKeyboard();
+        Matrix1 = MultipleLinearRegression.regression();
         // Matrix1 = OpMatrix.inverseGaussian.inverseGauss(Matrix1);
-        Matrix1 = OpMatrix.inverseGauss(Matrix1);
+        // Matrix1 = OpMatrix.inverseGauss(Matrix1);
         // det = OpMatrix.detGauss(Matrix1);
         // System.out.println(det);
         // Matrix1 = OpMatrix.Gaussian.GaussJordan(Matrix1);
