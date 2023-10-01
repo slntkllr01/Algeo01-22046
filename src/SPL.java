@@ -6,7 +6,7 @@ public class SPL {
         double [][] a = Matrix.slice_a(matrix);
         
         double [][] result = new double[Matrix.getRow(matrix)][0];
-        result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(a), b);
+        result = Matrix.MultiplyMatrix(OpMatrix.inverseGauss(a), b); // pakenya inverse gauss
         return result;
     }
 

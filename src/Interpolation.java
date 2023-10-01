@@ -1,15 +1,6 @@
 import java.util.Scanner;
 
 public class Interpolation {
-    /* dari keyboard adalah n, (x0, y0), (x1, y1), …, (xn, yn), dan nilai x yang akan ditaksir nilai fungsinya. Jika masukannya dari file, maka titik-titik dinyatakan pada setiap baris tanpa koma dan tanda kurung. Misalnya jika titik-titik datanya adalah (8.0, 2.0794), (9.0, 2.1972), dan (9.5, 2.2513), maka di dalam file text ditulis sebagai berikut: */
-
-    // STEP ?
-    /* 
-    1. input n, (x0, y0), (x1, y1), …, (xn, yn), dan nilai x yang akan ditaksir nilai fungsinya (n = 1 + banyak titik = derajat polinom)
-    2. ubah  ke a0 + a1x0 + a2x02 + ... + an x0n = y0 
-        contoh: (8.0, 2.0794) jadi a0 + 8.0a1 + 64.00a2 = 2.0794 
-    3. 
-    */ 
     public static Scanner scan;
 
     public static double[][] contohMat() { //NANTI HAPUS
@@ -33,77 +24,85 @@ public class Interpolation {
         int n = point.length-2;
         int row = n+1, col = n+1;
 
-        // print titik
-        System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
-        // x = point[i][0], y = point[i][1]
+        // // print titik
+        // System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
+        // // x = point[i][0], y = point[i][1]
         
-        // matriks point
+        // matriks b (ordinat dari titik)
         double[][] b = new double[row][1]; //0 atau 1
         for(int i=0; i<row; i++) {
             b[i][0] = point[i][1];
         }
-        // print b
-        System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
+        // // print b
+        // System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
         
-        // matriks
+        // matriks polinom
         double[][] mat = new double[row][col];
         for(int i=0; i<row; i++) {
             for(int j=0; j<col; j++) {
                 mat[i][j] = Math.pow(point[i][0], j);
             }
         }
-        // print hasil kuadrat
-        System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
+        // // print hasil polinom
+        // System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
 
         
-        // ######## GAS ######## //
+        // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][0];
         result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
         return result;
     }
 
     public static double[][] InterpolasiKeyboard() {
+        // input n
         int n;
-        // titik dulu ambil
-        System.out.println("n : ");
+        System.out.print("Masukkan n : ");
         scan = new Scanner(System.in);
         n = scan.nextInt();
         
+        // input titik
         int row = n+1, col = n+1;
-        System.out.println("elmt : ");
+        System.out.println("Masukkan titik (x y), tanpa tanda '()' : ");
         double[][] point = new double[row][2];
         for(int p=0; p<row; p++) {
             for(int q=0; q<2; q++) {
                 point[p][q] = scan.nextDouble();
             }
         }
+        System.out.println();
         
-        // print titik
-        System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
-        // x = point[i][0], y = point[i][1]
+        // // print titik
+        // System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
+        // // x = point[i][0], y = point[i][1]
         
-        // matriks point
+        // matriks b (ordinat dari titik)
         double[][] b = new double[row][1]; //0 atau 1
         for(int i=0; i<row; i++) {
             b[i][0] = point[i][1];
         }
-        // print b
-        System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
+        // // print b
+        // System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
         
-        // matriks
+        // matriks polinom
         double[][] mat = new double[row][col];
         for(int i=0; i<row; i++) {
             for(int j=0; j<col; j++) {
                 mat[i][j] = Math.pow(point[i][0], j);
             }
         }
-        // print hasil kuadrat
-        System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
+        // // print hasil polinom
+        // System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
 
         
-        // ######## GAS ######## //
-        double [][] result = new double[row][0];
-        result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
+        // mendapat hasil SPL (a0 s.d. an)
+        double [][] result = new double[row][1];
+        double [][] temp = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
+        for(int i=0; i<temp.length; i++) {
+            if(temp[i][0] <= -0.0000 ) {
+                result[i][0] = 0;
+            }
+            result[i][0] = temp[i][0];
+        }
         return result;
     }
 
@@ -124,7 +123,7 @@ public class Interpolation {
     public static void outputFungsi(double[][] result) {
         // hasil taksiran nilai fungsi
         double x;
-        System.out.print("\nMasukan X yang akan ditaksir: ");
+        System.out.print("\nMasukkan X yang akan ditaksir: ");
         scan = new Scanner(System.in);
         x = scan.nextDouble();
 
@@ -133,6 +132,28 @@ public class Interpolation {
             hasilx += result[loop][0]*Math.pow(x,loop);
         }
         
-        System.out.printf("f(%.4f) = %.4f\n", x, hasilx);
+        System.out.printf("f(%.4f) = %.4f\n\n", x, hasilx);
+    }
+
+    public static double tanggalDesimal() {
+        double tgl, bln, tahun, hari;
+        scan = new Scanner(System.in);
+        System.out.print("Masukkan tanggal bulan tahun (pisah dengan spasi) : ");
+        tgl = scan.nextInt();
+        bln = scan.nextInt();
+        tahun = scan.nextInt();
+        
+        if(bln == 1 || bln == 3 || bln == 5 || bln == 7 || bln == 8 || bln == 10 || bln == 12) {
+            hari = 31;
+        }
+        else if(bln == 2) {
+            hari = 28;
+        }
+        else {
+            hari = 30;
+        }
+
+        System.out.println(bln + (tgl/hari));
+        return (bln + (tgl/hari));
     }
 }

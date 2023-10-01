@@ -38,7 +38,7 @@ public class Bicubic {
                 fungsiInterpolasi += a[i][j]*((Math.pow(x_fxy,i))*(Math.pow(y_fxy,j)));
             }
         }
-        System.out.println("hasil f(x,y) = "+fungsiInterpolasi);
+        System.out.printf("hasil f(%.3f,%.3f) = %.4f",x_fxy,y_fxy,fungsiInterpolasi);
     }
 
     public static double[][] changeSize(double[][] matrix, int row, int col) {
