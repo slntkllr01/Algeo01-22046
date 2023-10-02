@@ -145,7 +145,6 @@ public class OpMatrix {
             return det;
         }      
     public static double[][] inverseGauss(double[][] m1){
-        /* inverse dengan gauss */
         double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
         for(int i=0;i<Matrix.getRow(m1);i++){
             m2[i][i] = 1;
