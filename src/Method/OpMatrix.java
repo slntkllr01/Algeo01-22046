@@ -177,7 +177,11 @@ public class OpMatrix {
 
     public static double[][] inverseAdjoint(double[][] matrix) {
         /* inverse dengan adjoin */
-        return (Matrix.MultiplyByConst(Matrix.adjoint(matrix),(1/detCofactor(matrix))));
+        double[][] result = {{-999},{0}}; ;
+        if(detCofactor(matrix) != 0) {
+            result = (Matrix.MultiplyByConst(Matrix.adjoint(matrix),(1/detCofactor(matrix))));
+        }
+        return result;
     }
 }
 

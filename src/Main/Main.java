@@ -2,6 +2,7 @@ package Main;
 
 import java.util.Scanner;
 
+import Matrix.Matrix;
 import Method.*;
 
 public class Main {
@@ -16,6 +17,7 @@ public class Main {
     
     // NECESSARY STRING
     public static String pilMenu = """
+
             1. Sistem Persamaaan Linier              
             2. Determinan
             3. Matriks balikan
@@ -36,7 +38,7 @@ public class Main {
 
     public static String subMenuDET = """
         
-            1. Metode Reduksi Baris?
+            1. Metode Reduksi Baris
             2. Metode ekspansi kofaktor 
             3. Kembali                
             """;
@@ -67,6 +69,7 @@ public class Main {
             """;
     public static void main(String[] args) {
         
+        double[][] matrix1;
         Scanner sc = new Scanner(System.in);
         int choiceMenu = 0;
         System.out.print(kelompok);
@@ -242,7 +245,9 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    System.out.println("Masukkan Matrix: ");
+                                    matrix1 = Matrix.ReadMatrixKeyboard();
+                                    System.out.printf("Determinan = %.4f\n",OpMatrix.detCofactor(matrix1));
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
@@ -304,7 +309,16 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    System.out.println("Masukkan Matrix: ");
+                                    matrix1 = Matrix.ReadMatrixKeyboard();
+                                    double[][] result = OpMatrix.inverseAdjoint(matrix1);
+                                    if(result[0][0] == -999) {
+                                        System.out.println("Matrix tidak mempunyain balikan.");
+                                    }
+                                    else{
+                                        System.out.println("Hasil Matrix balikan: ");
+                                        Matrix.DisplayMatrix(result);
+                                    }
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
@@ -360,18 +374,20 @@ public class Main {
                             """);
                     // INPUT CARA MASUKAN
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                    System.out.println(input);
-                    System.out.print("Masukan pilihan input: ");
-                    choiceInput = 0;
-                    choiceInput = ErHandling(choiceInput, 1, 3);
+                    System.out.print("Masukkan file: ");
+                    Bicubic.bicubicSI(null);
+                    
+                    // System.out.println(input);
+                    // choiceInput = 0;
+                    // choiceInput = ErHandling(choiceInput, 1, 3);
 
-                    if(choiceInput == 1) {
-                        System.out.println("temp keyboard");
-                    }
-                    else if(choiceInput == 2) {
-                        System.out.println("temp file");
-                    }
-                    break;
+                    // if(choiceInput == 1) {
+                    //     System.out.println("temp keyboard");
+                    // }
+                    // else if(choiceInput == 2) {
+                    //     System.out.println("temp file");
+                    // }
+                    // break;
                 case 6:
                     System.out.println("""
                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
