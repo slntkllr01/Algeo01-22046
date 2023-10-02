@@ -374,22 +374,44 @@ public class Main {
                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                             """);
-
-                    double[][] conMat = {{1, 2, 3, 4},
-                                        {5, 6, 7, 8},
-                                        {9, 10, 11, 12},
-                                        {13, 14, 15, 16},
-                                        {0.5, 0.5, 0, 0}};
                     // INPUT CARA MASUKAN
+                    // ###########3 ERROR INPUT : row < 4
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                     System.out.print("Masukkan nama file: ");
                     String fileName = sc.nextLine();
                     double [][] matrixBicubic = new double[100][100];
                     matrixBicubic = InputOutput.readMatrixFile(matrixBicubic, fileName);
-                    // Matrix.DisplayMatrix(matrixBicubic);
+                    String result = Bicubic.bicubicSI(matrixBicubic);
+                    
+                    // save output
+                    System.out.print("Simpan hasil ke file? (y/n): ");
+                    String wannaSave = sc.nextLine();
+                    System.out.println(wannaSave);
+                    while(wannaSave != "y" && wannaSave != "n") {
+                        System.out.print("Input salah, ulangi: ");
+                        wannaSave = sc.nextLine();
+                        
+                    } 
+                    if(wannaSave == "y") {
+                            System.out.print("Masukkan nama file: ");
+                            String namaFile = sc.nextLine();
+                            InputOutput.outputFile(result, namaFile);
+                    }
+                    else{
+                        System.out.println("ok");
+                    }
+                    // do {
+                    //     if(wannaSave == "y") {
+                    //         System.out.print("Masukkan nama file: ");
+                    //         String namaFile = sc.nextLine();
+                    //         InputOutput.outputFile(result, namaFile);
+                    //     }
+                    //     // else if(wannaSave == "n"){
+
+                    //     // }
+                    // }while(wannaSave != "y" || wannaSave != "n");
                     
 
-                    Bicubic.bicubicSI(conMat);
                     
                     // System.out.println(input);
                     // choiceInput = 0;
@@ -401,7 +423,7 @@ public class Main {
                     // else if(choiceInput == 2) {
                     //     System.out.println("temp file");
                     // }
-                    // break;
+                    break;
                 case 6:
                     System.out.println("""
                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -435,6 +457,18 @@ public class Main {
     }
 
     public static int ErHandling(int choice, int a, int b) {
+        sc = new Scanner(System.in);
+        choice = sc.nextInt();
+        while (choice < a || choice > b) {
+            System.out.println(RED + "Pilihan tidak tersedia, mohon ulangi." + RESET);
+            System.out.print("Masukan pilihan: ");
+            choice = sc.nextInt();  
+        }
+        System.out.println();
+        return choice;
+    }
+
+    public static int ErHandlingFile(int choice, int a, int b) {
         sc = new Scanner(System.in);
         choice = sc.nextInt();
         while (choice < a || choice > b) {

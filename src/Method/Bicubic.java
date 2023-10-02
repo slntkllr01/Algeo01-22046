@@ -4,7 +4,7 @@ import java.lang.Math;
 import Matrix.Matrix;
 
 public class Bicubic {
-    public static void bicubicSI(double [][] matrix) {
+    public static String bicubicSI(double [][] matrix) {
         int i,j;
         // // hapus
         // Matrix.DisplayMatrix(matrix);
@@ -41,7 +41,8 @@ public class Bicubic {
                 fungsiInterpolasi += a[i][j]*((Math.pow(x_fxy,i))*(Math.pow(y_fxy,j)));
             }
         }
-        System.out.printf("hasil f(%.3f,%.3f) = %.4f",x_fxy,y_fxy,fungsiInterpolasi);
+        System.out.printf("Hasil f(%.3f,%.3f) = %.4f\n",x_fxy,y_fxy,fungsiInterpolasi);
+        return (String.format("Hasil f(%.3f,%.3f) = %.4f\n",x_fxy,y_fxy,fungsiInterpolasi));
     }
 
     public static double[][] changeSize(double[][] matrix, int row, int col) {

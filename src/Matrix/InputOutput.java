@@ -10,7 +10,7 @@ public class InputOutput {
         String[] substrings;
         int i = 0,j = 0, temp=0;
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(".\\test\\" + filenames));
+            BufferedReader reader = new BufferedReader(new FileReader(".\\test\\input\\" + filenames));
             line = reader.readLine();
             while(line != null){
                 substrings = line.split(" ");
@@ -25,8 +25,8 @@ public class InputOutput {
 
             }
             reader.close();
-        } catch (IOException e){
-            e.printStackTrace();
+        } catch (Exception e){
+            System.out.println("error aja");
         }
         double[][] m2 = new double[i][temp];
             for(int k=0;k<Matrix.getRow(m2);k++){
@@ -57,8 +57,10 @@ public class InputOutput {
 
             }
             reader.close();
-        } catch (IOException e){
-            e.printStackTrace();
+        } catch (Exception e){
+            System.out.println("error ajax");
+            // e.printStackTrace();
+
         }
         double[][] m2 = new double[i][j+1];
             for(int k=0;k<Matrix.getRow(m2);k++){
@@ -73,7 +75,7 @@ public class InputOutput {
     public static void outputFile(String x, String filenames){
         
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filenames));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(".\\test\\output\\" + filenames));
                 writer.write(x);
                 writer.close();
         } catch (IOException e){

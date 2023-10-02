@@ -100,12 +100,16 @@ public class Interpolation {
         // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][1];
         double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
+        
         for(int i=0; i<temp.length; i++) {
-            if(temp[i][0] <= -0.0000 ) {
-                result[i][0] = 0;
-            }
+            // if((temp[i][0] % 1) <= Math.pow(10, -8)) {
+            //         result[i][0] -= (temp[i][0] % 1);
+            //     }
+            // }
             result[i][0] = temp[i][0];
         }
+
+        // Matrix.DisplayMatrix(result);
         return result;
     }
 
@@ -113,12 +117,15 @@ public class Interpolation {
         // f(x) = -0.0064x2 + 0.2266x + 0.6762
         System.out.print("f(x) = ");
         for(int i=result.length-1; i>=0; i--) { 
-            if(i > 0) {
-                System.out.printf("%.4fx^%d + ", result[i][0], i);
-            }
-            else {
-                System.out.printf("%.4f",result[i][0]);
-            }
+            if ((result[i][0]) != 0) {
+                if(i > 0) {
+                    System.out.printf("%.4fx^%d + ", result[i][0], i);
+                }
+                else {
+                    System.out.printf("%.4f",result[i][0]);
+                }
+                
+            } 
         }
         System.out.println();
     }

@@ -35,7 +35,31 @@ public class OpMatrix {
             for(int i=0;i<Matrix.getRow(m1);i++){
                 for (int j=i;j<Matrix.getCol(m1);j++){
                     if (m1[i][j] == 0){
-                        continue;
+                        if (Matrix.isColZero(m1, j)){
+                            continue;
+                        } else {
+                            boolean udhdiobe = false;
+                            for (int k=i;k<Matrix.getRow(m1);k++){
+                                if (m1[k][j] == 0){ /* kalo 0 */
+                                    continue; /* kita pindah baris */
+                                } else {
+                                    switchRow(m1, i, k);
+                                    double div = m1[i][j]; /* pembuat 1 */
+                                    for (int l=0;l<Matrix.getCol(m1);l++){
+                                        m1[i][l] /= div; /* dibagi dengan pembuat 1 */
+                                    }
+                                    /* lakukan obe */
+                                    m1 = oBe(m1, i, j);
+                                    udhdiobe = true;
+                                    /* setelah obe langsung lanjut ke baris berikutnya */
+                                    break;                                   
+                                } 
+                            }
+                            if(udhdiobe){
+                                break;
+                            }
+                            
+                        }
                     } else {
                         double div = m1[i][j]; /* pembuat 1 */
                         for (int k=0;k<Matrix.getCol(m1);k++){
@@ -88,7 +112,6 @@ public class OpMatrix {
     }
 
     public static double detGauss(double[][] m1){
-        /* determinan dengan gauss */
             double det = 1;
             /* switch jika element pertama pada baris pertama adalah 0 */
             
@@ -151,8 +174,8 @@ public class OpMatrix {
         }
         m1 = Matrix.mergeMatCol(m1, m2);
         m1 = Gaussian.GaussJordan(m1);
-        Matrix.DisplayMatrix(m1);
-        System.out.println();
+        // Matrix.DisplayMatrix(m1);
+        // System.out.println();
         m1 = Matrix.sliceMatrixLeft(m1);
         return m1;
 
