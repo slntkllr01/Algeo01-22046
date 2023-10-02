@@ -3,10 +3,12 @@
 
 import java.io.File;
 
+import Matrix.Matrix;
+
 public class MainTemp {
     public static void main(String[] args) {
         double[][] Matrix1, Matrix2, Matrix3;
-        // Matrix1 = Matrix.ReadMatrixKeyboard();
+        Matrix1 = Matrix.ReadMatrixKeyboard();
 
 
         // Bicubic.changeSize(Matrix1, 4, 4);

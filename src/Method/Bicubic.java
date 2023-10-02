@@ -1,4 +1,7 @@
+package Method;
 import java.lang.Math;
+
+import Matrix.Matrix;
 
 public class Bicubic {
     public static void bicubicSI(double [][] matrix) {

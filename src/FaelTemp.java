@@ -1,3 +1,5 @@
+import Matrix.Matrix;
+
 public class FaelTemp {
     public static double[] backwardSubstitution(double[][] matrix) {
         int length = Matrix.getRow(matrix);

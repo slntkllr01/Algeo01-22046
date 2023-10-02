@@ -1,3 +1,5 @@
+package Method;
+import Matrix.Matrix;
 
 public class OpMatrix {
     public class Gaussian{

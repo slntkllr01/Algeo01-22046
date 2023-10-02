@@ -1,4 +1,7 @@
+package Method;
 import java.util.Scanner;
+
+import Matrix.Matrix;
 
 public class Interpolation {
     public static Scanner scan;

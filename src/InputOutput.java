@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
+
+import Matrix.Matrix;
+
 import java.io.FileWriter;
 public class InputOutput {
     public static double[][] readMatrixFile(double[][] m1, String filenames){ /* untuk spl, determinan, interpolasi, regresi, dan bicubic */

@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import Matrix.Matrix;
 /* tinggal bikin persamaannya dari spl hasil gauss */
 public class MultipleLinearRegression {
     static Scanner scanner = new Scanner(System.in);
