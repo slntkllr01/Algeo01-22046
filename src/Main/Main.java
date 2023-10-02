@@ -1,78 +1,71 @@
+package Main;
 
 import java.util.Scanner;
+
+import Method.*;
 
 public class Main {
     public static Scanner sc;
 
+    // TEXT COLOR
+    public static String RESET = "\u001B[0m";
+    public static String GREEN = "\u001B[32m";
+    public static String YELLOW = "\u001B[33m";
+    public static String RED = "\u001B[31m";
+    public static String WHITE_BG = "\u001B[47m";
+    
+    // NECESSARY STRING
+    public static String pilMenu = """
+            1. Sistem Persamaaan Linier              
+            2. Determinan
+            3. Matriks balikan
+            4. Interpolasi Polinom
+            5. Interpolasi Bicubic Spline
+            6. Regresi linier berganda
+            7. Keluar
+            """;
+            
+    public static String subMenuSPL = """
+        
+            1. Metode eliminasi Gauss
+            2. Metode eliminasi Gauss-Jordan
+            3. Metode matriks balikan
+            4. Kaidah Cramer 
+            5. Kembali                
+            """;
+
+    public static String subMenuDET = """
+        
+            1. Metode Reduksi Baris?
+            2. Metode ekspansi kofaktor 
+            3. Kembali                
+            """;
+
+    public static String subMenuINV = """
+        
+            1. Metode eliminasi Gauss-Jordan
+            2. Metode adjoint   
+            3. Kembali              
+            """;
+    
+    public static String input = """
+        
+            1. Keyboard
+            2. File 
+            3. Kembali               
+            """;
+
+    public static String kelompok = """
+            
+            ░█████╗░██╗░░░██╗░█████╗░███╗░░██╗██╗░░██╗██╗
+            ██╔══██╗██║░░░██║██╔══██╗████╗░██║██║░██╔╝██║
+            ██║░░╚═╝██║░░░██║███████║██╔██╗██║█████═╝░██║
+            ██║░░██╗██║░░░██║██╔══██║██║╚████║██╔═██╗░██║
+            ╚█████╔╝╚██████╔╝██║░░██║██║░╚███║██║░╚██╗██║
+            ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝╚═╝
+            m a t r i x   c a l c u l a t o r
+            """;
     public static void main(String[] args) {
-        // TEXT COLOR
-        String RESET = "\u001B[0m";
-        String GREEN = "\u001B[32m";
-        String YELLOW = "\u001B[33m";
-        String WHITE_BG = "\u001B[47m";
-        
-        // NECESSARY STRING
-        String pilMenu = """
-                1. Sistem Persamaaan Linier              
-                2. Determinan
-                3. Matriks balikan
-                4. Interpolasi Polinom
-                5. Interpolasi Bicubic Spline
-                6. Regresi linier berganda
-                7. Keluar
-                """;
-                
-        String subMenuSPL = """
-            
-                1. Metode eliminasi Gauss
-                2. Metode eliminasi Gauss-Jordan
-                3. Metode matriks balikan
-                4. Kaidah Cramer 
-                5. Kembali                
-                """;
-
-        String subMenuDET = """
-            
-                1. Metode eliminasi Gauss (Reduksi Baris)?
-                2. Metode ekspansi kofaktor 
-                3. Kembali                
-                """;
-
-        String subMenuINV = """
-            
-                1. Metode eliminasi Gauss-Jordan
-                2. Metode adjoint   
-                3. Kembali              
-                """;
-        
-        String input = """
-            
-                1. Keyboard
-                2. File 
-                3. Kembali               
-                """;
-
-        String kelompok = """
-                
-                ░█████╗░██╗░░░██╗░█████╗░███╗░░██╗██╗░░██╗██╗
-                ██╔══██╗██║░░░██║██╔══██╗████╗░██║██║░██╔╝██║
-                ██║░░╚═╝██║░░░██║███████║██╔██╗██║█████═╝░██║
-                ██║░░██╗██║░░░██║██╔══██║██║╚████║██╔═██╗░██║
-                ╚█████╔╝╚██████╔╝██║░░██║██║░╚███║██║░╚██╗██║
-                ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝╚═╝
-                m a t r i x   c a l c u l a t o r
-                """;
-        String kelompok2 = """
-                █▀▀ █░█ ▄▀█ █▄░█ █▄▀ █
-                █▄▄ █▄█ █▀█ █░▀█ █░█ █
-                matrix calculator
-                """;
-        
-        String judul = """
-                
-                █▀▀ █░█ ▄▀█ █▄░█ █▄▀ █ █▄▀ █░█ █░░ ▄▀█ ▀█▀ █▀█ █▀█
-                █▄▄ █▄█ █▀█ █░▀█ █░█ █ █░█ █▄█ █▄▄ █▀█ ░█░ █▄█ █▀▄
-                """;
         
         Scanner sc = new Scanner(System.in);
         int choiceMenu = 0;
@@ -106,22 +99,17 @@ public class Main {
                             ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 """);
                         // INPUT SUBMENU
-                        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
-                        System.out.println(subMenuSPL);
-                        System.out.print("Masukan pilihan submenu: ");
-                        
+                        printSub(subMenuSPL);
                         choiceSub = ErHandling(choiceSub, 1, 5);
                         switch (choiceSub) {
                             case 1:
                                 System.out.println("""
-                                        ===============================
-                                            METODE ELIMINASI GAUSS
-                                        ===============================
+                                        ============================================
+                                                    METODE ELIMINASI GAUSS
+                                        ============================================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 int choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
     
@@ -137,14 +125,12 @@ public class Main {
                                 break;
                             case 2:
                                 System.out.println("""
-                                        ===============================
-                                        METODE ELIMINASI GAUSS-JORDAN
-                                        ===============================
+                                        ============================================
+                                                METODE ELIMINASI GAUSS-JORDAN
+                                        ============================================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -160,14 +146,12 @@ public class Main {
                                 break;
                             case 3:
                                 System.out.println("""
-                                        ===============================
-                                            METODE MATRIKS BALIKAN
-                                        ===============================
+                                        ============================================
+                                                    METODE MATRIKS BALIKAN
+                                        ============================================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -183,14 +167,12 @@ public class Main {
                                 break;
                             case 4:
                                 System.out.println("""
-                                        ===============================
-                                                KAIDAH CRAMER
-                                        ===============================
+                                        ============================================
+                                                        KAIDAH CRAMER
+                                        ============================================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -222,9 +204,7 @@ public class Main {
                             ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 """);
                         // INPUT SUBMENU
-                        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
-                        System.out.println(subMenuDET);
-                        System.out.print("Masukan pilihan submenu: ");
+                        printSub(subMenuDET);
                         choiceSub = 0;
                         choiceSub = ErHandling(choiceSub, 1, 3);
                         
@@ -236,9 +216,7 @@ public class Main {
                                         ===============================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 int choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -259,9 +237,7 @@ public class Main {
                                         ===============================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -290,9 +266,7 @@ public class Main {
                             ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                                 """);
                         // INPUT SUBMENU
-                        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
-                        System.out.println(subMenuINV);
-                        System.out.print("Masukan pilihan submenu: ");
+                        printSub(subMenuINV);
                         choiceSub = 0;
                         choiceSub = ErHandling(choiceSub, 1,3);
                         
@@ -304,9 +278,7 @@ public class Main {
                                         ===============================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 int choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -327,9 +299,7 @@ public class Main {
                                         ===============================
                                         """);
                                 // INPUT CARA MASUKAN
-                                System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                                System.out.println(input);
-                                System.out.print("Masukan pilihan input: ");
+                                printInput();
                                 choiceInput = 0;
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
@@ -422,6 +392,7 @@ public class Main {
 
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
+
                     }
                     else if(choiceInput == 2) {
                         System.out.println("temp file");
@@ -434,8 +405,6 @@ public class Main {
     }
 
     public static int ErHandling(int choice, int a, int b) {
-        String RED = "\u001B[31m";
-        String RESET = "\u001B[0m";
         sc = new Scanner(System.in);
         choice = sc.nextInt();
         while (choice < a || choice > b) {
@@ -445,5 +414,17 @@ public class Main {
         }
         System.out.println();
         return choice;
+    }
+
+    public static void printInput() {
+        System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
+        System.out.println(input);
+        System.out.print("Masukan pilihan input: ");
+    }
+
+    public static void printSub(String sub) {
+        System.out.println(YELLOW + WHITE_BG + " SUBMENU: " + RESET);
+        System.out.println(sub);
+        System.out.print("Masukan pilihan submenu: ");
     }
 }

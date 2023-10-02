@@ -16,7 +16,7 @@ public class SPL {
     // SPL dengan metode cramer
     public static double[] solveCramer(double[][] matrix) {
         int n = matrix.length;
-        double det = Matrix.detCofactor(Matrix.slice_a(matrix));
+        double det = OpMatrix.detCofactor(Matrix.slice_a(matrix));
         double[] x = new double[n];
     
         if (det != 0) {
@@ -25,7 +25,7 @@ public class SPL {
                 for (int j = 0; j < n; j++) {
                     Ai[j][i] = Matrix.slice_b(matrix)[j][0];
                 }
-                x[i] = Matrix.detCofactor(Ai) / det;
+                x[i] = OpMatrix.detCofactor(Ai) / det;
             }
         }
         return x;

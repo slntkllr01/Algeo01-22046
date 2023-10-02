@@ -1,3 +1,4 @@
+package Method;
 import java.util.Scanner;
 
 import Matrix.Matrix;

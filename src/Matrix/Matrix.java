@@ -1,6 +1,7 @@
 package Matrix;
 
 import java.util.Scanner;
+import Method.OpMatrix;
 
 public class Matrix {
     public double[][] matrix;
@@ -255,22 +256,6 @@ public class Matrix {
         return matrixR;
     }
 
-    public static double detCofactor(double[][] matrix) {
-        /* mengirim hasil determinan dengan expansi kofaktor */
-        if(getRow(matrix) == 1) {
-            return matrix[0][0];
-        }
-        if(getRow(matrix) == 2) {
-            return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
-        }
-
-        double result = 0;
-        for(int i=0; i<getCol(matrix); i++) {
-            result += Math.pow(-1, i)*matrix[0][i]*detCofactor(minorMatrix(matrix, 0, i));
-        }
-        return result;
-    }
-
     public static double[][] cofactor(double[][] matrix) {
         /* kofaktor aja */
         int row = getRow(matrix);
@@ -279,7 +264,7 @@ public class Matrix {
         
         for(int i=0; i<row; i++) {
             for(int j=0; j<col; j++) {
-                matrixR[i][j] = (detCofactor(minorMatrix(matrix, i, j)) != 0 ? Math.pow(-1, i+j) : 0) *detCofactor(minorMatrix(matrix, i, j));
+                matrixR[i][j] = (OpMatrix.detCofactor(minorMatrix(matrix, i, j)) != 0 ? Math.pow(-1, i+j) : 0) *OpMatrix.detCofactor(minorMatrix(matrix, i, j));
             }
         }
         return matrixR;
@@ -288,11 +273,6 @@ public class Matrix {
     public static double[][] adjoint(double[][] matrix) {
         /* adjoin dari kofaktor */
         return (transpose(cofactor(matrix)));
-    }
-
-    public static double[][] inverseAdjoint(double[][] matrix) {
-        /* inverse dengan adjoin */
-        return (MultiplyByConst(adjoint(matrix),(1/detCofactor(matrix))));
     }
 
     public static double[][] slice_b(double[][] matrix) {

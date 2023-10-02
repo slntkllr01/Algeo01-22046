@@ -52,7 +52,7 @@ public class Interpolation {
         
         // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][0];
-        result = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
+        result = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
         return result;
     }
 
@@ -99,7 +99,7 @@ public class Interpolation {
         
         // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][1];
-        double [][] temp = Matrix.MultiplyMatrix(Matrix.inverseAdjoint(mat), b);
+        double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
         for(int i=0; i<temp.length; i++) {
             if(temp[i][0] <= -0.0000 ) {
                 result[i][0] = 0;
@@ -138,25 +138,25 @@ public class Interpolation {
         System.out.printf("f(%.4f) = %.4f\n\n", x, hasilx);
     }
 
-    public static double tanggalDesimal() {
-        double tgl, bln, tahun, hari;
-        scan = new Scanner(System.in);
-        System.out.print("Masukkan tanggal bulan tahun (pisah dengan spasi) : ");
-        tgl = scan.nextInt();
-        bln = scan.nextInt();
-        tahun = scan.nextInt();
+    // public static double tanggalDesimal() {
+    //     double tgl, bln, tahun, hari;
+    //     scan = new Scanner(System.in);
+    //     System.out.print("Masukkan tanggal bulan tahun (pisah dengan spasi) : ");
+    //     tgl = scan.nextInt();
+    //     bln = scan.nextInt();
+    //     tahun = scan.nextInt();
         
-        if(bln == 1 || bln == 3 || bln == 5 || bln == 7 || bln == 8 || bln == 10 || bln == 12) {
-            hari = 31;
-        }
-        else if(bln == 2) {
-            hari = 28;
-        }
-        else {
-            hari = 30;
-        }
+    //     if(bln == 1 || bln == 3 || bln == 5 || bln == 7 || bln == 8 || bln == 10 || bln == 12) {
+    //         hari = 31;
+    //     }
+    //     else if(bln == 2) {
+    //         hari = 28;
+    //     }
+    //     else {
+    //         hari = 30;
+    //     }
 
-        System.out.println(bln + (tgl/hari));
-        return (bln + (tgl/hari));
-    }
+    //     System.out.println(bln + (tgl/hari));
+    //     return (bln + (tgl/hari));
+    // }
 }

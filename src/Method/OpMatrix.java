@@ -88,6 +88,7 @@ public class OpMatrix {
     }
 
     public static double detGauss(double[][] m1){
+        /* determinan dengan gauss */
             double det = 1;
             /* switch jika element pertama pada baris pertama adalah 0 */
             
@@ -144,6 +145,7 @@ public class OpMatrix {
             return det;
         }      
     public static double[][] inverseGauss(double[][] m1){
+        /* inverse dengan gauss */
         double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
         for(int i=0;i<Matrix.getRow(m1);i++){
             m2[i][i] = 1;
@@ -155,6 +157,27 @@ public class OpMatrix {
         m1 = Matrix.sliceMatrixLeft(m1);
         return m1;
 
+    }
+
+    public static double detCofactor(double[][] matrix) {
+        /* mengirim hasil determinan dengan expansi kofaktor */
+        if(Matrix.getRow(matrix) == 1) {
+            return matrix[0][0];
+        }
+        if(Matrix.getRow(matrix) == 2) {
+            return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+        }
+
+        double result = 0;
+        for(int i=0; i<Matrix.getCol(matrix); i++) {
+            result += Math.pow(-1, i)*matrix[0][i]*detCofactor(Matrix.minorMatrix(matrix, 0, i));
+        }
+        return result;
+    }
+
+    public static double[][] inverseAdjoint(double[][] matrix) {
+        /* inverse dengan adjoin */
+        return (Matrix.MultiplyByConst(Matrix.adjoint(matrix),(1/detCofactor(matrix))));
     }
 }
 
