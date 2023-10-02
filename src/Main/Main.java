@@ -384,45 +384,7 @@ public class Main {
                     String result = Bicubic.bicubicSI(matrixBicubic);
                     
                     // save output
-                    System.out.print("Simpan hasil ke file? (y/n): ");
-                    String wannaSave = sc.nextLine();
-                    System.out.println(wannaSave);
-                    while(wannaSave != "y" && wannaSave != "n") {
-                        System.out.print("Input salah, ulangi: ");
-                        wannaSave = sc.nextLine();
-                        
-                    } 
-                    if(wannaSave == "y") {
-                            System.out.print("Masukkan nama file: ");
-                            String namaFile = sc.nextLine();
-                            InputOutput.outputFile(result, namaFile);
-                    }
-                    else{
-                        System.out.println("ok");
-                    }
-                    // do {
-                    //     if(wannaSave == "y") {
-                    //         System.out.print("Masukkan nama file: ");
-                    //         String namaFile = sc.nextLine();
-                    //         InputOutput.outputFile(result, namaFile);
-                    //     }
-                    //     // else if(wannaSave == "n"){
-
-                    //     // }
-                    // }while(wannaSave != "y" || wannaSave != "n");
-                    
-
-                    
-                    // System.out.println(input);
-                    // choiceInput = 0;
-                    // choiceInput = ErHandling(choiceInput, 1, 3);
-
-                    // if(choiceInput == 1) {
-                    //     System.out.println("temp keyboard");
-                    // }
-                    // else if(choiceInput == 2) {
-                    //     System.out.println("temp file");
-                    // }
+                    SaveOutput(result);
                     break;
                 case 6:
                     System.out.println("""
@@ -468,16 +430,24 @@ public class Main {
         return choice;
     }
 
-    public static int ErHandlingFile(int choice, int a, int b) {
+    public static void SaveOutput(String result) {
+        // save output
         sc = new Scanner(System.in);
-        choice = sc.nextInt();
-        while (choice < a || choice > b) {
-            System.out.println(RED + "Pilihan tidak tersedia, mohon ulangi." + RESET);
-            System.out.print("Masukan pilihan: ");
-            choice = sc.nextInt();  
+        System.out.print("Simpan hasil ke file? (y/n): ");
+        String wannaSave = sc.nextLine();
+        char wSave = wannaSave.charAt(0);                
+        while(wSave != 'y' && wSave != 'n') {
+            System.out.print("Input salah, ulangi: ");
+            wannaSave = sc.nextLine();
+            wSave = wannaSave.charAt(0);                
+        } 
+        if(wSave == 'y') {
+            System.out.print("Masukkan nama file: ");
+            String namaFile = sc.nextLine();
+            InputOutput.outputFile(result, namaFile);
+            System.out.println("File berhasil disimpan.");
         }
-        System.out.println();
-        return choice;
+        // return choice;
     }
 
     public static void printInput() {
