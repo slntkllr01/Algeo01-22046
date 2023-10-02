@@ -2,6 +2,7 @@ package Main;
 
 import java.util.Scanner;
 
+import Matrix.InputOutput;
 import Matrix.Matrix;
 import Method.*;
 
@@ -67,6 +68,7 @@ public class Main {
             ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝╚═╝
             m a t r i x   c a l c u l a t o r
             """;
+    // RUN
     public static void main(String[] args) {
         
         double[][] matrix1;
@@ -372,10 +374,22 @@ public class Main {
                     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                             """);
+
+                    double[][] conMat = {{1, 2, 3, 4},
+                                        {5, 6, 7, 8},
+                                        {9, 10, 11, 12},
+                                        {13, 14, 15, 16},
+                                        {0.5, 0.5, 0, 0}};
                     // INPUT CARA MASUKAN
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                    System.out.print("Masukkan file: ");
-                    Bicubic.bicubicSI(null);
+                    System.out.print("Masukkan nama file: ");
+                    String fileName = sc.nextLine();
+                    double [][] matrixBicubic = new double[100][100];
+                    matrixBicubic = InputOutput.readMatrixFile(matrixBicubic, fileName);
+                    // Matrix.DisplayMatrix(matrixBicubic);
+                    
+
+                    Bicubic.bicubicSI(conMat);
                     
                     // System.out.println(input);
                     // choiceInput = 0;

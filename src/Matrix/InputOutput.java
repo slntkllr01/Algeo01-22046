@@ -8,12 +8,13 @@ public class InputOutput {
     public static double[][] readMatrixFile(double[][] m1, String filenames){ /* untuk spl, determinan, interpolasi, regresi, dan bicubic */
         String line;
         String[] substrings;
-        int i = 0,j = 0;
+        int i = 0,j = 0, temp=0;
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(filenames));
+            BufferedReader reader = new BufferedReader(new FileReader(".\\test\\" + filenames));
             line = reader.readLine();
             while(line != null){
                 substrings = line.split(" ");
+                temp = j;
                 j = 0;
                 while(j<substrings.length){
                     m1[i][j] = Double.parseDouble(substrings[j]);
@@ -27,7 +28,7 @@ public class InputOutput {
         } catch (IOException e){
             e.printStackTrace();
         }
-        double[][] m2 = new double[i][j];
+        double[][] m2 = new double[i][temp];
             for(int k=0;k<Matrix.getRow(m2);k++){
                 for(int l=0;l<Matrix.getCol(m2);l++){
                     m2[k][l] = m1[k][l];
