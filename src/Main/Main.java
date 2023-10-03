@@ -121,6 +121,9 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
+                                    Matrix.ReadMatrixKeyboard();
+                                    // SPL.
+
 
                                     /* SAVE OUTPUT */
                                     SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
@@ -277,18 +280,37 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
-
+                                    matrix1 = Matrix.ReadMatrixSquare();
+                                    double det;
+                                    String result;
+                                    det = OpMatrix.detGauss(matrix1);
+                                    System.out.printf("Hasil determinan matrix adalah: %f\n", det);
+                                    result = String.format("Hasil determinan matrix adalah: %f\n", det);               
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
                                     /* ISI ALGORITMA FILE DI SINI */
+                                    matrix1 = new double[100][100];
+                                    double det;
+                                    String result;
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    while (!Matrix.isSquare(matrix1)){
+                                        System.out.print("Masukkan nama file: ");
+                                        fileName = sc.nextLine();
+                                        matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    }
+                                    det = OpMatrix.detGauss(matrix1);
+                                    System.out.printf("Hasil determinan matrix adalah: %f\n", det);
+                                    result = String.format("Hasil determinan matrix adalah: %f\n", det); 
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                 }
@@ -365,18 +387,32 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
-
+                                    matrix1 = Matrix.ReadMatrixSquare();
+                                    System.out.println("Hasil inverse matrixnya:");
+                                    String result = OpMatrix.strInverseGauss(matrix1);
+                                    result = String.format("Hasil inverse matrixnya: \n" + result);
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
                                     /* ISI ALGORITMA FILE DI SINI */
-
+                                    matrix1 = new double[100][100];
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    while (!Matrix.isSquare(matrix1)){
+                                        System.out.print("Masukkan nama file: ");
+                                        fileName = sc.nextLine();
+                                        matrix1 = InputOutput.readMatrixFile(matrix1, fileName);    
+                                    }
+                                    System.out.println("Hasil inverse matrixnya:");
+                                    String result = OpMatrix.strInverseGauss(matrix1);
+                                    result = String.format("Hasil inverse matrixnya: \n" + result);
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                 }

@@ -46,6 +46,23 @@ public class Matrix {
         return matrix;
     }
 
+    public static double[][] ReadMatrixSquare() {
+        scan = new Scanner(System.in);
+        System.out.print("Jumlah ukuran matrix: "); int row = scan.nextInt();
+        
+
+        double[][] matrix = new double[row][row];
+
+        System.out.println("Elemen matriks: ");
+        for(int i = 0;i < row;i++) {
+            for(int j = 0;j < row;j++) {
+                matrix[i][j] = scan.nextDouble();
+            }
+        }
+
+        return matrix;
+    }
+
     public static String DisplayMatrix(double[][] matrix) {
         String strDisplay = "";
         for(int i = 0;i < matrix.length;i++) {

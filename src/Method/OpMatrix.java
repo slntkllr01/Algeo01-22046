@@ -167,6 +167,27 @@ public class OpMatrix {
             }
             return det;
         }      
+    public static String strInverseGauss(double[][] m1){
+        double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
+        String result;
+        for(int i=0;i<Matrix.getRow(m1);i++){
+            m2[i][i] = 1;
+        }
+        m1 = Matrix.mergeMatCol(m1, m2);
+        m1 = Gaussian.GaussJordan(m1);
+        // Matrix.DisplayMatrix(m1);
+        // System.out.println();
+        m2 = Matrix.sliceMatrixRight(m1);
+        if (Matrix.isIdentity(m2)){
+            m1 = Matrix.sliceMatrixLeft(m1);
+            return Matrix.DisplayMatrix(m1);
+        }
+        else {
+            result = "Matrix tidak mempunyai balikan";
+            return result;
+        }
+
+    }
     public static double[][] inverseGauss(double[][] m1){
         double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
         for(int i=0;i<Matrix.getRow(m1);i++){
@@ -176,9 +197,12 @@ public class OpMatrix {
         m1 = Gaussian.GaussJordan(m1);
         // Matrix.DisplayMatrix(m1);
         // System.out.println();
-        m1 = Matrix.sliceMatrixLeft(m1);
-        return m1;
-
+        m1 = Matrix.sliceMatrixRight(m1);
+        if (Matrix.isIdentity(m1)){
+            m1 = Matrix.sliceMatrixLeft(m1);
+            return m1;
+        }
+        return null;
     }
 
     public static double detCofactor(double[][] matrix) {
