@@ -310,16 +310,22 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("Masukkan Matrix: ");
                                     matrix1 = Matrix.ReadMatrixKeyboard();
-                                    System.out.printf("Determinan = %.4f\n",OpMatrix.detCofactor(matrix1));
+                                    String strResult = String.format("Determinan = %.4f",OpMatrix.detCofactor(matrix1));
+                                    System.out.println(strResult);
+                                    
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(strResult);
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
-                                    /* ISI ALGORITMA FILE DI SINI */
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    double [][] matrixDet = new double[100][100];
+                                    matrixDet = InputOutput.readMatrixFile(matrixDet, fileName);
+                                    String strResult = String.format("Determinan = %.4f",OpMatrix.detCofactor(matrixDet));
+                                    System.out.println(strResult);
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
-                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
-                                    // nanti hapus comment ini semua ya
+                                    SaveOutput(null);
                                 }
                                 else {
                                     choiceSub = 0;
@@ -390,25 +396,40 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
+                                    String strResult = "";
                                     System.out.println("Masukkan Matrix: ");
                                     matrix1 = Matrix.ReadMatrixKeyboard();
                                     double[][] result = OpMatrix.inverseAdjoint(matrix1);
                                     if(result[0][0] == -999) {
-                                        System.out.println("Matrix tidak mempunyain balikan.");
+                                        strResult = "Matrix tidak mempunyain balikan.";
+                                        System.out.println(strResult);
                                     }
                                     else{
-                                        System.out.println("Hasil Matrix balikan: ");
-                                        Matrix.DisplayMatrix(result);
+                                        strResult = "Hasil Matrix balikan: \n";
+                                        System.out.print(strResult);
+                                        strResult += Matrix.DisplayMatrix(result);System.out.println();
                                     }
+                                    /* save output */
+                                    SaveOutput(strResult);
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
-                                    /* ISI ALGORITMA FILE DI SINI */
-
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    double [][] matrixInv = new double[100][100];
+                                    matrixInv = InputOutput.readMatrixFile(matrixInv, fileName);
+                                    double[][] result = OpMatrix.inverseAdjoint(matrixInv);
+                                    String strResult = "";
+                                    if(result[0][0] == -999) {
+                                        strResult = "Matrix tidak mempunyain balikan.";
+                                        System.out.println(strResult);
+                                    }
+                                    else{
+                                        strResult = "Hasil Matrix balikan: \n";
+                                        System.out.print(strResult);
+                                        strResult += Matrix.DisplayMatrix(result);System.out.println();
+                                    }
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
-                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
-                                    // nanti hapus comment ini semua ya
+                                    SaveOutput(strResult);
                                 }
                                 else {
                                     choiceSub = 0;
@@ -537,7 +558,7 @@ public class Main {
     public static void SaveOutput(String result) {
         // save output
         sc = new Scanner(System.in);
-        System.out.print("Simpan hasil ke file? (y/n): ");
+        System.out.print("\nSimpan hasil ke file? (y/n): ");
         String wannaSave = sc.nextLine();
         char wSave = wannaSave.charAt(0);                
         while(wSave != 'y' && wSave != 'n') {

@@ -46,17 +46,21 @@ public class Matrix {
         return matrix;
     }
 
-    public static void DisplayMatrix(double[][] matrix) {
+    public static String DisplayMatrix(double[][] matrix) {
+        String strDisplay = "";
         for(int i = 0;i < matrix.length;i++) {
             for(int j = 0;j < matrix[i].length;j++) {
                 if(j < matrix[i].length-1) {
                     System.out.printf("%.4f ",matrix[i][j]);
+                    strDisplay += String.format("%.4f ",matrix[i][j]);
                 }
                 else {
                     System.out.printf("%.4f\n",matrix[i][j]);
+                    strDisplay += String.format("%.4f\n",matrix[i][j]);
                 }
             }
         }
+        return strDisplay;
     }
 
    
