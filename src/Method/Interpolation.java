@@ -54,12 +54,22 @@ public class Interpolation {
         double [][] result = new double[row][0];
         result = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
         return result;
+
+        // double x = point[point.length-1][0];
+
+        // double hasilx = 0;
+        // for(int loop=result.length-1; loop>=0; loop--) { 
+        //     hasilx += result[loop][0]*Math.pow(x,loop);
+        // }
+        // System.out.printf("f(%.4f) = %.4f\n\n", x, hasilx);
+        // String strResult = String.format("f(%.4f) = %.4f\n\n", x, hasilx);
+        // return strResult;
     }
 
     public static double[][] InterpolasiKeyboard() {
         // input n
         int n;
-        System.out.print("Masukkan n : ");
+        System.out.print("Masukkan derajat polinom (n) : ");
         scan = new Scanner(System.in);
         n = scan.nextInt();
         
@@ -113,36 +123,51 @@ public class Interpolation {
         return result;
     }
 
-    public static void outputInterpolasi(double[][] result) {
+    public static String outputInterpolasi(double[][] result) {
         // f(x) = -0.0064x2 + 0.2266x + 0.6762
+        String strResult = "f(x) = ";
         System.out.print("f(x) = ");
         for(int i=result.length-1; i>=0; i--) { 
             if ((result[i][0]) != 0) {
                 if(i > 0) {
                     System.out.printf("%.4fx^%d + ", result[i][0], i);
+                    strResult += String.format("%.4fx^%d + ", result[i][0], i);
                 }
                 else {
                     System.out.printf("%.4f",result[i][0]);
+                    strResult += String.format("%.4f",result[i][0]);
                 }
                 
             } 
         }
         System.out.println();
+        return strResult;
     }
 
-    public static void outputFungsi(double[][] result) {
+    public static double X(double x) {
+        if(x == -9999) {
+            // double x;
+            System.out.print("\nMasukkan X yang akan ditaksir: ");
+            scan = new Scanner(System.in);
+            x = scan.nextDouble();
+        }
+        return x;
+    }
+
+    public static String outputFungsi(double[][] result, double x) {
         // hasil taksiran nilai fungsi
-        double x;
-        System.out.print("\nMasukkan X yang akan ditaksir: ");
-        scan = new Scanner(System.in);
-        x = scan.nextDouble();
+        // double x;
+        // System.out.print("\nMasukkan X yang akan ditaksir: ");
+        // scan = new Scanner(System.in);
+        // x = scan.nextDouble();
 
         double hasilx = 0;
         for(int loop=result.length-1; loop>=0; loop--) { 
             hasilx += result[loop][0]*Math.pow(x,loop);
         }
-        
         System.out.printf("f(%.4f) = %.4f\n\n", x, hasilx);
+        String strResult = String.format("f(%.4f) = %.4f\n\n", x, hasilx);
+        return strResult;
     }
 
     // public static double tanggalDesimal() {

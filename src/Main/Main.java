@@ -120,9 +120,21 @@ public class Main {
     
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
+                                    /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -141,9 +153,22 @@ public class Main {
 
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
+                                    /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
+                                    
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -162,9 +187,21 @@ public class Main {
 
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
+                                    /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -183,9 +220,21 @@ public class Main {
 
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
+                                    /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -227,9 +276,21 @@ public class Main {
 
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
+                                    /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -253,6 +314,12 @@ public class Main {
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -291,9 +358,21 @@ public class Main {
 
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
+                                    /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -324,6 +403,12 @@ public class Main {
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
+                                    /* ISI ALGORITMA FILE DI SINI */
+
+                                    /* SAVE OUTPUT */
+                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                                    // nanti hapus comment ini semua ya
                                 }
                                 else {
                                     choiceSub = 0;
@@ -350,18 +435,25 @@ public class Main {
                     choiceInput = ErHandling(choiceInput, 1, 3);
 
                     if(choiceInput == 1) {
-                        System.out.println("temp keyboard");
                         double[][] result = Interpolation.InterpolasiKeyboard();
-                        Interpolation.outputInterpolasi(result);
-                        Interpolation.outputFungsi(result);
+                        String strResult = Interpolation.outputInterpolasi(result);
+                        strResult += ", " + Interpolation.outputFungsi(result,(Interpolation.X(-9999)));
+                        SaveOutput(strResult);
                     }
                     else if(choiceInput == 2) {
-                        System.out.println("temp file");
-                        double[][] point = Interpolation.contohMat(); //contoh matrix point, nanti dari file
-                        double[][] result = Interpolation.InterpolasiFile(point);
-                        Interpolation.outputInterpolasi(result);
-                        Interpolation.outputFungsi(result);
+                        System.out.print("Masukkan nama file: ");
+                        String fileName = sc.nextLine();
+                        double [][] matrixPolinom = new double[100][100];
+                        matrixPolinom = InputOutput.readMatrixFile(matrixPolinom, fileName);
+                        // double[][] point = Interpolation.contohMat(); //contoh matrix point, nanti dari file
+                        double[][] result = Interpolation.InterpolasiFile(matrixPolinom);
+                        String strResult = Interpolation.outputInterpolasi(result);
+                        strResult += ", " + Interpolation.outputFungsi(result,(Interpolation.X(matrixPolinom[matrixPolinom.length-1][0])));
+                        SaveOutput(strResult);
                     }
+
+                    // save output
+                    // SaveOutput();
                     break;
                 case 5:
                     System.out.println("""
@@ -406,10 +498,22 @@ public class Main {
 
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
+                        /* ISI ALGORITMA KEYBOARD DI SINI */
+
+                        /* SAVE OUTPUT */
+                        SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                        // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                        // nanti hapus comment ini semua ya
 
                     }
                     else if(choiceInput == 2) {
                         System.out.println("temp file");
+                        /* ISI ALGORITMA FILE DI SINI */
+
+                        /* SAVE OUTPUT */
+                        SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                        // contoh: String kata = "ini isi kata"; SaveOutput(kata);
+                        // nanti hapus comment ini semua ya
                     }
                     break; 
             }
@@ -447,7 +551,6 @@ public class Main {
             InputOutput.outputFile(result, namaFile);
             System.out.println("File berhasil disimpan.");
         }
-        // return choice;
     }
 
     public static void printInput() {
