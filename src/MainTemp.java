@@ -1,14 +1,19 @@
-import java.util.Arrays;
+// import java.util.Arrays;
+
+// import OpMatrix.Gaussian;
 // nyoba akses method dari Matrix.java
 public class MainTemp {
     public static void main(String[] args) {
         // double[][] Matrix1, Matrix2, Matrix3;
+        // double det;
         // Matrix1 = Matrix.ReadMatrixKeyboard();
-        // Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
-        // Matrix.DisplayMatrix(Matrix2);
-        // System.out.println();
-        // Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
-        // Matrix.DisplayMatrix(Matrix3);
+        // det = OpMatrix.detGauss(matrix1);
+        // System.out.println(det);
+        // // Matrix2 = OpMatrix.Gaussian.Gauss(Matrix1);
+        // // Matrix.DisplayMatrix(Matrix2);
+        // // System.out.println();
+        // // Matrix3 = OpMatrix.Gaussian.GaussJordan(Matrix1);
+        // // Matrix.DisplayMatrix(Matrix.sliceMatrix(Matrix3));
         
         // System.out.println();
         // Matrix2 = Matrix.ReadMatrixKeyboard();
@@ -58,28 +63,31 @@ public class MainTemp {
     // tes gauss
 
     double[][] m1 = {
-        {1, 1, 1, 0},
-        {2, 3, 1, 1},
-        {3, 1, 2, 1}
+        {1, 0, 1, 2},
+        {0, 1, 1, 3},
+        {0, 0, 0, 1}
     };
 
-    m1 = OpMatrix.Gaussian.Gauss(m1);
-
-    boolean m2 = OpMatrix.isNoSolution(m1);
-
-    double[] solution = OpMatrix.SolveGauss(m1);
-    
-    System.out.println(m2);
-
-    System.out.println(Arrays.toString(solution));
-
-
-    // Mencetak hasil return m1
-    for (int i = 0; i < m1.length; i++) {
-        for (int j = 0; j < m1[i].length; j++) {
-            System.out.print(m1[i][j] + " ");
-        }
-        System.out.println();
+    // double mgauss[] = SPL.solveCramer(m1);
+    // Matrix.DisplayMatrix(mgauss);
+    String[] result = SPL.solveEchelon(m1);
+    boolean a = SPL.isNoSolution(m1);
+    System.out.println(a);
+    SPL.OutputSPLInverse(m1);
+    for (int i = 0; i < result.length; i++) {
+        String elemen = result[i];
+        // Lakukan operasi apa pun yang Anda inginkan pada elemen ini
+        System.out.println(elemen);
     }
+
+    // System.out.println(2/0 == NaN);
+
+    // for (int i = 0; i < mgauss.length; i++) {
+    //     for (int j = 0; j < mgauss[i].length; j++) {
+    //         System.out.print(mgauss[i][j] + " ");
+    //     }
+    //     System.out.println();
+    // }
 }
 }
+

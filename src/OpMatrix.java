@@ -1,7 +1,6 @@
 
 public class OpMatrix {
     public class Gaussian{
-
         public static double[][] switchRow(double[][] m1, int r1, int r2){
         double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
         m2 = Matrix.copyMatrix(m1);
@@ -121,55 +120,87 @@ public class OpMatrix {
         }
     }
 
-        public static void CetakSolution(double[][] matriks) {
-            
-            // double[] solution = new double[Matrix.getCol(matriks) - 1];
-
-            // Mengecek apakah tidak punya solusi
-            if (isNoSolution(matriks)) {
-                System.out.println("Persamaan ini tidak memiliki solusi yang valid");
-            } else {
-                
-            }
-        }
-
-        
-
-        public static boolean isNoSolution(double[][] matrix) {
-            for (double[] row : matrix) {
-                boolean isValid = true;
-                for (int j = 0; j < row.length - 1; j++) {
-                    if (row[j] != 0.0) {
-                        isValid = false;
-                        break;
+    public static double detGauss(double[][] m1){
+            double det = 1;
+            /* switch jika element pertama pada baris pertama adalah 0 */
+            for (int j=0;j<Matrix.getCol(m1);j++){
+                if (m1[0][j] == 0){ /* kalo 0 */
+                    if(Matrix.isColZero(m1, j)){ /* kalo 1 kolom 0 semua */
+                        return 0.0; /* det = 0 */
+                    } else {
+                        boolean switched = false;
+                        for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita mencari 1 pada kolom tersebut */
+                            if (m1[i][j] == 1){
+                                Gaussian.switchRow(m1, i, 0); /* jika ada kita switch */
+                                switched = true;
+                                break;
+                            }
+                        }
+                        if (switched == false){ /* jika ternyata tidak ada yang 1 */
+                            for (int i = 1;i<Matrix.getRow(m1);i++){ /* kita switch dengan yang tidak 0 */
+                                if (m1[i][j] != 0){
+                                Gaussian.switchRow(m1, i, 0);
+                                break;
+                                }   
+                            }
+                        }
+                        
                     }
-                }
-                if (isValid && row[row.length - 1] != 0.0) {
-                    return true;
+                } else { /* kalo tidak 0 dan tidak 1 */
+                    for (int i = 1;i<Matrix.getRow(m1);i++){
+                        if (m1[i][j] == 1){ /* kita cari yang 1 pada kolom tersebut dan kita switch */
+                            Gaussian.switchRow(m1, i, 0);
+                            break;
+                        }
+                    }
+                } 
+                break;
+            }
+            
+            /* menjadikan elemen tidak 0 pertama pada suatu barus menjadi 1 */
+            for(int i=0;i<Matrix.getRow(m1);i++){
+                for (int j=0;j<Matrix.getCol(m1);j++){
+                    if (m1[i][j] == 0){
+                        continue;
+                    } else {
+                        /* lakukan obe */
+                        m1 = Gaussian.oBe(m1, i, j);
+                        /* setelah obe langsung lanjut ke baris berikutnya */
+                        break;
+                    }  
                 }
             }
-            return false;
-        }
-    
-        public static double[] SolveGauss(double[][] matrix) {
-            int n = matrix.length;
-            double[] solution = new double[n];
-        
-            for (int i = n - 1; i >= 0; i--) {
-                double sum = 0.0;
-                for (int j = i + 1; j < n; j++) {
-                    sum += matrix[i][j] * solution[j];
-                }
-                solution[i] = (matrix[i][n] - sum) / matrix[i][i];
-            }
-        
-            return solution;
-        }
-        
-        public static double[] Parametric(double[][] matrix) {
-            double[] solution = new double[Matrix.getCol(matrix) - 1];
+            for (int i=0;i<Matrix.getRow(m1);i++){
+                det *= m1[i][i];
 
-            return solution;
+            }
+            return det;
+        }      
+
+        public static double[] backwardSubstitution(double[][] matrix) {
+            int length = Matrix.getRow(matrix);
+            double[] solutions = new double[length];
+        
+            for (int i = length - 1; i >= 0; i--) {
+                double sum = 0;
+                for (int j = i + 1; j < length; j++) {
+                    sum += matrix[i][j] * solutions[j];
+                }
+                solutions[i] = (matrix[i][length] - sum) / matrix[i][i];
+            }
+        
+            return solutions;
+        }
+
+        public static boolean isNoSolution(double[][] matrix, int row) {
+            boolean isValid = true;
+            for (int j = 0; j < Matrix.getCol(matrix) - 1; j++) {
+                if (matrix[row][j] != 0.0) {
+                    isValid = false;
+                    break;
+                }
+            }
+            return isValid && matrix[row][Matrix.getCol(matrix) - 1] != 0.0;
         }
         
 }
