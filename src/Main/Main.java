@@ -121,23 +121,37 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
+                                    String result;
                                     matrix1 = Matrix.ReadMatrixKeyboard();
                                     // SPL.
-                                    SPL.OutputSPLGauss(matrix1);
-
+                                    result = SPL.OutputSPLGauss(matrix1);
+                                    System.out.println(result);
 
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
+
                                 }
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
                                     /* ISI ALGORITMA FILE DI SINI */
+                                    matrix1 = new double[100][100];
+                                    String result;
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    while (!Matrix.isSquare(matrix1)){
+                                        System.out.print("Masukkan nama file: ");
+                                        fileName = sc.nextLine();
+                                        matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    }
+                                    result = SPL.OutputSPLGauss(matrix1);
+                                    System.out.println(result);
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                 }
@@ -159,9 +173,14 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
+                                    String result;
+                                    matrix1 = Matrix.ReadMatrixKeyboard();
+                                    // SPL.
+                                    result = SPL.OutputSPLGauss(matrix1);
+                                    System.out.println(result);
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                     
@@ -169,9 +188,20 @@ public class Main {
                                 else if(choiceInput == 2) {
                                     System.out.println("temp file");
                                     /* ISI ALGORITMA FILE DI SINI */
-
+                                    matrix1 = new double[100][100];
+                                    String result;
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    while (!Matrix.isSquare(matrix1)){
+                                        System.out.print("Masukkan nama file: ");
+                                        fileName = sc.nextLine();
+                                        matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
+                                    }
+                                    result = SPL.OutputSPLGauss(matrix1);
+                                    System.out.println(result);
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                                    SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                                     // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                                     // nanti hapus comment ini semua ya
                                 }
@@ -224,23 +254,41 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    System.out.println("Masukkan matrix Ax=b (augmented): ");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
+                                    String strResult = "";
+                                    matrix1 = Matrix.ReadMatrixKeyboard();
+                                    if((Matrix.getCol(matrix1) > Matrix.getRow(matrix1)+1) || (Matrix.getCol(matrix1) == Matrix.getRow(matrix1)) || (Matrix.getCol(matrix1) < Matrix.getRow(matrix1))) {
+                                        strResult = "SPL tidak dapat diselesaikan dengan kaidah cramer.";
+                                        System.out.println(strResult);
+                                    }
+                                    else {
+                                        strResult = SPL.OutputSPLCramer(matrix1);
+                                        System.out.println(strResult);
+                                    }
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
-                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
-                                    // nanti hapus comment ini semua ya
+                                    SaveOutput(strResult);
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
-                                    /* ISI ALGORITMA FILE DI SINI */
+                                    String strResult = "";
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    double [][] matrixSPL = new double[100][100];
+                                    matrixSPL = InputOutput.readMatrixFile(matrixSPL, fileName);
+                                    if((Matrix.getCol(matrixSPL) > Matrix.getRow(matrixSPL)+1) || (Matrix.getCol(matrixSPL) == Matrix.getRow(matrixSPL)) || (Matrix.getCol(matrixSPL) < Matrix.getRow(matrixSPL))) {
+                                        strResult = "SPL tidak dapat diselesaikan dengan kaidah cramer.";
+                                        System.out.println(strResult);
+                                    }
+                                    else {
+                                        strResult = SPL.OutputSPLCramer(matrixSPL);
+                                        System.out.println(strResult);
+                                    }
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
-                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
-                                    // nanti hapus comment ini semua ya
+                                    SaveOutput(strResult);
                                 }
+
                                 else {
                                     choiceSub = 0;
                                 }
@@ -558,9 +606,9 @@ public class Main {
                     if(choiceInput == 1) {
                         System.out.println("temp keyboard");
                         /* ISI ALGORITMA KEYBOARD DI SINI */
-
+                        result = MultipleLinearRegression.regression();
                         /* SAVE OUTPUT */
-                        SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                        SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                         // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                         // nanti hapus comment ini semua ya
 
@@ -568,9 +616,12 @@ public class Main {
                     else if(choiceInput == 2) {
                         System.out.println("temp file");
                         /* ISI ALGORITMA FILE DI SINI */
-
+                        matrix1 = new double[100][100];
+                        System.out.print("Masukkan nama file: ");
+                        fileName = sc.nextLine();
+                        result = MultipleLinearRegression.regressionfile(matrix1, fileName);
                         /* SAVE OUTPUT */
-                        SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
+                        SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
                         // contoh: String kata = "ini isi kata"; SaveOutput(kata);
                         // nanti hapus comment ini semua ya
                     }

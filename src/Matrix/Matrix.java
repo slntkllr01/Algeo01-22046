@@ -344,6 +344,28 @@ public class Matrix {
         }
         return matrixR;
     }
+    public static double[][] slice_bot(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
+        int row = 1;
+        int col = getCol(matrix);
+        double [][] matrixR = new double[row][col];
+        for(int j=0; j<col; j++) {
+            matrixR[0][j] = matrix[getRow(matrix)-1][j];
+        }
+        return matrixR;
+    }
+    public static double[][] slice_top(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
+        int row = getRow(matrix)-1;
+        int col = getCol(matrix);
+        double [][] matrixR = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=0; j<col; j++) {
+                matrixR[i][j] = matrix[i][j];
+            }
+        }
+        return matrixR;
+    }
     public static double[][] sliceMatrixLeft(double[][] m1){
         double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
         for (int i=0;i<getRow(m1);i++){
