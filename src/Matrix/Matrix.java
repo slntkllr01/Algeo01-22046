@@ -307,7 +307,18 @@ public class Matrix {
         }
         return matrixR;
     }
+    
+    public static double[][] slice_col1(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks b doank */
+        int row = getRow(matrix);
+        int col = getCol(matrix);
+        double[][] matrixR = new double[row][1]; // matrix 1 kolom
 
+        for(int i=0; i<row; i++) {
+            matrixR[i][0] = matrix[i][0];
+        }
+        return matrixR;
+    }
     public static double[][] slice_a(double[][] matrix) {
         /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
         int row = getRow(matrix);
@@ -321,6 +332,18 @@ public class Matrix {
         return matrixR;
     }
 
+    public static double[][] slice_col1rest(double[][] matrix) {
+        /* slicing matrix augmented Ax = b untuk mendapat matriks A doank */
+        int row = getRow(matrix);
+        int col = getCol(matrix)-1;
+        double [][] matrixR = new double[row][col];
+        for(int i=0; i<row; i++) {
+            for(int j=1; j<col+1; j++) {
+                matrixR[i][j-1] = matrix[i][j];
+            }
+        }
+        return matrixR;
+    }
     public static double[][] sliceMatrixLeft(double[][] m1){
         double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
         for (int i=0;i<getRow(m1);i++){

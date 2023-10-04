@@ -26,7 +26,7 @@ public class InputOutput {
             }
             reader.close();
         } catch (Exception e){
-            System.out.println("error aja");
+            System.out.println("input error");
         }
         double[][] m2 = new double[i][temp];
             for(int k=0;k<Matrix.getRow(m2);k++){
@@ -58,7 +58,7 @@ public class InputOutput {
             }
             reader.close();
         } catch (Exception e){
-            System.out.println("error ajax");
+            System.out.println("input error");
             // e.printStackTrace();
 
         }
