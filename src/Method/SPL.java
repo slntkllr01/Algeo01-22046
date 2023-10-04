@@ -122,8 +122,8 @@ public class SPL {
         return result;
     }
 
-    public static void OutputSPLInverse(double[][] matrix) {
-
+    public static String OutputSPLInverse(double[][] matrix) {
+        String output = "";
         double[][] result = SPL.SPLinverse(matrix);
         int count = 0;
         for (int j = 0; j < result.length; j++) {
@@ -131,22 +131,24 @@ public class SPL {
                 count++;
             }
         }
-
+    
         if (count == result.length) {
-            System.out.println("Maaf, SPL tidak dapat dipecahkan melalui metode inverse.");
+            output += "Maaf, SPL tidak dapat dipecahkan melalui metode inverse.\n";
         } else {
-            System.out.println("Solusi SPL adalah :");
+            output += "Solusi SPL adalah :\n";
             for (int i = 0; i < result.length; i++) {
-                System.out.println("X" + Integer.toString(i+1) + " : " + String.format("%.4f", result[i][0]));
-
+                output += "X" + Integer.toString(i+1) + " : " + String.format("%.4f", result[i][0]) + "\n";
             }
         }
-    } 
+        return output;
+    }
+    
 
-    public static void OutputSPLCramer(double[][] matrix) {
-
+    public static String OutputSPLCramer(double[][] matrix) {
+        String output = "";
         double[] result = SPL.solveCramer(matrix);
         int count = 0;
+
         for (int j = 0; j < result.length; j++) {
             if (result[j] == 0.0) {
                 count++;
@@ -154,29 +156,31 @@ public class SPL {
         }
 
         if (count == result.length) {
-            System.out.println("Maaf, SPL tidak dapat dipecahkan melalui metode inverse.");
+            output += "Maaf, SPL tidak dapat dipecahkan melalui metode inverse.\n";
         } else {
-            System.out.println("Solusi SPL adalah :");
+            output += "Solusi SPL adalah :";
             for (int i = 0; i < result.length; i++) {
-                System.out.println("X" + Integer.toString(i+1) + " : " + String.format("%.4f", result[i]));
+                output += "X" + Integer.toString(i+1) + " : " + String.format("%.4f", result[i]) + "\n";
 
             }
         }
+        return output;
     } 
 
-    public static void OutputSPLGauss(double[][] matrix) {
-    
+    public static String OutputSPLGauss(double[][] matrix) {
+        String output = "";
         double[][] Echelon = OpMatrix.Gaussian.Gauss(matrix);
 
         if (isNoSolution(Echelon)) {
-            System.out.println("Maaf, SPL tidak memiliki solusi.");
+            output += "Maaf, SPL tidak memiliki solusi.\n";
         } else {
             String[] result = SPL.solveEchelon(matrix);
-            System.out.println("Solusi SPL adalah :");
+            output += "Solusi SPL adalah :";
             for (int i = 0; i < result.length; i++) {
-                System.out.println("X" + Integer.toString(i+1) + " : " + result[i]);
+                output += "X" + Integer.toString(i+1) + " : " + result[i] + "\n";
             }
         }
+        return output;
     }
 
     public static boolean isNoSolution(double[][] matrix) {
