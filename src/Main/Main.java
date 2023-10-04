@@ -142,11 +142,6 @@ public class Main {
                                     System.out.print("Masukkan nama file: ");
                                     String fileName = sc.nextLine();
                                     matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
-                                    while (!Matrix.isSquare(matrix1)){
-                                        System.out.print("Masukkan nama file: ");
-                                        fileName = sc.nextLine();
-                                        matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
-                                    }
                                     result = SPL.OutputSPLGauss(matrix1);
                                     System.out.println(result);
 
@@ -221,22 +216,39 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    System.out.println("Masukkan matrix Ax=b (augmented): ");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
+                                    String strResult = "";
+                                    matrix1 = Matrix.ReadMatrixKeyboard();
+                                    if((Matrix.getCol(matrix1) > Matrix.getRow(matrix1)+1) || (Matrix.getCol(matrix1) == Matrix.getRow(matrix1)) || (Matrix.getCol(matrix1) < Matrix.getRow(matrix1))) {
+                                        strResult = "SPL tidak dapat diselesaikan dengan metode balikan.";
+                                        System.out.println(strResult);
+                                    }
+                                    else {
+                                        strResult = SPL.OutputSPLInverse(matrix1);
+                                        System.out.println(strResult);
+                                    }
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
-                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
-                                    // nanti hapus comment ini semua ya
+                                    SaveOutput(strResult);
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
-                                    /* ISI ALGORITMA FILE DI SINI */
+                                    String strResult = "";
+                                    System.out.print("Masukkan nama file: ");
+                                    String fileName = sc.nextLine();
+                                    double [][] matrixSPL = new double[100][100];
+                                    matrixSPL = InputOutput.readMatrixFile(matrixSPL, fileName);
+                                    if((Matrix.getCol(matrixSPL) > Matrix.getRow(matrixSPL)+1) || (Matrix.getCol(matrixSPL) == Matrix.getRow(matrixSPL)) || (Matrix.getCol(matrixSPL) < Matrix.getRow(matrixSPL))) {
+                                        strResult = "SPL tidak dapat diselesaikan dengan metode balikan.";
+                                        System.out.println(strResult);
+                                    }
+                                    else {
+                                        strResult = SPL.OutputSPLInverse(matrixSPL);
+                                        System.out.println(strResult);
+                                    }
 
                                     /* SAVE OUTPUT */
-                                    SaveOutput(null); // ganti null dengan tipe String yg mau disimpan, 
-                                    // contoh: String kata = "ini isi kata"; SaveOutput(kata);
-                                    // nanti hapus comment ini semua ya
+                                    SaveOutput(strResult);
                                 }
                                 else {
                                     choiceSub = 0;
@@ -552,15 +564,11 @@ public class Main {
                         String fileName = sc.nextLine();
                         double [][] matrixPolinom = new double[100][100];
                         matrixPolinom = InputOutput.readMatrixFile(matrixPolinom, fileName);
-                        // double[][] point = Interpolation.contohMat(); //contoh matrix point, nanti dari file
                         double[][] result = Interpolation.InterpolasiFile(matrixPolinom);
                         String strResult = Interpolation.outputInterpolasi(result);
                         strResult += ", " + Interpolation.outputFungsi(result,(Interpolation.X(matrixPolinom[matrixPolinom.length-1][0])));
                         SaveOutput(strResult);
                     }
-
-                    // save output
-                    // SaveOutput();
                     break;
                 case 5:
                     System.out.println("""
@@ -574,15 +582,22 @@ public class Main {
                         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
                             """);
                     // INPUT CARA MASUKAN
-                    // ###########3 ERROR INPUT : row < 4
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
                     System.out.print("Masukkan nama file: ");
                     String fileName = sc.nextLine();
                     double [][] matrixBicubic = new double[100][100];
                     matrixBicubic = InputOutput.readMatrixFile(matrixBicubic, fileName);
+                    while(Matrix.getCol(matrixBicubic) != 4)
+                    {
+                        System.out.println("Ukuran matrix salah, masukkan matrix 4x4.");
+                        System.out.print("Masukkan nama file: ");
+                        fileName = sc.nextLine();
+                        matrixBicubic = new double[100][100];
+                        matrixBicubic = InputOutput.readMatrixFile(matrixBicubic, fileName);
+                    }
                     String result = Bicubic.bicubicSI(matrixBicubic);
                     
-                    // save output
+                    // Save Output
                     SaveOutput(result);
                     break;
                 case 6:

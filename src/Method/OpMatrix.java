@@ -229,5 +229,30 @@ public class OpMatrix {
         }
         return result;
     }
+
+    public static double rounding(double n) {
+        double x = Math.pow(10, -8);
+        double y = Math.abs(n)-Math.abs(n%1);
+        if(y == 0 && (Math.abs(n%1) < x || Math.abs(1-(n%1)) < x)) {
+            n = 0;
+        }
+        else if(Math.abs(n%1) < x) {
+            if(n<0) {
+                n += (n%1);
+            }
+            else {
+                n -= (n%1);
+            }
+        }
+        else if(Math.abs(1-(n%1)) < x) {
+            if(n<0) {
+                n -= (1-(n%1));
+            }
+            else {
+                n += (1-(n%1));
+            }
+        }
+        return n;
+    }
 }
 

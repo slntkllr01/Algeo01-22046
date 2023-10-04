@@ -51,19 +51,15 @@ public class Interpolation {
 
         
         // mendapat hasil SPL (a0 s.d. an)
-        double [][] result = new double[row][0];
-        result = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
+        double [][] result = new double[row][1];
+        double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
+        
+        for(int i=0; i<temp.length; i++) {
+            result[i][0] = OpMatrix.rounding(temp[i][0]);
+        }
+
+        // Matrix.DisplayMatrix(result);
         return result;
-
-        // double x = point[point.length-1][0];
-
-        // double hasilx = 0;
-        // for(int loop=result.length-1; loop>=0; loop--) { 
-        //     hasilx += result[loop][0]*Math.pow(x,loop);
-        // }
-        // System.out.printf("f(%.4f) = %.4f\n\n", x, hasilx);
-        // String strResult = String.format("f(%.4f) = %.4f\n\n", x, hasilx);
-        // return strResult;
     }
 
     public static double[][] InterpolasiKeyboard() {
@@ -75,7 +71,7 @@ public class Interpolation {
         
         // input titik
         int row = n+1, col = n+1;
-        System.out.println("Masukkan titik (x y), tanpa tanda '()' : ");
+        System.out.printf("Masukkan %d titik (x y), tanpa tanda '('')' : ",row);
         double[][] point = new double[row][2];
         for(int p=0; p<row; p++) {
             for(int q=0; q<2; q++) {
@@ -112,11 +108,7 @@ public class Interpolation {
         double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
         
         for(int i=0; i<temp.length; i++) {
-            // if((temp[i][0] % 1) <= Math.pow(10, -8)) {
-            //         result[i][0] -= (temp[i][0] % 1);
-            //     }
-            // }
-            result[i][0] = temp[i][0];
+            result[i][0] = OpMatrix.rounding(temp[i][0]);
         }
 
         // Matrix.DisplayMatrix(result);
@@ -130,12 +122,25 @@ public class Interpolation {
         for(int i=result.length-1; i>=0; i--) { 
             if ((result[i][0]) != 0) {
                 if(i > 0) {
-                    System.out.printf("%.4fx^%d + ", result[i][0], i);
-                    strResult += String.format("%.4fx^%d + ", result[i][0], i);
+                    if(result[i][0] < 0) {
+                        System.out.printf("(%.4fx^%d) + ", result[i][0], i);
+                        strResult += String.format("(%.4fx^%d) + ", result[i][0], i);
+                        
+                    }
+                    else {
+                        System.out.printf("%.4fx^%d + ", result[i][0], i);
+                        strResult += String.format("%.4fx^%d + ", result[i][0], i);
+                    }
                 }
                 else {
-                    System.out.printf("%.4f",result[i][0]);
-                    strResult += String.format("%.4f",result[i][0]);
+                    if(result[i][0] < 0) {
+                        System.out.printf("(%.4f)",result[i][0]);
+                        strResult += String.format("(%.4f)",result[i][0]);
+                    }
+                    else {
+                        System.out.printf("%.4f",result[i][0]);
+                        strResult += String.format("%.4f",result[i][0]);
+                    }
                 }
                 
             } 
@@ -165,8 +170,8 @@ public class Interpolation {
         for(int loop=result.length-1; loop>=0; loop--) { 
             hasilx += result[loop][0]*Math.pow(x,loop);
         }
-        System.out.printf("f(%.4f) = %.4f\n\n", x, hasilx);
-        String strResult = String.format("f(%.4f) = %.4f\n\n", x, hasilx);
+        System.out.printf("f(%.4f) = %.4f\n", x, hasilx);
+        String strResult = String.format("f(%.4f) = %.4f\n", x, hasilx);
         return strResult;
     }
 

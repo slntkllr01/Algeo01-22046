@@ -311,7 +311,7 @@ public class Matrix {
     public static double[][] slice_col1(double[][] matrix) {
         /* slicing matrix augmented Ax = b untuk mendapat matriks b doank */
         int row = getRow(matrix);
-        int col = getCol(matrix);
+        // int col = getCol(matrix);
         double[][] matrixR = new double[row][1]; // matrix 1 kolom
 
         for(int i=0; i<row; i++) {
