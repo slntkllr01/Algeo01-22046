@@ -119,7 +119,7 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
     
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    System.out.println("Masukkan matrix Ax=b (augmented): ");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
                                     String result;
                                     matrix1 = Matrix.ReadMatrixKeyboard();
@@ -135,7 +135,7 @@ public class Main {
 
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
+                                    
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
                                     String result;
@@ -166,7 +166,7 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    System.out.println("Masukkan matrix Ax=b (augmented): ");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
                                     String result;
                                     matrix1 = Matrix.ReadMatrixKeyboard();
@@ -181,7 +181,7 @@ public class Main {
                                     
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
+                                    
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
                                     String result;

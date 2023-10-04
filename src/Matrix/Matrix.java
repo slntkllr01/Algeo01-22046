@@ -48,7 +48,8 @@ public class Matrix {
 
     public static double[][] ReadMatrixSquare() {
         scan = new Scanner(System.in);
-        System.out.print("Jumlah ukuran matrix: "); int row = scan.nextInt();
+        System.out.println("Masukkan matrix n x n");
+        System.out.print("Ukuran matrix (n): "); int row = scan.nextInt();
         
 
         double[][] matrix = new double[row][row];
