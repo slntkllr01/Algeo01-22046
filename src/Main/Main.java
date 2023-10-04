@@ -121,8 +121,10 @@ public class Main {
                                 if(choiceInput == 1) {
                                     System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
-                                    Matrix.ReadMatrixKeyboard();
+                                    matrix1 = Matrix.ReadMatrixKeyboard();
                                     // SPL.
+                                    SPL.OutputSPLGauss(matrix1);
+
 
 
                                     /* SAVE OUTPUT */
