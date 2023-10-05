@@ -158,7 +158,7 @@ public class SPL {
         if (count == result.length) {
             output += "Maaf, SPL tidak dapat dipecahkan melalui metode inverse.\n";
         } else {
-            output += "Solusi SPL adalah :";
+            output += "Solusi SPL adalah :\n";
             for (int i = 0; i < result.length; i++) {
                 output += "X" + Integer.toString(i+1) + " : " + String.format("%.4f", result[i]) + "\n";
 
@@ -170,12 +170,12 @@ public class SPL {
     public static String OutputSPLGauss(double[][] matrix) {
         String output = "";
         double[][] Echelon = OpMatrix.Gaussian.Gauss(matrix);
-
+        Matrix.DisplayMatrix(Echelon);
         if (isNoSolution(Echelon)) {
             output += "Maaf, SPL tidak memiliki solusi.\n";
         } else {
             String[] result = SPL.solveEchelon(matrix);
-            output += "Solusi SPL adalah :";
+            output += "Solusi SPL adalah :\n";
             for (int i = 0; i < result.length; i++) {
                 output += "X" + Integer.toString(i+1) + " : " + result[i] + "\n";
             }
@@ -188,11 +188,11 @@ public class SPL {
             if (matrix[Matrix.getRow(matrix)-1][j] != 0) {
                 return false;
             }
+        }
         if (matrix[Matrix.getRow(matrix)-1][Matrix.getCol(matrix)-1] != 0) {
             return true;
         }
-        }
-        return true;
+        return false;
     }
 
     public static double DecimalFormatting(double nominal) {
