@@ -198,7 +198,7 @@ public class OpMatrix {
         m1 = Gaussian.GaussJordan(m1);
         // Matrix.DisplayMatrix(m1);
         // System.out.println();
-        // double[][] temp = Matrix.sliceMatrixLeft(m1);
+        double[][] temp = Matrix.sliceMatrixLeft(m1);
         if (Matrix.isIdentity(temp)){
             m1 = Matrix.sliceMatrixRight(m1);
             return m1;
