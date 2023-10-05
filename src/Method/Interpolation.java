@@ -80,17 +80,11 @@ public class Interpolation {
         }
         System.out.println();
         
-        // // print titik
-        // System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
-        // // x = point[i][0], y = point[i][1]
-        
         // matriks b (ordinat dari titik)
         double[][] b = new double[row][1]; //0 atau 1
         for(int i=0; i<row; i++) {
             b[i][0] = point[i][1];
         }
-        // // print b
-        // System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
         
         // matriks polinom
         double[][] mat = new double[row][col];
@@ -99,9 +93,6 @@ public class Interpolation {
                 mat[i][j] = Math.pow(point[i][0], j);
             }
         }
-        // // print hasil polinom
-        // System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
-
         
         // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][1];
@@ -110,13 +101,10 @@ public class Interpolation {
         for(int i=0; i<temp.length; i++) {
             result[i][0] = OpMatrix.rounding(temp[i][0]);
         }
-
-        // Matrix.DisplayMatrix(result);
         return result;
     }
 
     public static String outputInterpolasi(double[][] result) {
-        // f(x) = -0.0064x2 + 0.2266x + 0.6762
         String strResult = "f(x) = ";
         System.out.print("f(x) = ");
         for(int i=result.length-1; i>=0; i--) { 
@@ -160,12 +148,6 @@ public class Interpolation {
     }
 
     public static String outputFungsi(double[][] result, double x) {
-        // hasil taksiran nilai fungsi
-        // double x;
-        // System.out.print("\nMasukkan X yang akan ditaksir: ");
-        // scan = new Scanner(System.in);
-        // x = scan.nextDouble();
-
         double hasilx = 0;
         for(int loop=result.length-1; loop>=0; loop--) { 
             hasilx += result[loop][0]*Math.pow(x,loop);
@@ -174,26 +156,4 @@ public class Interpolation {
         String strResult = String.format("f(%.4f) = %.4f\n", x, hasilx);
         return strResult;
     }
-
-    // public static double tanggalDesimal() {
-    //     double tgl, bln, tahun, hari;
-    //     scan = new Scanner(System.in);
-    //     System.out.print("Masukkan tanggal bulan tahun (pisah dengan spasi) : ");
-    //     tgl = scan.nextInt();
-    //     bln = scan.nextInt();
-    //     tahun = scan.nextInt();
-        
-    //     if(bln == 1 || bln == 3 || bln == 5 || bln == 7 || bln == 8 || bln == 10 || bln == 12) {
-    //         hari = 31;
-    //     }
-    //     else if(bln == 2) {
-    //         hari = 28;
-    //     }
-    //     else {
-    //         hari = 30;
-    //     }
-
-    //     System.out.println(bln + (tgl/hari));
-    //     return (bln + (tgl/hari));
-    // }
 }
