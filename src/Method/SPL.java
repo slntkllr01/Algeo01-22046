@@ -127,7 +127,7 @@ public class SPL {
         double[][] result = SPL.SPLinverse(matrix);
         int count = 0;
         for (int j = 0; j < result.length; j++) {
-            if (!Double.isFinite(result[j][0])) {
+            if (!Double.isFinite(result[j][0]) || (result[j][0] == 999.0) || (result[j][0] == 0.0)) {
                 count++;
             }
         }
@@ -170,7 +170,23 @@ public class SPL {
     public static String OutputSPLGauss(double[][] matrix) {
         String output = "";
         double[][] Echelon = OpMatrix.Gaussian.Gauss(matrix);
-        
+
+        if (isNoSolution(Echelon)) {
+            output += "Maaf, SPL tidak memiliki solusi.\n";
+        } else {
+            String[] result = SPL.solveEchelon(matrix);
+            output += "Solusi SPL adalah :\n";
+            for (int i = 0; i < result.length; i++) {
+                output += "X" + Integer.toString(i+1) + " : " + result[i] + "\n";
+            }
+        }
+        return output;
+    }
+
+    public static String OutputSPLGaussJordan(double[][] matrix) {
+        String output = "";
+        double[][] Echelon = OpMatrix.Gaussian.GaussJordan(matrix);
+
         if (isNoSolution(Echelon)) {
             output += "Maaf, SPL tidak memiliki solusi.\n";
         } else {
@@ -184,13 +200,15 @@ public class SPL {
     }
 
     public static boolean isNoSolution(double[][] matrix) {
-        for (int j = 0; j < Matrix.getCol(matrix) - 1; j++) {
-            if (matrix[Matrix.getRow(matrix)-1][j] != 0) {
-                return false;
+        for (int i = Matrix.getRow(matrix)-1; i >= 0; i--) {
+            for (int j = 0; j < Matrix.getCol(matrix) - 1; j++) {
+                if (matrix[i][j] != 0) {
+                    return false;
+                }
             }
-        }
-        if (matrix[Matrix.getRow(matrix)-1][Matrix.getCol(matrix)-1] != 0) {
-            return true;
+            if (matrix[i][Matrix.getCol(matrix)-1] != 0) {
+                return true;
+            }
         }
         return false;
     }

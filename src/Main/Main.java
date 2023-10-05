@@ -171,7 +171,7 @@ public class Main {
                                     String result;
                                     matrix1 = Matrix.ReadMatrixKeyboard();
                                     // SPL.
-                                    result = SPL.OutputSPLGauss(matrix1);
+                                    result = SPL.OutputSPLGaussJordan(matrix1);
                                     System.out.println(result);
 
                                     /* SAVE OUTPUT */
@@ -193,7 +193,7 @@ public class Main {
                                         fileName = sc.nextLine();
                                         matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     }
-                                    result = SPL.OutputSPLGauss(matrix1);
+                                    result = SPL.OutputSPLGaussJordan(matrix1);
                                     System.out.println(result);
                                     /* SAVE OUTPUT */
                                     SaveOutput(result); // ganti null dengan tipe String yg mau disimpan, 
