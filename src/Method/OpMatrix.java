@@ -177,9 +177,9 @@ public class OpMatrix {
         m1 = Gaussian.GaussJordan(m1);
         // Matrix.DisplayMatrix(m1);
         // System.out.println();
-        m2 = Matrix.sliceMatrixRight(m1);
+        m2 = Matrix.sliceMatrixLeft(m1);
         if (Matrix.isIdentity(m2)){
-            m1 = Matrix.sliceMatrixLeft(m1);
+            m1 = Matrix.sliceMatrixRight(m1);
             return Matrix.DisplayMatrix(m1);
         }
         else {
@@ -189,28 +189,24 @@ public class OpMatrix {
 
     }
     public static double[][] inverseGauss(double[][] m1){
+        
         double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
         for(int i=0;i<Matrix.getRow(m1);i++){
             m2[i][i] = 1;
         }
         m1 = Matrix.mergeMatCol(m1, m2);
         m1 = Gaussian.GaussJordan(m1);
-        m1 = Matrix.sliceMatrixLeft(m1);
-        return m1;
-        // double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
-        // for(int i=0;i<Matrix.getRow(m1);i++){
-        //     m2[i][i] = 1;
-        // }
-        // m1 = Matrix.mergeMatCol(m1, m2);
-        // m1 = Gaussian.GaussJordan(m1);
-        // // Matrix.DisplayMatrix(m1);
-        // // System.out.println();
-        // m1 = Matrix.sliceMatrixRight(m1);
-        // if (Matrix.isIdentity(m1)){
-        //     m1 = Matrix.sliceMatrixLeft(m1);
-        //     return m1;
-        // }
-        // return null;
+        // Matrix.DisplayMatrix(m1);
+        // System.out.println();
+        // double[][] temp = Matrix.sliceMatrixLeft(m1);
+        if (Matrix.isIdentity(temp)){
+            m1 = Matrix.sliceMatrixRight(m1);
+            return m1;
+        }
+        double notIdentity[][] = new double[1][1];
+        notIdentity[0][0] = -9999;
+        return notIdentity;
+        
     }
 
     public static double detCofactor(double[][] matrix) {

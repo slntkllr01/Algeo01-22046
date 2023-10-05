@@ -340,7 +340,6 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
                                     matrix1 = Matrix.ReadMatrixSquare();
                                     double det;
@@ -354,7 +353,6 @@ public class Main {
                                     // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
                                     double det;
@@ -447,7 +445,7 @@ public class Main {
                                 choiceInput = ErHandling(choiceInput, 1, 3);
 
                                 if(choiceInput == 1) {
-                                    System.out.println("temp keyboard");
+                                    
                                     /* ISI ALGORITMA KEYBOARD DI SINI */
                                     matrix1 = Matrix.ReadMatrixSquare();
                                     System.out.println("Hasil inverse matrixnya:");
@@ -459,7 +457,7 @@ public class Main {
                                     // nanti hapus comment ini semua ya
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.println("temp file");
+                                    
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
                                     System.out.print("Masukkan nama file: ");
@@ -620,7 +618,7 @@ public class Main {
                     choiceInput = ErHandling(choiceInput, 1, 3);
 
                     if(choiceInput == 1) {
-                        System.out.println("temp keyboard");
+                        
                         /* ISI ALGORITMA KEYBOARD DI SINI */
                         result = MultipleLinearRegression.regression();
                         /* SAVE OUTPUT */
@@ -630,7 +628,7 @@ public class Main {
 
                     }
                     else if(choiceInput == 2) {
-                        System.out.println("temp file");
+                        
                         /* ISI ALGORITMA FILE DI SINI */
                         matrix1 = new double[100][100];
                         System.out.print("Masukkan nama file: ");
