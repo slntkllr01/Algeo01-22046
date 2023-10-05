@@ -24,6 +24,7 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
 
 
 ## Struktur Program
+```bash
 .
 │   README.md
 │
@@ -33,15 +34,15 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
 │   │
 │   ├───Matrix
 │   │       InputOutput.class
-|   |       Matrix.class
+│   │       Matrix.class
 │   │
 │   ├───Method
 │           Bicubic.class
 │           Interpolation.class
 │           MultipleLinearRegression.class
-|           OpMatrix.class
-|           OpMatrix$Gaussian.class
-|           SPL.class
+│           OpMatrix.class
+│           OpMatrix$Gaussian.class
+│           SPL.class
 │
 ├───doc                             # Documentation
 ├───src                             # Source code
@@ -50,42 +51,42 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
 │   │
 │   ├───Matrix                      # Matrix package   
 │   │       InputOutput.java
-|   |       Matrix.java
+│   │       Matrix.java
 │   │
 │   ├───Method                      # Method package
 │           Bicubic.java
 │           Interpolation.java
 │           MultipleLinearRegression.java
-|           OpMatrix.java
-|           OpMatrix$Gaussian.java
-|           SPL.java
-|
+│           OpMatrix.java
+│           OpMatrix$Gaussian.java
+│           SPL.java
+│
 └───test   
     ├───input
-    |        1_a.txt
-    |         1_b.txt
-    |         1_c.txt
-    |         1_d6.txt
-    |         1_d10.txt
-    |         2_a.txt
-    |         2_b.txt
-    |         3_a.txt
-    |         3_b.txt
-    |         5_a_0.2.txt
-    |         5_a_0.55.txt
-    |         5_a_0.85.txt
-    |         5_a_1.28.txt
-    |         5_b_a.txt
-    |         5_b_b.txt
-    |         5_b_c.txt
-    |         5_b_d.txt
-    |         5_c_0.txt
-    |         5_c_1.txt
-    |         6.txt
-    |         7_1.txt
-    |         7_2.txt
-    |         7_3.txt
-    |         7_4.txt                     # Test
+    │        1_a.txt
+    │         1_b.txt
+    │         1_c.txt
+    │         1_d6.txt
+    │         1_d10.txt
+    │         2_a.txt
+    │         2_b.txt
+    │         3_a.txt
+    │         3_b.txt
+    │         5_a_0.2.txt
+    │         5_a_0.55.txt
+    │         5_a_0.85.txt
+    │         5_a_1.28.txt
+    │         5_b_a.txt
+    │         5_b_b.txt
+    │         5_b_c.txt
+    │         5_b_d.txt
+    │         5_c_0.txt
+    │         5_c_1.txt
+    │         6.txt
+    │         7_1.txt
+    │         7_2.txt
+    │         7_3.txt
+    │         7_4.txt                     # Test
     ├───output                     
     │   
     │
