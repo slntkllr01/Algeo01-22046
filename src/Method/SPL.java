@@ -170,7 +170,7 @@ public class SPL {
     public static String OutputSPLGauss(double[][] matrix) {
         String output = "";
         double[][] Echelon = OpMatrix.Gaussian.Gauss(matrix);
-        Matrix.DisplayMatrix(Echelon);
+        
         if (isNoSolution(Echelon)) {
             output += "Maaf, SPL tidak memiliki solusi.\n";
         } else {
