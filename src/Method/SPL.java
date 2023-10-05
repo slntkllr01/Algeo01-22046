@@ -127,7 +127,7 @@ public class SPL {
         double[][] result = SPL.SPLinverse(matrix);
         int count = 0;
         for (int j = 0; j < result.length; j++) {
-            if (!Double.isFinite(result[j][0]) || (result[j][0] == 999.0) || (result[j][0] == 9999.0)|| (result[j][0] == 0.0)) {
+            if (!Double.isFinite(result[j][0]) || (result[j][0] == 999.0) || (result[j][0] == -999.0) || (result[j][0] == 9999.0) || (result[j][0] == -9999.0) || (result[j][0] == 0.0)) {
                 count++;
             }
         }
@@ -150,7 +150,7 @@ public class SPL {
         int count = 0;
 
         for (int j = 0; j < result.length; j++) {
-            if (result[j] == 0.0) {
+            if ((result[j] == 0.0)  || (result[j] == 999.0) || (result[j] == -999.0) || (result[j] == 9999.0) || (result[j] == -9999.0) || (result[j] == 0.0)) {
                 count++;
             }
         }
