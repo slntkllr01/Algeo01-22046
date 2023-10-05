@@ -63,7 +63,7 @@ public class SPL {
                 int isRow = i;
                 for (int k = i + 1; k < Matrix.getRow(matrix); k++) {
                     int kIdx = 0;
-                    while (kIdx < Matrix.getCol(matrix) && matrix[k][kIdx] != 1) {
+                    while (kIdx < Matrix.getCol(matrix) - 1 && matrix[k][kIdx] != 1) {
                         kIdx++;
                     }
                     if (kIdx == j) {
@@ -93,14 +93,14 @@ public class SPL {
                     if (temp[i][j] < 0) {
                         result[idx] += "-";
                     }
-                else {
+                } else {
                     if (temp[i][j] > 0) {
                         result[idx] += " + ";
                     } else {
                         result[idx] += " - ";
                     }
                 }
-                }
+                
                 if (Math.abs(temp[i][j]) != 1) {
                     result[idx] += DecimalFormatting(Math.abs(temp[i][j]));
                 }
