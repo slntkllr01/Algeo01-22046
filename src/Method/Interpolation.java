@@ -36,8 +36,8 @@ public class Interpolation {
         for(int i=0; i<row; i++) {
             b[i][0] = point[i][1];
         }
-        // // print b
-        // System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
+        // print b
+        System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
         
         // matriks polinom
         double[][] mat = new double[row][col];
@@ -46,13 +46,13 @@ public class Interpolation {
                 mat[i][j] = Math.pow(point[i][0], j);
             }
         }
-        // // print hasil polinom
-        // System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
+        // print hasil polinom
+        System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
 
         
         // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][1];
-        double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
+        double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseGauss(mat), b);
         
         for(int i=0; i<temp.length; i++) {
             result[i][0] = OpMatrix.rounding(temp[i][0]);
@@ -71,7 +71,7 @@ public class Interpolation {
         
         // input titik
         int row = n+1, col = n+1;
-        System.out.printf("Masukkan %d titik (x y), tanpa tanda '('')' : ",row);
+        System.out.printf("Masukkan %d titik (x y), tanpa tanda '('')' : \n",row);
         double[][] point = new double[row][2];
         for(int p=0; p<row; p++) {
             for(int q=0; q<2; q++) {
@@ -105,7 +105,7 @@ public class Interpolation {
         
         // mendapat hasil SPL (a0 s.d. an)
         double [][] result = new double[row][1];
-        double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(mat), b);
+        double [][] temp = Matrix.MultiplyMatrix(OpMatrix.inverseGauss(mat), b);
         
         for(int i=0; i<temp.length; i++) {
             result[i][0] = OpMatrix.rounding(temp[i][0]);

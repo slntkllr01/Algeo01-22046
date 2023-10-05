@@ -195,14 +195,22 @@ public class OpMatrix {
         }
         m1 = Matrix.mergeMatCol(m1, m2);
         m1 = Gaussian.GaussJordan(m1);
-        // Matrix.DisplayMatrix(m1);
-        // System.out.println();
-        m1 = Matrix.sliceMatrixRight(m1);
-        if (Matrix.isIdentity(m1)){
-            m1 = Matrix.sliceMatrixLeft(m1);
-            return m1;
-        }
-        return null;
+        m1 = Matrix.sliceMatrixLeft(m1);
+        return m1;
+        // double[][] m2 = new double[Matrix.getRow(m1)][Matrix.getCol(m1)];
+        // for(int i=0;i<Matrix.getRow(m1);i++){
+        //     m2[i][i] = 1;
+        // }
+        // m1 = Matrix.mergeMatCol(m1, m2);
+        // m1 = Gaussian.GaussJordan(m1);
+        // // Matrix.DisplayMatrix(m1);
+        // // System.out.println();
+        // m1 = Matrix.sliceMatrixRight(m1);
+        // if (Matrix.isIdentity(m1)){
+        //     m1 = Matrix.sliceMatrixLeft(m1);
+        //     return m1;
+        // }
+        // return null;
     }
 
     public static double detCofactor(double[][] matrix) {

@@ -20,6 +20,7 @@ public class Bicubic {
 
         // ###### matrix untuk vektor a dari Y = Xa, maka a = X^-1 Y
         double[][] inversX = OpMatrix.inverseGauss(matX);
+        // System.out.println("NI inverse: ");Matrix.DisplayMatrix(inversX);
         double[][] a = Matrix.MultiplyMatrix(inversX, Y);
         a = changeSize(a, 4, 4);
         // // display a

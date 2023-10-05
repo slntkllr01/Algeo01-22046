@@ -564,6 +564,7 @@ public class Main {
                         String fileName = sc.nextLine();
                         double [][] matrixPolinom = new double[100][100];
                         matrixPolinom = InputOutput.readMatrixFile(matrixPolinom, fileName);
+                        // Matrix.DisplayMatrix(matrixPolinom);
                         double[][] result = Interpolation.InterpolasiFile(matrixPolinom);
                         String strResult = Interpolation.outputInterpolasi(result);
                         strResult += ", " + Interpolation.outputFungsi(result,(Interpolation.X(matrixPolinom[matrixPolinom.length-1][0])));
