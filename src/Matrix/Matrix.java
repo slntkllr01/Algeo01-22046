@@ -69,12 +69,12 @@ public class Matrix {
         for(int i = 0;i < matrix.length;i++) {
             for(int j = 0;j < matrix[i].length;j++) {
                 if(j < matrix[i].length-1) {
-                    System.out.printf("%.4f ",matrix[i][j]);
-                    strDisplay += String.format("%.4f ",matrix[i][j]);
+                    System.out.printf("%.4f ",OpMatrix.rounding(matrix[i][j]));
+                    strDisplay += String.format("%.4f ",OpMatrix.rounding(matrix[i][j])); //rounding kasus -0.0000
                 }
                 else {
-                    System.out.printf("%.4f\n",matrix[i][j]);
-                    strDisplay += String.format("%.4f\n",matrix[i][j]);
+                    System.out.printf("%.4f\n",OpMatrix.rounding(matrix[i][j]));
+                    strDisplay += String.format("%.4f\n",OpMatrix.rounding(matrix[i][j]));
                 }
             }
         }
@@ -367,7 +367,7 @@ public class Matrix {
         }
         return matrixR;
     }
-    public static double[][] sliceMatrixLeft(double[][] m1){
+    public static double[][] sliceMatrixRight(double[][] m1){
         double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
         for (int i=0;i<getRow(m1);i++){
             for (int j=(getCol(m1)/2);j<getCol(m1);j++){
@@ -377,7 +377,7 @@ public class Matrix {
         }
         return m2;
     }
-    public static double[][] sliceMatrixRight(double[][] m1){
+    public static double[][] sliceMatrixLeft(double[][] m1){
         double[][] m2 = new double[getRow(m1)][getCol(m1)/2];
         for (int i=0;i<getRow(m1);i++){
             for (int j=0;j<(getCol(m1)/2);j++){
