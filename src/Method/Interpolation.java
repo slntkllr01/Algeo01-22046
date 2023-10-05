@@ -28,16 +28,16 @@ public class Interpolation {
         int row = n+1, col = n+1;
 
         // // print titik
-        // System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
-        // // x = point[i][0], y = point[i][1]
+        System.out.println("point: ");Matrix.DisplayMatrix(point);System.out.println();
+        // x = point[i][0], y = point[i][1]
         
         // matriks b (ordinat dari titik)
         double[][] b = new double[row][1]; //0 atau 1
         for(int i=0; i<row; i++) {
             b[i][0] = point[i][1];
         }
-        // // print b
-        // System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
+        // print b
+        System.out.println("b: ");Matrix.DisplayMatrix(b);System.out.println();
         
         // matriks polinom
         double[][] mat = new double[row][col];
@@ -46,8 +46,8 @@ public class Interpolation {
                 mat[i][j] = Math.pow(point[i][0], j);
             }
         }
-        // // print hasil polinom
-        // System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
+        // print hasil polinom
+        System.out.println("mat: ");Matrix.DisplayMatrix(mat);System.out.println();
 
         // ax = b -> x = a-1 b
         // mendapat hasil SPL (a0 s.d. an)
@@ -58,7 +58,7 @@ public class Interpolation {
             result[i][0] = OpMatrix.rounding(temp[i][0]);
         }
 
-        // Matrix.DisplayMatrix(result);
+        Matrix.DisplayMatrix(result);
         return result;
     }
 

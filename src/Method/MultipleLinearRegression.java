@@ -99,19 +99,16 @@ public class MultipleLinearRegression {
     public static String regressionfile(double[][] m0,String filenames){
         double[][] m1 = InputOutput.readMatrixFile(m0,filenames); /* m1 adalah matrix yang menampung data masukkan */
         
-        Matrix.DisplayMatrix(m1);
-        System.out.println();
         
         double[][] m3 = Matrix.slice_bot(m1);
-        Matrix.DisplayMatrix(m3);
-        System.out.println();
         
         m1 = Matrix.slice_top(m1);
-        Matrix.DisplayMatrix(m1);
-        System.out.println();
 
         double[][] m2 = Matrix.slice_col1(m1); /* menampung nilai y */
+       
+
         double[][] temp = Matrix.slice_col1rest(m1); /* menampung sisanya */
+        
         m2 = Matrix.mergeMatCol(temp, m2); /* menampung matrix yang akan dihitung */
         
         double[][] m4 = new double[Matrix.getCol(m1)][Matrix.getCol(m2)+1]; /* m4 adalah matrix yang menampung Normal Estimation 

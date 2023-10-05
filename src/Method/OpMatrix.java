@@ -202,10 +202,11 @@ public class OpMatrix {
         if (Matrix.isIdentity(temp)){
             m1 = Matrix.sliceMatrixRight(m1);
             return m1;
+        } else{
+            double notIdentity[][] = new double[1][1];
+            notIdentity[0][0] = -9999;
+            return notIdentity;
         }
-        double notIdentity[][] = new double[1][1];
-        notIdentity[0][0] = -9999;
-        return notIdentity;
         
     }
 

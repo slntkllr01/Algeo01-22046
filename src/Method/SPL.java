@@ -11,7 +11,7 @@ public class SPL {
         double [][] a = Matrix.slice_a(matrix);
         
         double [][] result = new double[Matrix.getRow(matrix)][0];
-        result = Matrix.MultiplyMatrix(OpMatrix.inverseAdjoint(a), b);
+        result = Matrix.MultiplyMatrix(OpMatrix.inverseGauss(a), b);
         return result;
     }
 
