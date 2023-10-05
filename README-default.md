@@ -36,7 +36,7 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
 │   │       InputOutput.class
 │   │       Matrix.class
 │   │
-│   ├───Method
+│   └───Method
 │           Bicubic.class
 │           Interpolation.class
 │           MultipleLinearRegression.class
@@ -53,7 +53,7 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
 │   │       InputOutput.java
 │   │       Matrix.java
 │   │
-│   ├───Method                      # Method package
+│   └───Method                      # Method package
 │           Bicubic.java
 │           Interpolation.java
 │           MultipleLinearRegression.java
@@ -61,7 +61,7 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
 │           OpMatrix$Gaussian.java
 │           SPL.java
 │
-└───test   
+└───test                            # Test
     ├───input
     │        1_a.txt
     │         1_b.txt
@@ -86,11 +86,8 @@ diikuti dengan path file .jar yang telah dicopy (gantikan <pathfilejar>).
     │         7_1.txt
     │         7_2.txt
     │         7_3.txt
-    │         7_4.txt                     # Test
-    ├───output                     
-    │   
-    │
-    └───result                      # Result file directory
+    │         7_4.txt                     
+    └───output                     
 ```
 
 
