@@ -215,4 +215,3 @@ public class SPL {
         return solutions;
     }
 }
-
