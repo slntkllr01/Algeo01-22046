@@ -17,7 +17,7 @@
 ```shell
 java --enable-preview -jar <pathfilejar>
 ```
-diikuti dengan path file .jar yang telah dicopy (gantikan <"pathfilejar">).
+diikuti dengan path file .jar yang telah dicopy (gantikan `<pathfilejar>`).
 4. Klik enter. Program akan berjalan.
 5. Untuk menggunakan matriks dari file .txt, copy absolute path dari file yang ingin dibaca, paste di program tanpa tanda kutip "".
 6. Untuk menulis hasil ke file .txt, ketik absolute path untuk menempatkan file disertai nama file dan ekstensi .txt
