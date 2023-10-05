@@ -188,11 +188,6 @@ public class Main {
                                     System.out.print("Masukkan nama file: ");
                                     String fileName = sc.nextLine();
                                     matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
-                                    while (!Matrix.isSquare(matrix1)){
-                                        System.out.print("Masukkan nama file: ");
-                                        fileName = sc.nextLine();
-                                        matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
-                                    }
                                     result = SPL.OutputSPLGauss(matrix1);
                                     System.out.println(result);
                                     /* SAVE OUTPUT */
