@@ -14,13 +14,15 @@
 1. Clone repository ini ke dalam local machine Anda.
 2. Select file bernama "Algeo01-22046.jar", klik kanan, klik "Copy as path" atau menggunakan shortcut Ctrl+Shift+C.
 3. Buka terminal di perangkat Anda, ketikan command seperti berikut:  
+4. Klik enter. Program akan berjalan.
+5. Untuk menggunakan matriks dari file .txt, copy absolute path dari file yang ingin dibaca, paste di program tanpa tanda kutip "".
+6. Untuk menulis hasil ke file .txt, ketik absolute path untuk menempatkan file disertai nama file dan ekstensi .txt
 ```shell
 java --enable-preview -jar <pathfilejar>
 ```
 diikuti dengan path file .jar yang telah dicopy (gantikan `<pathfilejar>`).
-4. Klik enter. Program akan berjalan.
-5. Untuk menggunakan matriks dari file .txt, copy absolute path dari file yang ingin dibaca, paste di program tanpa tanda kutip "".
-6. Untuk menulis hasil ke file .txt, ketik absolute path untuk menempatkan file disertai nama file dan ekstensi .txt
+
+
 
 
 ## Struktur Program
