@@ -6,9 +6,6 @@ import Matrix.Matrix;
 public class Bicubic {
     public static String bicubicSI(double [][] matrix) {
         int i,j;
-        // // hapus
-        // Matrix.DisplayMatrix(matrix);
-
         double[][] mat4x4 = slice4x4(matrix);
 
         // Y = Xa
@@ -20,22 +17,16 @@ public class Bicubic {
 
         // ###### matrix untuk vektor a dari Y = Xa, maka a = X^-1 Y
         double[][] inversX = OpMatrix.inverseGauss(matX);
-        // System.out.println("NI inverse: ");Matrix.DisplayMatrix(inversX);
+
         double[][] a = Matrix.MultiplyMatrix(inversX, Y);
         a = changeSize(a, 4, 4);
-        // // display a
-        // System.out.println("a: "); Matrix.DisplayMatrix(a);
+
 
         // gunakan vektor a untuk mencari nilai f(x,y), jadi fungsi interpolasi bicubic sesuai model
         double[][] nilaiAB = sliceAB(matrix);
         double fungsiInterpolasi = 0;
         double x_fxy = nilaiAB[0][0];
         double y_fxy = nilaiAB[0][1];
-        // Scanner scan = new Scanner(System.in);
-        // System.out.println("[f(x,y)] masukkan nilai x: ");
-        // double x_fxy = scan.nextDouble();
-        // System.out.println("[f(x,y)] masukkan nilai y: ");
-        // double y_fxy = scan.nextDouble();
 
         for(j=0; j<4; j++) {
             for(i=0; i<4; i++) {
@@ -146,42 +137,7 @@ public class Bicubic {
         return matrixR;
     }
 
-    public static double[][] matXInv = 
-        {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
-        {-3,3,0,0,-2,-1,0,0,0,0,0,0,0,0,0,0},
-        {2,-2,0,0,1,1,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0},
-        {0,0,0,0,0,0,0,0,-3,3,0,0,-2,-1,0,0},
-        {0,0,0,0,0,0,0,0,2,-2,0,0,1,1,0,0},
-        {-3,0,3,0,0,0,0,0,-2,0,-1,0,0,0,0,0},
-        {0,0,0,0,-3,0,3,0,0,0,0,0,-2,0,-1,0},
-        {9,-9,-9,9,6,3,-6,-3,6,-6,3,-3,4,2,2,1},
-        {-6,6,6,-6,-3,-3,3,3,-4,4,-2,2,-2,-2,-1,-1},
-        {2,0,-2,0,0,0,0,0,1,0,1,0,0,0,0,0},
-        {0,0,0,0,2,0,-2,0,0,0,0,0,1,0,1,0},
-        {-6,6,6,-6,-4,-2,4,2,-3,3,-3,3,-2,-1,-2,-1},
-        {4,-4,-4,4,2,2,-2,-2,2,-2,2,-2,1,1,1,1}};
 }
 
-// hapus yo ntar
-// double[][] matXX =
-//         {{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//         {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-//         {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0},
-//         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-//         {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//         {0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0},
-//         {0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0},
-//         {0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3},
-//         {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0},
-//         {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0},
-//         {0,0,0,0,1,0,0,0,2,0,0,0,3,0,0,0},
-//         {0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3},
-//         {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-//         {0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0},
-//         {0,0,0,0,0,1,0,0,0,2,0,0,0,3,0,0},
-//         {0,0,0,0,0,1,2,3,0,2,4,6,0,3,6,9}};
 
         

@@ -10,7 +10,7 @@ public class InputOutput {
         String[] substrings;
         int i = 0,j = 0, temp=0;
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(".\\test\\input\\" + filenames));
+            BufferedReader reader = new BufferedReader(new FileReader(filenames));
             line = reader.readLine();
             while(line != null){
                 substrings = line.split(" ");
@@ -75,7 +75,7 @@ public class InputOutput {
     public static void outputFile(String x, String filenames){
         
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(".\\test\\output\\" + filenames));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filenames));
                 writer.write(x);
                 writer.close();
         } catch (IOException e){

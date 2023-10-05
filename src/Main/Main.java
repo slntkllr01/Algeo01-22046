@@ -139,7 +139,7 @@ public class Main {
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
                                     String result;
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     result = SPL.OutputSPLGauss(matrix1);
@@ -185,11 +185,11 @@ public class Main {
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
                                     String result;
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     while (!Matrix.isSquare(matrix1)){
-                                        System.out.print("Masukkan nama file: ");
+                                        System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                         fileName = sc.nextLine();
                                         matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     }
@@ -234,7 +234,7 @@ public class Main {
                                 }
                                 else if(choiceInput == 2) {
                                     String strResult = "";
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     double [][] matrixSPL = new double[100][100];
                                     matrixSPL = InputOutput.readMatrixFile(matrixSPL, fileName);
@@ -284,7 +284,7 @@ public class Main {
                                 }
                                 else if(choiceInput == 2) {
                                     String strResult = "";
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     double [][] matrixSPL = new double[100][100];
                                     matrixSPL = InputOutput.readMatrixFile(matrixSPL, fileName);
@@ -357,11 +357,11 @@ public class Main {
                                     matrix1 = new double[100][100];
                                     double det;
                                     String result;
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     while (!Matrix.isSquare(matrix1)){
-                                        System.out.print("Masukkan nama file: ");
+                                        System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                         fileName = sc.nextLine();
                                         matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     }
@@ -399,7 +399,7 @@ public class Main {
                                     SaveOutput(strResult);
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     double [][] matrixDet = new double[100][100];
                                     matrixDet = InputOutput.readMatrixFile(matrixDet, fileName);
@@ -460,11 +460,11 @@ public class Main {
                                     
                                     /* ISI ALGORITMA FILE DI SINI */
                                     matrix1 = new double[100][100];
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     matrix1 = InputOutput.readMatrixFile(matrix1, fileName);
                                     while (!Matrix.isSquare(matrix1)){
-                                        System.out.print("Masukkan nama file: ");
+                                        System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                         fileName = sc.nextLine();
                                         matrix1 = InputOutput.readMatrixFile(matrix1, fileName);    
                                     }
@@ -509,7 +509,7 @@ public class Main {
                                     SaveOutput(strResult);
                                 }
                                 else if(choiceInput == 2) {
-                                    System.out.print("Masukkan nama file: ");
+                                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                                     String fileName = sc.nextLine();
                                     double [][] matrixInv = new double[100][100];
                                     matrixInv = InputOutput.readMatrixFile(matrixInv, fileName);
@@ -558,7 +558,7 @@ public class Main {
                         SaveOutput(strResult);
                     }
                     else if(choiceInput == 2) {
-                        System.out.print("Masukkan nama file: ");
+                        System.out.print("Masukkan path file dan nama file dengan .txt: ");
                         String fileName = sc.nextLine();
                         double [][] matrixPolinom = new double[100][100];
                         matrixPolinom = InputOutput.readMatrixFile(matrixPolinom, fileName);
@@ -582,18 +582,10 @@ public class Main {
                             """);
                     // INPUT CARA MASUKAN
                     System.out.println(YELLOW + WHITE_BG + " INPUT: " + RESET);
-                    System.out.print("Masukkan nama file: ");
+                    System.out.print("Masukkan path file dan nama file dengan .txt: ");
                     String fileName = sc.nextLine();
                     double [][] matrixBicubic = new double[100][100];
                     matrixBicubic = InputOutput.readMatrixFile(matrixBicubic, fileName);
-                    while(Matrix.getCol(matrixBicubic) != 4)
-                    {
-                        System.out.println("Ukuran matrix salah, masukkan matrix 4x4.");
-                        System.out.print("Masukkan nama file: ");
-                        fileName = sc.nextLine();
-                        matrixBicubic = new double[100][100];
-                        matrixBicubic = InputOutput.readMatrixFile(matrixBicubic, fileName);
-                    }
                     String result = Bicubic.bicubicSI(matrixBicubic);
                     
                     // Save Output
@@ -631,7 +623,7 @@ public class Main {
                         
                         /* ISI ALGORITMA FILE DI SINI */
                         matrix1 = new double[100][100];
-                        System.out.print("Masukkan nama file: ");
+                        System.out.print("Masukkan path file dan nama file dengan .txt: ");
                         fileName = sc.nextLine();
                         result = MultipleLinearRegression.regressionfile(matrix1, fileName);
                         /* SAVE OUTPUT */
