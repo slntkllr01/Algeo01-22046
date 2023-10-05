@@ -1,5 +1,9 @@
-# Tugas Besar I ALJABAR LINEAR DAN GEOMETRI (IF2123)
+# Tugas Besar I Aljabar Linear dan Geometri (IF2123)
 ## Kelompok Cuanki
+- Raffael Boymian Siahaan	13522046
+- Muhammad Naufal Aulia	13522074
+- Fedrianz Dharma	13522090
+
 
 ## Program Cuanki Matrix Calculator
 - Mengeluarkan solusi atas Sistem Persamaan Linear menggunakan pilihan metode Gauss, Gauss-Jordan, Matriks Balikan, dan Cramer.
@@ -23,7 +27,6 @@
 4. Klik enter. Program akan berjalan.
 5. Untuk menggunakan matriks dari file .txt, copy absolute path dari file yang ingin dibaca, paste di program tanpa tanda kutip "".
 6. Untuk menulis hasil ke file .txt, ketik absolute path untuk menempatkan file disertai nama file dan ekstensi .txt
-
 
 
 ## Struktur Program
@@ -66,7 +69,7 @@
 │
 └───test                            # Test
     ├───input
-    │        1_a.txt
+    │         1_a.txt
     │         1_b.txt
     │         1_c.txt
     │         1_d6.txt
