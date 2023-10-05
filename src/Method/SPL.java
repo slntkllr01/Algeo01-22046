@@ -127,7 +127,7 @@ public class SPL {
         double[][] result = SPL.SPLinverse(matrix);
         int count = 0;
         for (int j = 0; j < result.length; j++) {
-            if (!Double.isFinite(result[j][0]) || (result[j][0] == 999.0) || (result[j][0] == 0.0)) {
+            if (!Double.isFinite(result[j][0]) || (result[j][0] == 999.0) || (result[j][0] == 9999.0)|| (result[j][0] == 0.0)) {
                 count++;
             }
         }
@@ -156,7 +156,7 @@ public class SPL {
         }
 
         if (count == result.length) {
-            output += "Maaf, SPL tidak dapat dipecahkan melalui metode inverse.\n";
+            output += "Maaf, SPL tidak dapat dipecahkan melalui metode cramer.\n";
         } else {
             output += "Solusi SPL adalah :\n";
             for (int i = 0; i < result.length; i++) {
